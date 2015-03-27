@@ -27,7 +27,8 @@ HEADERS += \
     particle.h \
     renderable.h \
     spring.h \
-    viewer.h
+    viewer.h \
+    sphere.h
 
 SOURCES += \
     cube.cpp \
@@ -41,4 +42,5 @@ SOURCES += \
     main.cpp \
     particle.cpp \
     spring.cpp \
-    viewer.cpp
+    viewer.cpp \
+    sphere.cpp
