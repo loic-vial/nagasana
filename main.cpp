@@ -1,6 +1,10 @@
 #include <qapplication.h>
 #include "viewer.h"
 #include "dragon.h"
+#include "ground.h"
+
+using namespace std;
+using namespace qglviewer;
 
 int main(int argc, char** argv)
 {
@@ -9,6 +13,7 @@ int main(int argc, char** argv)
 	Viewer viewer;
 
     viewer.addRenderable(new Dragon());
+    viewer.addRenderable(new Ground());
 
     viewer.setWindowTitle("Nagasana");
 	viewer.show();

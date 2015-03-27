@@ -1,12 +1,4 @@
-#ifndef DRAGON_H
-#define DRAGON_H
-
-#include "renderable.h"
-#ifndef __APPLE__
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
+#pragma once
 
 #include "dragonbody.h"
 #include "dragonwing.h"
@@ -20,6 +12,8 @@ class Dragon : public Renderable
 
         void draw();
 
+        void animate();
+
     private :
 
         DragonBody body;
@@ -30,5 +24,3 @@ class Dragon : public Renderable
 
         DragonTail tail;
 };
-
-#endif // DRAGON_H

@@ -1,25 +1,25 @@
 #pragma once
 
 #include "renderable.h"
-#ifndef __APPLE__
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
-
-#include "dynamicsystem.h"
+#include "spring.h"
+#include "particle.h"
 
 class DragonTail : public Renderable
 {
     public :
 
+        DragonTail();
+
         void init(Viewer&);
 
         void draw();
 
+        void animate();
+
     private :
 
-        DynamicSystem system;
+        std::vector<Particle*> particles;
 
+        std::vector<Spring*> springs;
 };
 

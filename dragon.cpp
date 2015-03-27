@@ -1,4 +1,8 @@
 #include "dragon.h"
+#include "viewer.h"
+#include <iostream>
+
+using namespace std;
 
 void Dragon::init(Viewer& viewer)
 {
@@ -6,6 +10,8 @@ void Dragon::init(Viewer& viewer)
     left_wing.init(viewer);
     right_wing.init(viewer);
     tail.init(viewer);
+
+    viewer.startAnimation();
 }
 
 void Dragon::draw()
@@ -16,3 +22,10 @@ void Dragon::draw()
     tail.draw();
 }
 
+void Dragon::animate()
+{
+    body.animate();
+    left_wing.animate();
+    right_wing.animate();
+    tail.animate();
+}
