@@ -1,6 +1,17 @@
 #include "cylinder.h"
 #include "math.h"
 
+#define PI 3.1416
+
+Cylinder::Cylinder(GLfloat length,GLfloat starting_point,GLfloat radiusR, GLfloat radiusL)
+{
+    this->plength = length;
+    this->pradiusL = radiusL;
+    this->pradiusR = radiusR;
+    this->pstarting_point = starting_point;
+
+}
+
 void Cylinder::init(Viewer&)
 {
 
@@ -19,54 +30,45 @@ void Cylinder::draw()
 
 void Cylinder::drawImmediate()
 {
-    float radius = 2;
-    int num_segments = 1000;
-    float depth = -7;
-
     glEnable(GL_NORMALIZE);
-
-    glBegin(GL_POLYGON);
-    glNormal3f(0.0, 0.0, 1.0);
-    for(int ii = 0; ii < num_segments; ii++)
-    {
-        float theta = 2.0f * 3.1415926f * float(ii) / float(num_segments);
-        glVertex3f(radius * cosf(theta), radius * sinf(theta), 0);
-    }
-    glEnd();
-
-    glBegin(GL_POLYGON);
-    glNormal3f(0.0, 0.0, -1.0);
-    for(int ii = 0; ii < num_segments; ii++)
-    {
-        float theta = 2.0f * 3.1415926f * float(ii) / float(num_segments);
-        glVertex3f(radius * cosf(theta), radius * sinf(theta), depth);
-    }
-    glEnd();
-
-    float ax, ay, az;
-    float bx, by, bz;
-    for(int ii = 0; ii < num_segments; ii++)
-    {
-        glBegin(GL_POLYGON);
-        float theta1 = 2.0f * 3.1415926f * float(ii) / float(num_segments);
-        float theta2 = 2.0f * 3.1415926f * float(ii + 1) / float(num_segments);
-
-        ax = 0;
-        ay = 0;
-        az = depth;
-
-        bx = radius * cosf(theta2) - radius * cosf(theta1);
-        by = radius * sinf(theta2) - radius * sinf(theta1);
-        bz = depth;
-
-        glNormal3f(ay * bz - az * by, az * bx - ax * bz, ax * by - ay * bx);
+       GLfloat angle = (2*PI)/360;
+       GLfloat length = plength+pstarting_point;
+       GLfloat starting_point = pstarting_point;
+       GLfloat radiusL = pradiusL;
+       GLfloat radiusR = pradiusR;
+       glBegin(GL_POLYGON);
+       glNormal3f(0.0, 0.0, -1.0);
+       for (GLfloat f = 0.0 ; f<=2*PI;f+=angle)
+       {
+           glVertex3f(radiusL*cos(f),radiusL*sin(f), starting_point);
+       }
+       glEnd();
 
 
-        glVertex3f(radius * cosf(theta1), radius * sinf(theta1), 0);
-        glVertex3f(radius * cosf(theta1), radius * sinf(theta1), depth);
-        glVertex3f(radius * cosf(theta2), radius * sinf(theta2), depth);
-        glVertex3f(radius * cosf(theta2), radius * sinf(theta2), 0);
-        glEnd();
-    }
+       glBegin(GL_POLYGON);
+       glNormal3f(0.0, 0.0, 1.0);
+       for (GLfloat f = 0.0 ; f<=2*PI;f+=angle)
+       {
+           glVertex3f(radiusR*cos(f),radiusR*sin(f), length);
+       }
+       glEnd();
+
+
+      glBegin(GL_QUAD_STRIP);
+       for (GLfloat f = 0.0 ; f<=2*PI;f+=angle)
+       {
+           GLfloat u1 = radiusR*cos(f+angle)-radiusL*cos(f+angle);
+           GLfloat u2 =radiusR*sin(f+angle)-radiusL*sin(f+angle);
+           GLfloat u3 = length-starting_point;
+           GLfloat v1 = radiusL*cos(f)-radiusL*cos(f+angle);
+           GLfloat v2 = radiusL*sin(f)-radiusL*sin(f+angle);
+           GLfloat v3 = 0.0;
+           glNormal3f(u2*v3-u3*v2, u3*v1-u1*v3, u1*v2-u2*v1);
+           glVertex3f(radiusL*cos(f),radiusL*sin(f), starting_point);
+           glVertex3f(radiusR*cos(f),radiusR*sin(f), length);
+           glVertex3f( radiusL*cos(f+angle),radiusL*sin(f+angle), starting_point);
+           glVertex3f( radiusR*cos(f+angle),radiusR*sin(f+angle), length);
+       }
+       glEnd();
 
 }

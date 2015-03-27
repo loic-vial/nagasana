@@ -15,11 +15,18 @@ public:
     void init(Viewer&);
 
     void draw();
+     Cylinder(GLfloat plength,GLfloat pstarting_point,GLfloat pradiusR, GLfloat pradiusL);
 
 private:
-
+    GLfloat plength;
+    GLfloat pstarting_point;
+    GLfloat pradiusR;
+    GLfloat pradiusL;
     void drawImmediate();
-
+    void drawElements();
+    void drawArrays();
 };
+
+
 
 #endif
