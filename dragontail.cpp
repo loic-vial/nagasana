@@ -1,5 +1,12 @@
-#include "tail.h"
+#include "dragontail.h"
 
-Tail::Tail()
+void DragonTail::init(Viewer& viewer)
 {
+    system.init(viewer);
 }
+
+void DragonTail::draw()
+{
+    system.draw();
+}
+

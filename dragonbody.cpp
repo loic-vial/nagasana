@@ -1,5 +1,10 @@
 #include "dragonbody.h"
 
-DragonBody::DragonBody()
+void DragonBody::init(Viewer&)
 {
 }
+
+void DragonBody::draw()
+{
+}
+

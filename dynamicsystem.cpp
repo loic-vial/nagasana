@@ -3,7 +3,7 @@
 #include <map>
 
 #include "viewer.h"
-#include "dynamicSystem.h"
+#include "dynamicsystem.h"
 
 
 DynamicSystem::DynamicSystem()

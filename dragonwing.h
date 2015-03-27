@@ -7,7 +7,7 @@
 #include <GLUT/glut.h>
 #endif
 
-class DragonBody : public Renderable
+class DragonWing : public Renderable
 {
     public :
 
@@ -16,3 +16,4 @@ class DragonBody : public Renderable
         void draw();
 
 };
+

@@ -1,10 +1,18 @@
-#ifndef DRAGONHEAD_H
-#define DRAGONHEAD_H
+#pragma once
 
-class DragonHead
+#include "renderable.h"
+#ifndef __APPLE__
+#include <GL/glut.h>
+#else
+#include <GLUT/glut.h>
+#endif
+
+class DragonHead : public Renderable
 {
-public:
-    DragonHead();
-};
+    public :
 
-#endif // DRAGONHEAD_H
+        void init(Viewer&);
+
+        void draw();
+
+};

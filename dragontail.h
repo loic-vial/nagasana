@@ -1,10 +1,25 @@
-#ifndef TAIL_H
-#define TAIL_H
+#pragma once
 
-class Tail
+#include "renderable.h"
+#ifndef __APPLE__
+#include <GL/glut.h>
+#else
+#include <GLUT/glut.h>
+#endif
+
+#include "dynamicsystem.h"
+
+class DragonTail : public Renderable
 {
-public:
-    Tail();
+    public :
+
+        void init(Viewer&);
+
+        void draw();
+
+    private :
+
+        DynamicSystem system;
+
 };
 
-#endif // TAIL_H
