@@ -9,8 +9,8 @@ int main(int argc, char** argv)
 
 	Viewer viewer;
 
-  //  viewer.addRenderable(new Dragon());
-    viewer.addRenderable(new Cylinder(5,2,3, 1));
+   viewer.addRenderable(new Dragon());
+   // viewer.addRenderable(new Cylinder(5,2,3, 1));
 
     viewer.setWindowTitle("Nagasana");
 	viewer.show();
