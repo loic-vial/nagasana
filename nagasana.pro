@@ -3,8 +3,24 @@ TARGET = nagasana
 CONFIG += qt opengl warn_on debug
 QT *= xml opengl 
 
-HEADERS  = *.h
-SOURCES  = *.cpp
+HEADERS  = *.h \
+    particle.h \
+    spring.h \
+    dragon.h \
+    dragonbody.h \
+    dragonhead.h \
+    dynamicsystem.h \
+    dragontail.h \
+    dragonwings.h
+SOURCES  = *.cpp \
+    particle.cpp \
+    spring.cpp \
+    dragon.cpp \
+    dragonbody.cpp \
+    dragonhead.cpp \
+    dynamicsystem.cpp \
+    dragontail.cpp \
+    dragonwings.cpp
 
 macx:LIBS *= -framework Glut
 linux-g++*:LIBS *= -lglut
