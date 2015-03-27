@@ -29,7 +29,8 @@ HEADERS += \
     spring.h \
     viewer.h \
     glut.h \
-    ground.h
+    ground.h \
+    sphere.h
 
 SOURCES += \
     cube.cpp \
@@ -44,4 +45,5 @@ SOURCES += \
     particle.cpp \
     spring.cpp \
     viewer.cpp \
-    ground.cpp
+    ground.cpp \
+    sphere.cpp
