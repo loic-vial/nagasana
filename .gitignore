@@ -1,2 +1,5 @@
 obj
 *.pro.user
+*.o
+Makefile
+nagasana
