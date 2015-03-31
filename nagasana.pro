@@ -7,45 +7,47 @@ macx:LIBS *= -framework Glut
 linux-g++*:LIBS *= -lglut
 
 QGL = -lqglviewer
-
-exists( /usr/lib/libqglviewer-qt4.so): QGL = -lqglviewer-qt4
-exists( /usr/lib/x86_64-linux-gnu/libqglviewer-qt4.so ): QGL = -lqglviewer-qt4
-exists( /usr/lib/x86_64-linux-gnu/libQGLViewer.so.2 ): QGL=-lQGLViewer -lGLU
-exists( /usr/lib64/libQGLViewer.so ): QGL=-lQGLViewer
+exists(/usr/lib/libqglviewer-qt4.so): QGL = -lqglviewer-qt4
+exists(/usr/lib/x86_64-linux-gnu/libqglviewer-qt4.so): QGL = -lqglviewer-qt4
+exists(/usr/lib/x86_64-linux-gnu/libQGLViewer.so.2): QGL = -lQGLViewer -lGLU
+exists(/usr/lib64/libQGLViewer.so): QGL = -lQGLViewer
 
 LIBS *= $${QGL}
 
+INCLUDEPATH += include
+
 HEADERS += \
-    cube.h \
-    cylinder.h \
-    dragon.h \
-    dragonbody.h \
-    dragonhead.h \
-    dragontail.h \
-    dragonwing.h \
-    dynamicsystem.h \
-    particle.h \
-    renderable.h \
-    spring.h \
-    viewer.h \
-    glut.h \
-    ground.h \
-    sphere.h \
-    membrane.h
+    include/cube.h \
+    include/cylinder.h \
+    include/dragon.h \
+    include/dragonbody.h \
+    include/dragonhead.h \
+    include/dragontail.h \
+    include/dragonwing.h \
+    include/dynamicsystem.h \
+    include/particle.h \
+    include/renderable.h \
+    include/spring.h \
+    include/viewer.h \
+    include/glut.h \
+    include/ground.h \
+    include/sphere.h \
+include/membrane.h
 
 SOURCES += \
-    cube.cpp \
-    cylinder.cpp \
-    dragon.cpp \
-    dragonbody.cpp \
-    dragonhead.cpp \
-    dragontail.cpp \
-    dragonwing.cpp \
-    dynamicsystem.cpp \
-    main.cpp \
-    particle.cpp \
-    spring.cpp \
-    viewer.cpp \
-    ground.cpp \
-    sphere.cpp \
-    membrane.cpp
+    src/cube.cpp \
+    src/cylinder.cpp \
+    src/dragon.cpp \
+    src/dragonbody.cpp \
+    src/dragonhead.cpp \
+    src/dragontail.cpp \
+    src/dragonwing.cpp \
+    src/dynamicsystem.cpp \
+    src/main.cpp \
+    src/particle.cpp \
+    src/spring.cpp \
+    src/viewer.cpp \
+    src/ground.cpp \
+    src/sphere.cpp \
+src/membrane.cpp
+
