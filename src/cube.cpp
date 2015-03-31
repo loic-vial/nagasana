@@ -1,22 +1,7 @@
 #include <iostream>
+#include <cube.h>
+
 using namespace std;
-#include "cube.h"
-
-/*
-          Z
-          |
-    7 +-------+ 6
-     /|      /|
-    / |     / |   ---> Y
- 4 +-------+5 |
-   | 3+----|--+ 2
-   | /     | /
-   |/      |/
- 0 +-------+ 1
-      /
-     X         
-*/
-
 
 void Cube::draw()
 {

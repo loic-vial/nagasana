@@ -1,8 +1,8 @@
 #pragma once
 
-#include "renderable.h"
-#include "spring.h"
-#include "particle.h"
+#include <renderable.h>
+#include <spring.h>
+#include <particle.h>
 
 class DragonTail : public Renderable
 {
