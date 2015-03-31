@@ -2,7 +2,7 @@
 
 #include <renderable.h>
 #include <spring.h>
-#include <particle.h>
+#include <sphere.h>
 
 class DragonTail : public Renderable
 {
@@ -18,7 +18,7 @@ class DragonTail : public Renderable
 
     private :
 
-        std::vector<Particle*> particles;
+        std::vector<Sphere*> particles;
 
         std::vector<Spring*> springs;
 };

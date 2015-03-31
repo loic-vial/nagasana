@@ -11,28 +11,19 @@ DragonTail::DragonTail()
 
 void DragonTail::init(Viewer& viewer)
 {
-    qglviewer::Vec initPos = qglviewer::Vec(0.0, 0.0, 2.0);
-    particles.push_back(new Particle(initPos, qglviewer::Vec(), 0.0, 0.25));
+    particles.push_back(new Sphere(3, Vec(10, 0, 10), Vec(0, 0, 0), 0));
 
-    qglviewer::Vec pos1 = initPos + qglviewer::Vec(0.0, 1, 0.0);
-    qglviewer::Vec vel1 = qglviewer::Vec(0.0, -1.0, 0.0);
-    particles.push_back(new Particle(pos1, vel1, 1, 0.25));
-
-    springs.push_back(new Spring(particles[0], particles[1], 30, 0.5, 1));
-
-    for (int i = 2 ; i < 9 ; i++)
+    for (int i = 1 ; i < 9 ; i++)
     {
-        qglviewer::Vec pos = particles[i - 1]->getPosition() + qglviewer::Vec(0.0, 1, 0.0);
-        qglviewer::Vec vel = qglviewer::Vec(0.0, -1.0, 0.0);
-        particles.push_back(new Particle(pos, vel, 1, 0.25));
-        springs.push_back(new Spring(particles[i], particles[i-1], 30, 0.5, 1));
+        particles.push_back(new Sphere(3, particles[i - 1]->getPosition() + Vec(0, 6, 0), Vec(0, -1, (i%2==0)?(i):(-i)), 1));
+        springs.push_back(new Spring(particles[i],  particles[i-1], 30, 6, 1));
     }
 }
 
 void DragonTail::draw()
 {
     glColor3f(1,0,0);
-    std::vector<Particle *>::iterator itP;
+    vector<Sphere*>::iterator itP;
     for (itP = particles.begin(); itP != particles.end(); ++itP)
     {
         (*itP)->draw();
@@ -40,7 +31,7 @@ void DragonTail::draw()
 
     glColor3f(1.0, 0.28, 0.0);
     glLineWidth(5.0);
-    std::vector<Spring *>::iterator itS;
+    vector<Spring*>::iterator itS;
     for (itS = springs.begin(); itS != springs.end(); ++itS)
     {
         (*itS)->draw();
@@ -49,36 +40,33 @@ void DragonTail::draw()
 }
 void DragonTail::animate()
 {
-    std::map<const Particle*, qglviewer::Vec> forces;
+    map<const Particle*, Vec> forces;
 
-    qglviewer::Vec gravity(0, 5, 0);
+    Vec gravity(0, 5, 0);
 
-    std::vector<Particle*>::iterator itP;
+    vector<Sphere*>::iterator itP;
     for (itP = particles.begin(); itP != particles.end(); ++itP)
     {
-        Particle *p = *itP;
-        forces[p] = gravity * p->getMass();
+        forces[*itP] = gravity * (*itP)->getMass();
     }
 
     std::vector<Spring*>::iterator itS;
     for (itS = springs.begin(); itS != springs.end(); ++itS)
     {
         Spring* s = *itS;
-        qglviewer::Vec f12 = s->getCurrentForce();
+        Vec f12 = s->getCurrentForce();
         forces[s->getParticle1()] += f12;
         forces[s->getParticle2()] -= f12;
     }
 
     for (itP = particles.begin(); itP != particles.end(); ++itP)
     {
-        Particle* p = *itP;
-        if (p->getMass() == 0) continue;
-        p->incrVelocity(0.1 * (forces[p] / p->getMass()));
+        if ((*itP)->getMass() == 0) continue;
+        (*itP)->incrVelocity(0.1 * (forces[*itP] / (*itP)->getMass()));
     }
 
     for (itP = particles.begin(); itP != particles.end(); ++itP)
     {
-        Particle *p = *itP;
-        p->incrPosition(0.1 * p->getVelocity());
+        (*itP)->incrPosition(0.1 * (*itP)->getVelocity());
     }
 }

@@ -3,11 +3,7 @@
 #include "cylinder.h"
 #include "sphere.h"
 #include "renderable.h"
-#ifndef __APPLE__
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
+#include <glut.h>
 
 class DragonWing : public Renderable
 {

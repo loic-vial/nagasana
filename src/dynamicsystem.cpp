@@ -4,7 +4,7 @@
 
 #include "viewer.h"
 #include "dynamicsystem.h"
-
+/*
 
 DynamicSystem::DynamicSystem()
 	: 
@@ -260,13 +260,12 @@ void DynamicSystem::collisionParticleParticle(Particle *p1, Particle *p2)
     p2->incrVelocity((1 + rebound) * v2Pen * (p2->getPosition() - p1->getPosition()).unit());
 }
 
-
 void DynamicSystem::keyPressEvent(QKeyEvent* e, Viewer& viewer)
 {
   	// Get event modifiers key
 	const Qt::KeyboardModifiers modifiers = e->modifiers();
 
-        /* Controls added for Lab Session 6 "Physicall Modeling" */
+        // Controls added for Lab Session 6 "Physicall Modeling"
         if ((e->key()==Qt::Key_G) && (modifiers==Qt::NoButton)) {
 		toggleGravity = !toggleGravity;
 		setGravity(toggleGravity);
@@ -300,4 +299,4 @@ void DynamicSystem::mouseMoveEvent(QMouseEvent*, Viewer& v)
 {
         setFixedParticlePosition(v.manipulatedFrame()->position());
 }
-
+*/

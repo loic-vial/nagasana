@@ -1,22 +1,21 @@
-#include "sphere.h"
-#ifndef __APPLE__
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
+#include <sphere.h>
+#include <glut.h>
 
-Sphere::Sphere(GLfloat radius_sphere)
-{
-    radius = radius_sphere;
-}
-void Sphere::init(Viewer&)
+using qglviewer::Vec;
+
+Sphere::Sphere(GLfloat r, Vec position, Vec vel, GLfloat mass) :
+    Particle(position, vel, mass),
+    radius(r)
 {
 
 }
 
 void Sphere::draw()
 {
+    glPushMatrix();
+    glTranslatef(getPosition().x, getPosition().y, getPosition().z);
     glutSolidSphere(radius, 12, 12);
+    glPopMatrix();
 }
 
 

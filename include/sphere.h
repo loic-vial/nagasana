@@ -1,21 +1,18 @@
-#ifndef SPHERE_H
-#define SPHERE_H
-#include "renderable.h"
-#ifndef __APPLE__
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
+#pragma once
 
-class Sphere
+#include <glut.h>
+#include <particle.h>
+
+class Sphere : public Particle
 {
-public:
-    Sphere(GLfloat radius);
-    void init(Viewer&);
-    void draw();
+    public:
 
-private :
-    GLfloat radius;
+        Sphere(GLfloat radius = 1, qglviewer::Vec pos = qglviewer::Vec(0, 0, 0), qglviewer::Vec vel = qglviewer::Vec(0, 0, 0), GLfloat mass = 1);
+
+        void draw();
+
+    private :
+
+        GLfloat radius;
 };
 
-#endif // SPHERE_H
