@@ -30,7 +30,8 @@ HEADERS += \
     viewer.h \
     glut.h \
     ground.h \
-    sphere.h
+    sphere.h \
+    membrane.h
 
 SOURCES += \
     cube.cpp \
@@ -46,4 +47,5 @@ SOURCES += \
     spring.cpp \
     viewer.cpp \
     ground.cpp \
-    sphere.cpp
+    sphere.cpp \
+    membrane.cpp
