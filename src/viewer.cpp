@@ -43,7 +43,7 @@ void Viewer::init()
 		glEnable(GL_LIGHTING);
 	else
 		glDisable(GL_LIGHTING);
-	
+
     setSceneRadius(30.0f);
 
 	list<Renderable *>::iterator it;
