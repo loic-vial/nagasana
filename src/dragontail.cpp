@@ -15,7 +15,7 @@ void DragonTail::init(Viewer& viewer)
 
     for (int i = 1 ; i < 9 ; i++)
     {
-        particles.push_back(new Sphere(3, particles[i - 1]->getPosition() + Vec(0, 6, 0), Vec(0, -1, (i%2==0)?(i):(-i)), 1));
+        particles.push_back(new Sphere(3-(0.1*i), particles[i - 1]->getPosition() + Vec(0, 6, 0), Vec(0, -1, (i%2==0)?(i):(-i)), 1));
         springs.push_back(new Spring(particles[i],  particles[i-1], 30, 6, 1));
     }
 }

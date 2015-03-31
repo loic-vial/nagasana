@@ -32,7 +32,7 @@ HEADERS += \
     include/glut.h \
     include/ground.h \
     include/sphere.h \
-include/membrane.h
+    include/membrane.h
 
 SOURCES += \
     src/cube.cpp \
@@ -49,5 +49,5 @@ SOURCES += \
     src/viewer.cpp \
     src/ground.cpp \
     src/sphere.cpp \
-src/membrane.cpp
+    src/membrane.cpp
 
