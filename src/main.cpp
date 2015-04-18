@@ -18,5 +18,7 @@ int main(int argc, char** argv)
     viewer.setWindowTitle("Nagasana");
 	viewer.show();
 
+    viewer.startAnimation();
+
 	return application.exec();
 }

@@ -10,8 +10,6 @@ void Dragon::init(Viewer& viewer)
     left_wing.init(viewer);
     right_wing.init(viewer);
     tail.init(viewer);
-
-    viewer.startAnimation();
 }
 
 void Dragon::draw()
