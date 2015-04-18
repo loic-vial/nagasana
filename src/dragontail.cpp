@@ -9,13 +9,13 @@ DragonTail::DragonTail()
 
 }
 
-void DragonTail::init(Viewer& viewer)
+void DragonTail::init(Viewer&)
 {
-    particles.push_back(new Sphere(3, Vec(10, 0, 10), Vec(0, 0, 0), 0));
+    particles.push_back(new Sphere(2, Vec(20, 0, 10), Vec(0, 0, 0), 0));
 
     for (int i = 1 ; i < 9 ; i++)
     {
-        particles.push_back(new Sphere(3-(0.1*i), particles[i - 1]->getPosition() + Vec(0, 6, 0), Vec(0, -1, (i%2==0)?(i):(-i)), 1));
+        particles.push_back(new Sphere(2-(0.1*i), particles[i - 1]->getPosition() + Vec(0, -6, 0), Vec(0, -1, (i%2==0)?(i):(-i)), 1));
         springs.push_back(new Spring(particles[i],  particles[i-1], 30, 6, 1));
     }
 }
@@ -42,7 +42,7 @@ void DragonTail::animate()
 {
     map<const Particle*, Vec> forces;
 
-    Vec gravity(0, 5, 0);
+    Vec gravity(0, -5, 0);
 
     vector<Sphere*>::iterator itP;
     for (itP = particles.begin(); itP != particles.end(); ++itP)

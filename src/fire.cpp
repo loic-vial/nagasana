@@ -49,7 +49,7 @@ void Fire::init(Viewer &viewer)
 	clear();
 
 	//Centre de la sphère de départ du placement des particules
-	initPos = qglviewer::Vec(0.0, 0.0, 2.0);
+    initPos = qglviewer::Vec(10.0, 15.0, 10.0);
 	r = 1.0;
 
 	//Nombre de particules
@@ -78,7 +78,7 @@ void Fire::createSystemScene()
     	float phi = M_PI * myRand(0,1);
     	qglviewer::Vec pos = initPos + qglviewer::Vec(r*cos(theta)*cos(phi), r*sin(theta)*cos(phi), r*sin(phi));
     	qglviewer::Vec vel = qglviewer::Vec(1.5*cos(theta)*cos(phi), myRand(2,5), 1.5*sin(phi));	// non null initial velocity
-		particles.push_back(new FireParticle(pos, vel, particleMass, particleRadius, myRand(20,50),1,myRand(0,0.001),0));
+        particles.push_back(new FireParticle(pos, vel, particleMass, particleRadius, myRand(20,50),1,myRand(0,0.001),0));
    	}
 }
 
