@@ -1,10 +1,10 @@
 #pragma once
 
-#include "cylinder.h"
-#include "sphere.h"
-#include "renderable.h"
+#include <cylinder.h>
+#include <sphere.h>
+#include <renderable.h>
 #include <glut.h>
-#include "membrane.h"
+#include <membrane.h>
 
 class DragonWing : public Renderable
 {

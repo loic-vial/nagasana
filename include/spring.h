@@ -3,7 +3,7 @@
 
 #include <QGLViewer/vec.h>
 
-#include "particle.h"
+#include <particle.h>
 
 
 class Spring 

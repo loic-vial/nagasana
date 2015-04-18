@@ -1,4 +1,4 @@
-#include "dragonhead.h"
+#include <dragonhead.h>
 
 void DragonHead::init(Viewer&)
 {

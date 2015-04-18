@@ -1,14 +1,14 @@
-#include "cylinder.h"
-#include "math.h"
+#include <cylinder.h>
+#include <math.h>
 
 #define PI 3.1416
 
-Cylinder::Cylinder(GLfloat length,GLfloat starting_point,GLfloat radiusR, GLfloat radiusL)
+Cylinder::Cylinder(GLfloat length, GLfloat starting_point, GLfloat radiusR, GLfloat radiusL)
 {
-    this->plength = length;
-    this->pradiusL = radiusL;
-    this->pradiusR = radiusR;
-    this->pstarting_point = starting_point;
+    this->length = length;
+    this->radiusL = radiusL;
+    this->radiusR = radiusR;
+    this->starting_point = starting_point;
 
 }
 
@@ -24,10 +24,10 @@ void Cylinder::draw()
     glEnable(GL_NORMALIZE);
 
     GLfloat angle = (2*PI)/360;
-    GLfloat length = plength+pstarting_point;
-    GLfloat starting_point = pstarting_point;
-    GLfloat radiusL = pradiusL;
-    GLfloat radiusR = pradiusR;
+    GLfloat length = this->length+starting_point;
+    GLfloat starting_point = this->starting_point;
+    GLfloat radiusL = this->radiusL;
+    GLfloat radiusR = this->radiusR;
     glBegin(GL_POLYGON);
     glNormal3f(0.0, 0.0, -1.0);
     for (GLfloat f = 0.0 ; f<=2*PI;f+=angle)

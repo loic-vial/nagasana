@@ -1,13 +1,7 @@
 #include <QKeyEvent>
-
-#ifndef __APPLE__
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
-
-#include "viewer.h"
-#include "renderable.h"
+#include <glut.h>
+#include <viewer.h>
+#include <renderable.h>
 
 Viewer::Viewer() {
 }

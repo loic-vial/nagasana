@@ -24,7 +24,6 @@ HEADERS += \
     include/dragonhead.h \
     include/dragontail.h \
     include/dragonwing.h \
-    include/dynamicsystem.h \
     include/particle.h \
     include/renderable.h \
     include/spring.h \
@@ -32,7 +31,9 @@ HEADERS += \
     include/glut.h \
     include/ground.h \
     include/sphere.h \
-    include/membrane.h
+    include/membrane.h \
+    include/fire.h \
+    include/fireParticle.h
 
 SOURCES += \
     src/cube.cpp \
@@ -42,12 +43,13 @@ SOURCES += \
     src/dragonhead.cpp \
     src/dragontail.cpp \
     src/dragonwing.cpp \
-    src/dynamicsystem.cpp \
     src/main.cpp \
     src/particle.cpp \
     src/spring.cpp \
     src/viewer.cpp \
     src/ground.cpp \
     src/sphere.cpp \
-    src/membrane.cpp
+    src/membrane.cpp \
+    src/fire.cpp \
+    src/fireParticle.cpp
 

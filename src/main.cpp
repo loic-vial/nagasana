@@ -1,7 +1,7 @@
 #include <qapplication.h>
-#include "viewer.h"
-#include "dragon.h"
-#include "ground.h"
+#include <viewer.h>
+#include <dragon.h>
+#include <ground.h>
 
 using namespace std;
 using namespace qglviewer;

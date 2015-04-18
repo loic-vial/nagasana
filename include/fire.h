@@ -1,13 +1,10 @@
-#ifndef _FIRE_H_
-#define _FIRE_H_
+#pragma once
 
 #include <QGLViewer/vec.h>
 #include <QGLViewer/manipulatedFrame.h>
-
 #include <vector>
-
-#include "fireParticle.h"
-#include "renderable.h"
+#include <fireParticle.h>
+#include <renderable.h>
 
 /*
  * This class represents a dynamic system made of particles
@@ -78,6 +75,3 @@ public:
 	// Update positions and velocities of dynamic objects
 	void animate();
 };
-
-#endif
-

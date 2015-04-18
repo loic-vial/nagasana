@@ -1,5 +1,5 @@
-#include "ground.h"
-#include "glut.h"
+#include <ground.h>
+#include <glut.h>
 
 using namespace std;
 

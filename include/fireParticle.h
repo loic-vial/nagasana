@@ -1,5 +1,4 @@
-#ifndef _FIRE_PARTICLE_
-#define _FIRE_PARTICLE_
+#pragma once
 
 #include <QGLViewer/vec.h>
 #include <iostream>
@@ -38,6 +37,4 @@ public:
 
 // output stream operator, as non-member
 std::ostream& operator<<(std::ostream& os, const FireParticle& p);
-
-#endif
 

@@ -1,9 +1,8 @@
 #include <cmath>
 #include <iostream>
 #include <map>
-
-#include "viewer.h"
-#include "fire.h"
+#include <viewer.h>
+#include <fire.h>
 
 
 Fire::Fire()

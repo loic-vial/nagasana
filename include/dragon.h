@@ -1,8 +1,9 @@
 #pragma once
 
-#include "dragonbody.h"
-#include "dragonwing.h"
-#include "dragontail.h"
+#include <dragonbody.h>
+#include <dragonwing.h>
+#include <dragontail.h>
+#include <fire.h>
 
 class Dragon : public Renderable
 {
@@ -23,4 +24,6 @@ class Dragon : public Renderable
         DragonWing right_wing;
 
         DragonTail tail;
+
+        Fire fire;
 };

@@ -1,9 +1,5 @@
-#include "membrane.h"
-#ifndef __APPLE__
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
+#include <membrane.h>
+#include <glut.h>
 
 #define PI 3.1416
 Membrane::Membrane(qglviewer::Vec pbegin,qglviewer::Vec pmid, qglviewer::Vec pend)

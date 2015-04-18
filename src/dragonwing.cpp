@@ -1,4 +1,4 @@
-#include "dragonwing.h"
+#include <dragonwing.h>
 
 using qglviewer::Vec;
 using namespace std;
@@ -10,7 +10,7 @@ DragonWing::DragonWing():
     joint_body(1.5, Vec(0, 0, 0)),
     joint(2, Vec(0, 0, 25)),
     first_membrane(qglviewer::Vec(0,0,0), qglviewer::Vec(0,0,25),qglviewer::Vec(0,17,15)),
-  second_membrane(qglviewer::Vec(0,0,0),qglviewer::Vec(0,0,0),qglviewer::Vec(0,0,0))
+    second_membrane(qglviewer::Vec(0,0,0),qglviewer::Vec(0,0,0),qglviewer::Vec(0,0,0))
 {
 }
 

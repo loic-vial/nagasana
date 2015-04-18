@@ -1,12 +1,5 @@
-//#include <cmath>
-#ifndef __APPLE__
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
-
-#include "spring.h"
-
+#include <spring.h>
+#include <glut.h>
 
 Spring::Spring(const Particle *p1, const Particle *p2, 
 	       double s, double l0, double d)

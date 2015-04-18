@@ -1,10 +1,5 @@
-#ifndef __APPLE__
-#include <GL/glut.h>
-#else
-#include <GLUT/glut.h>
-#endif
-
-#include "fireParticle.h"
+#include <fireParticle.h>
+#include <glut.h>
 
 FireParticle::FireParticle(qglviewer::Vec pos, qglviewer::Vec vel, double m, double r, double l, double rd, double gr, double bl)
 	: position(pos),
