@@ -14,7 +14,7 @@ void Sphere::draw()
 {
     glPushMatrix();
     glTranslatef(getPosition().x, getPosition().y, getPosition().z);
-    //glutSolidSphere(radius, 12, 12);
+    glutSolidSphere(radius, 12, 12);
     glPopMatrix();
 }
 

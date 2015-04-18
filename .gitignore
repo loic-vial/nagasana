@@ -3,3 +3,4 @@ obj
 *.o
 Makefile
 nagasana
+.qglviewer.xml
