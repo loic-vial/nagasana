@@ -10,7 +10,7 @@ DragonWing::DragonWing():
     joint_body(1.5, Vec(0, 0, 0)),
     joint(2, Vec(0, 0, 25)),
     first_membrane(qglviewer::Vec(0,0,0), qglviewer::Vec(0,0,25),qglviewer::Vec(0,17,15)),
-    second_membrane(qglviewer::Vec(0,0,0),qglviewer::Vec(0,0,0),qglviewer::Vec(0,0,0))
+    second_membrane(qglviewer::Vec(0,17,15),qglviewer::Vec(0,0,25),qglviewer::Vec(0,17,39))
 {
 }
 
@@ -42,6 +42,10 @@ void DragonWing::draw()
     glTranslatef(0,0,25);
     glRotatef(50,-50,0,0);
     second_part.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    second_membrane.draw();
     glPopMatrix();
 
     glPopMatrix();
