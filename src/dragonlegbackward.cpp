@@ -4,12 +4,12 @@ using qglviewer::Vec;
 using namespace std;
 
 DragonLegBackward::DragonLegBackward():
-    first_part(15,0,1.5,2.5),
-    second_part(13,0,1,1.5),
+    first_part(12,0,1.5,2.5),
+    second_part(9,0,1,1.5),
     joint_body(2.5, Vec(0, 0, 0)),
-    joint(1.5, Vec(0, 0, 15)),
-    foot(1, Vec(0, 11, 12.4))
-
+    joint(1.5, Vec(0, 0, 12)),
+    footjoint(1, Vec(0, 5, 12.4)),
+    foot()
 
 {
 }
@@ -22,90 +22,26 @@ void DragonLegBackward::init(Viewer&)
 void DragonLegBackward::draw()
 {
     glPushMatrix();
-
     joint_body.draw();
     first_part.draw();
     joint.draw();
+    glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(0,0,15);
+    glTranslatef(0,0,12);
     glRotatef(120,-1,0,0);
     second_part.draw();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(0,11,-6.3);
+    glTranslatef(0,3,-5);
+    footjoint.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+   glTranslatef(0,-5,0);
+    glRotatef(-60,1,0,0);
     foot.draw();
     glPopMatrix();
-
-    glTranslatef(0,11.5,9);
-    glRotatef(150,-1,0,0);
-    glRotatef(90,0,0,1);
-    glEnable(GL_NORMALIZE);
-
-    //face du bas
-    glBegin(GL_POLYGON);
-    glNormal3f(-1, 0,0.0);
-    glVertex3f(0,-1,0);
-    glVertex3f(0,1,0);
-    glVertex3f(0,3,5);
-    glVertex3f(0,0,8);
-    glVertex3f(0,-3,5);
-    glVertex3f(0,-1,0);
-    glEnd();
-//face du haut
-    glBegin(GL_POLYGON);
-    glNormal3f(1, 0,0.0);
-    glVertex3f(1,-1,0);
-    glVertex3f(1,1,0);
-    glVertex3f(1,3,5);
-    glVertex3f(1,0,8);
-    glVertex3f(1,-3,5);
-    glVertex3f(1,-1,0);
-    glEnd();
-//face de la jointure
-    glBegin(GL_POLYGON);
-    glNormal3f(0, -1,0.0);
-    glVertex3f(1,-1,0);
-    glVertex3f(1,1,0);
-    glVertex3f(0,1,0);
-    glVertex3f(0,-1,0);
-    glEnd();
-//1ere face
-    glBegin(GL_POLYGON);
-    glNormal3f(0, 1,-1);
-    glVertex3f(1,1,0);
-    glVertex3f(1,3,5);
-    glVertex3f(0,3,5);
-    glVertex3f(0,1,0);
-    glEnd();
-//2eme face
-    glBegin(GL_POLYGON);
-    glNormal3f(0, 1,1);
-    glVertex3f(1,3,5);
-    glVertex3f(1,0,8);
-    glVertex3f(0,0,8);
-    glVertex3f(0,3,5);
-    glEnd();
-
-//3eme face
-    glBegin(GL_POLYGON);
-    glNormal3f(0, -1,1.0);
-    glVertex3f(1,0,8);
-    glVertex3f(1,-3,5);
-    glVertex3f(0,-3,5);
-    glVertex3f(0,0,8);
-    glEnd();
-
-    //4eme face
-        glBegin(GL_POLYGON);
-        glNormal3f(0, -1,-1.0);
-        glVertex3f(1,-3,5);
-        glVertex3f(1,-1,0);
-        glVertex3f(0,-1,0);
-        glVertex3f(0,-3,5);
-        glEnd();
-    glPopMatrix();
 }
-
 

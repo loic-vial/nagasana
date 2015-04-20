@@ -6,6 +6,7 @@
 #include <glut.h>
 #include <dragonlegforward.h>
 #include <dragonlegbackward.h>
+#include <foot.h>
 
 class DragonBody : public Renderable
 {
@@ -18,7 +19,8 @@ private :
     Cylinder body;
     DragonLegForward leftlegfor;
     DragonLegForward rightlegfor;
-    DragonLegForward leftlegback;
-    DragonLegForward rightlegback;
+    DragonLegBackward leftlegback;
+    DragonLegBackward rightlegback;
+
 
 };

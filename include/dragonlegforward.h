@@ -5,6 +5,7 @@
 #include <renderable.h>
 #include <glut.h>
 #include <membrane.h>
+#include <foot.h>
 
 class DragonLegForward : public Renderable
 {
@@ -21,6 +22,7 @@ private :
     Cylinder second_part;
     Sphere joint_body;
     Sphere joint;
-    Sphere foot;
+    Sphere footjoint;
+    Foot foot;
 };
 

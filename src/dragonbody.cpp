@@ -9,16 +9,35 @@ DragonBody::DragonBody():
     rightlegback()
 {}
 
-void DragonBody::init(Viewer&)
+  void DragonBody::init(Viewer&)
 {
 
 }
 
 void DragonBody::draw()
 {
+
     glPushMatrix();
-    glTranslatef(0, 24, 20);
-    glRotatef(100, 1, 0, 0);
+    glTranslatef(-8, 0, 16);
+    glRotatef(120,1,0,0);
+    glRotatef(-18,0,1,0);
+    glRotatef(180,0,0,1);
+    leftlegback.draw();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslatef(8, 0, 16);
+    glRotatef(120,1,0,0);
+    glRotatef(18,0,1,0);
+    glRotatef(180,0,0,1);
+    rightlegback.draw();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslatef(0, 20.9, 26);
+    glRotatef(120, 1, 0, 0);
     body.draw();
     glutSolidSphere(10, 20, 20);
     glPopMatrix();
@@ -30,37 +49,23 @@ void DragonBody::draw()
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(-8, 24, 16);
-    glRotatef(120,1,0,0);
-    glRotatef(-18,0,1,0);
+    glTranslatef(-8, 20, 26);
+    glRotatef(160,1,0,0);
+    glRotatef(-28,0,1,0);
     glRotatef(180,0,0,1);
     leftlegfor.draw();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(8, 24, 16);
-    glRotatef(120,1,0,0);
-    glRotatef(18,0,1,0);
+    glTranslatef(8, 20, 26);
+    glRotatef(160,1,0,0);
+    glRotatef(28,0,1,0);
     glRotatef(180,0,0,1);
     rightlegfor.draw();
     glPopMatrix();
 
 
-    glPushMatrix();
-    glTranslatef(-8, 0, 16);
-    glRotatef(120,1,0,0);
-    glRotatef(-18,0,1,0);
-    glRotatef(180,0,0,1);
-    leftlegfor.draw();
-    glPopMatrix();
 
-    glPushMatrix();
-    glTranslatef(8, 0, 16);
-    glRotatef(120,1,0,0);
-    glRotatef(18,0,1,0);
-    glRotatef(180,0,0,1);
-    rightlegfor.draw();
-    glPopMatrix();
 
 
 
