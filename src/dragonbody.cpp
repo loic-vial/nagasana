@@ -3,8 +3,10 @@ using qglviewer::Vec;
 
 DragonBody::DragonBody():
     body(20,0,9,10),
-  leftleg(),
-    rightleg()
+    leftlegfor(),
+    rightlegfor(),
+    leftlegback(),
+    rightlegback()
 {}
 
 void DragonBody::init(Viewer&)
@@ -14,7 +16,7 @@ void DragonBody::init(Viewer&)
 
 void DragonBody::draw()
 {
-   glPushMatrix();
+    glPushMatrix();
     glTranslatef(0, 24, 20);
     glRotatef(100, 1, 0, 0);
     body.draw();
@@ -30,11 +32,41 @@ void DragonBody::draw()
     glPushMatrix();
     glTranslatef(-8, 24, 16);
     glRotatef(120,1,0,0);
-    glRotatef(-25,0,1,0);
-
+    glRotatef(-18,0,1,0);
     glRotatef(180,0,0,1);
-   leftleg.draw();
+    leftlegfor.draw();
     glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(8, 24, 16);
+    glRotatef(120,1,0,0);
+    glRotatef(18,0,1,0);
+    glRotatef(180,0,0,1);
+    rightlegfor.draw();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslatef(-8, 0, 16);
+    glRotatef(120,1,0,0);
+    glRotatef(-18,0,1,0);
+    glRotatef(180,0,0,1);
+    leftlegfor.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(8, 0, 16);
+    glRotatef(120,1,0,0);
+    glRotatef(18,0,1,0);
+    glRotatef(180,0,0,1);
+    rightlegfor.draw();
+    glPopMatrix();
+
+
+
+
+
+
 
 }
 

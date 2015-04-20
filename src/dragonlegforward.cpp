@@ -1,9 +1,9 @@
-#include <dragonleg.h>
+#include <dragonlegforward.h>
 
 using qglviewer::Vec;
 using namespace std;
 
-DragonLeg::DragonLeg():
+DragonLegForward::DragonLegForward():
     first_part(15,0,1.5,2.5),
     second_part(13,0,1,1.5),
     joint_body(2.5, Vec(0, 0, 0)),
@@ -14,12 +14,12 @@ DragonLeg::DragonLeg():
 {
 }
 
-void DragonLeg::init(Viewer&)
+void DragonLegForward::init(Viewer&)
 {
 
 }
 
-void DragonLeg::draw()
+void DragonLegForward::draw()
 {
     glPushMatrix();
 
@@ -33,18 +33,13 @@ void DragonLeg::draw()
     second_part.draw();
     glPopMatrix();
 
-
     glPushMatrix();
     glTranslatef(0,11,-6.3);
     foot.draw();
     glPopMatrix();
 
-    glPopMatrix();
-
-    glPushMatrix();
     glTranslatef(0,11.5,9);
     glRotatef(150,-1,0,0);
-
     glRotatef(90,0,0,1);
     glEnable(GL_NORMALIZE);
 
@@ -111,7 +106,5 @@ void DragonLeg::draw()
         glVertex3f(0,-3,5);
         glEnd();
     glPopMatrix();
-
-
 }
 

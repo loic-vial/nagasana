@@ -6,12 +6,12 @@
 #include <glut.h>
 #include <membrane.h>
 
-class DragonLeg : public Renderable
+class DragonLegBackward : public Renderable
 {
 public :
 
 
-    DragonLeg();
+    DragonLegBackward();
     void init(Viewer&);
 
     void draw();

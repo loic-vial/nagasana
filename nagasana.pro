@@ -34,8 +34,8 @@ HEADERS += \
     include/membrane.h \
     include/fire.h \
     include/fireParticle.h \
-    src/leg.h \
-    include/dragonleg.h
+    include/dragonlegforward.h \
+    include/dragonlegbackward.h
 
 SOURCES += \
     src/cube.cpp \
@@ -54,5 +54,6 @@ SOURCES += \
     src/membrane.cpp \
     src/fire.cpp \
     src/fireParticle.cpp \
-    src/dragonleg.cpp
+    src/dragonlegforward.cpp \
+    src/dragonlegbackward.cpp
 
