@@ -20,13 +20,13 @@ void Membrane::draw()
     glNormal3f(1, 0,0.0);
 
 
-    glVertex3fv(mid);
+   glVertex3fv(mid);
 
     glVertex3fv(begin);
     GLfloat angle = (2*PI)/360;
-    for (GLfloat f = 0; f<=PI/2;f+=angle)
+  for (GLfloat f = 0; f<=PI/2;f+=angle)
     {
-        glVertex3f(0,-16*cos(f)+17, 10*sin(f)+5);
+        glVertex3f(0,-(end[2]-begin[2])*cos(f)+end[2], end[1]*sin(f)+begin[1]);
     }
     glVertex3fv(end);
     glVertex3fv(mid);
