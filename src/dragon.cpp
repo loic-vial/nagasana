@@ -16,9 +16,27 @@ void Dragon::init(Viewer& viewer)
 void Dragon::draw()
 {
     body.draw();
+
+    glPushMatrix();
+    glTranslatef(6, 20, 16);
+    glRotatef(100,0,0,-1);
+    glRotatef(45,-1,0,0);
     left_wing.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(-6, 20, 16);
+
+    glRotatef(100,0,0,1);
+       glRotatef(45,-1,0,0);
     right_wing.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glTranslatef(-18, -3, 5);
     tail.draw();
+    glPopMatrix();
+
     fire.draw();
 }
 
