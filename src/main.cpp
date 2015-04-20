@@ -1,4 +1,5 @@
 #include <qapplication.h>
+#include <glew.h>
 #include <viewer.h>
 #include <dragon.h>
 #include <ground.h>
@@ -12,7 +13,7 @@ int main(int argc, char** argv)
 
 	Viewer viewer;
 
-    viewer.addRenderable(new Dragon());
+    //viewer.addRenderable(new Dragon());
     viewer.addRenderable(new Ground());
 
     viewer.setWindowTitle("Nagasana");

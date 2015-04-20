@@ -1,8 +1,7 @@
 #pragma once
 
 #include <renderable.h>
-#include <QGLViewer/vec.h>
-#include <glut.h>
+#include <qglviewer.h>
 
 class Membrane
 {

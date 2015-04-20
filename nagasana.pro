@@ -4,7 +4,7 @@ CONFIG += qt opengl warn_on debug
 QT *= xml opengl 
 
 macx:LIBS *= -framework Glut
-linux-g++*:LIBS *= -lglut
+linux-g++*:LIBS *= -lglut -lGLEW
 
 QGL = -lqglviewer
 exists(/usr/lib/libqglviewer-qt4.so): QGL = -lqglviewer-qt4
@@ -33,7 +33,11 @@ HEADERS += \
     include/sphere.h \
     include/membrane.h \
     include/fire.h \
-    include/fireParticle.h
+    include/fireParticle.h \
+    include/glcheck.h \
+    include/shaderprogram.h \
+    include/glew.h \
+    include/qglviewer.h
 
 SOURCES += \
     src/cube.cpp \
@@ -51,5 +55,6 @@ SOURCES += \
     src/sphere.cpp \
     src/membrane.cpp \
     src/fire.cpp \
-    src/fireParticle.cpp
+    src/fireParticle.cpp \
+    src/shaderprogram.cpp
 

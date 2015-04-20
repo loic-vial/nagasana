@@ -1,6 +1,7 @@
 #pragma once
 
-#include <QGLViewer/vec.h>
+#include <glut.h>
+#include <qglviewer.h>
 #include <iostream>
 
 class Particle
