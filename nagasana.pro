@@ -33,7 +33,9 @@ HEADERS += \
     include/sphere.h \
     include/membrane.h \
     include/fire.h \
-    include/fireParticle.h
+    include/fireParticle.h \
+    src/leg.h \
+    include/dragonleg.h
 
 SOURCES += \
     src/cube.cpp \
@@ -51,5 +53,6 @@ SOURCES += \
     src/sphere.cpp \
     src/membrane.cpp \
     src/fire.cpp \
-    src/fireParticle.cpp
+    src/fireParticle.cpp \
+    src/dragonleg.cpp
 

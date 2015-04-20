@@ -17,7 +17,7 @@ void Dragon::draw()
 {
     body.draw();
 
-    glPushMatrix();
+   glPushMatrix();
     glTranslatef(6, 20, 16);
     glRotatef(100,0,0,-1);
     glRotatef(45,-1,0,0);
@@ -43,7 +43,7 @@ void Dragon::draw()
 void Dragon::animate()
 {
     body.animate();
-    left_wing.animate();
+   left_wing.animate();
     right_wing.animate();
     tail.animate();
     fire.animate();

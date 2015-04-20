@@ -4,6 +4,7 @@
 #include <sphere.h>
 #include <cylinder.h>
 #include <glut.h>
+#include <dragonleg.h>
 
 class DragonBody : public Renderable
 {
@@ -14,5 +15,7 @@ class DragonBody : public Renderable
         void draw();
     private :
         Cylinder body;
+        DragonLeg leftleg;
+        DragonLeg rightleg;
 
 };
