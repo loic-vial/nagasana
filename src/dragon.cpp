@@ -16,11 +16,23 @@ void Dragon::init(Viewer& viewer)
 }
 
 void Dragon::draw()
+
 {
+
+    GLfloat direction[4];
+    direction[0]=0 ;
+    direction[1]=0;
+    direction[2]=10;
+    direction[3]=0.0;
+    glLightfv(GL_LIGHT0, GL_POSITION, direction);
+
     glPushMatrix();
-glEnable(GL_DEPTH_TEST);
-    glEnable(GL_LIGHTING); 	// Active l'éclairage
-    glEnable(GL_LIGHT0);
+
+    glPushMatrix();
+    glTranslatef(0, 50,42);
+    glRotatef(-50,1,0,0);
+    fire.draw();
+    glPopMatrix();
 
     glPushMatrix();
     glTranslatef(0, 0, -5);
@@ -28,6 +40,13 @@ glEnable(GL_DEPTH_TEST);
     body.draw();
     glPopMatrix();
 
+
+
+
+    glPushMatrix();
+    glTranslatef(-18, -3, 5);
+    tail.draw();
+    glPopMatrix();
 
     glPushMatrix();
     glTranslatef(-6, 16, 26);
@@ -44,20 +63,9 @@ glEnable(GL_DEPTH_TEST);
     left_wing.draw();
     glPopMatrix();
 
-
-    glPushMatrix();
-    glTranslatef(-18, -3, 5);
-    tail.draw();
     glPopMatrix();
 
 
-    glPushMatrix();
-    glTranslatef(-20, 18,45);
-    glRotatef(-44,1,0,0);
-    fire.draw();
-    glPopMatrix();
-
-    glPopMatrix();
 
 }
 

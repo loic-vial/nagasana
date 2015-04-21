@@ -13,8 +13,9 @@ int main(int argc, char** argv)
 
 	Viewer viewer;
 
-    viewer.addRenderable(new Dragon());
+
     viewer.addRenderable(new Ground());
+    viewer.addRenderable(new Dragon());
 
     viewer.setWindowTitle("Nagasana");
 	viewer.show();

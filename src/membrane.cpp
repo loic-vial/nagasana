@@ -20,10 +20,10 @@ void Membrane::draw()
 
     glEnable(GL_BLEND) ;
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA) ;
-
+    glCullFace(GL_FRONT_AND_BACK);
     glBegin(GL_POLYGON);
     glNormal3f(1, 0,0.0);
-    glColor4ub(176,7,7,100);
+    glColor4ub(255,255,255,150);
     glVertex3fv(mid);
 
     glVertex3fv(begin);
@@ -35,8 +35,8 @@ void Membrane::draw()
     glVertex3fv(end);
     glVertex3fv(mid);
     glEnd();
-            glDisable(GL_BLEND);
-           glColor3ub(176,7,7);
+    glDisable(GL_BLEND);
+    glColor3ub(255,255,255);
     glPopMatrix();
 }
 

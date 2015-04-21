@@ -30,9 +30,9 @@ void Ground::draw()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
     glPushMatrix();
-
+    glCullFace(GL_FRONT_AND_BACK);
     glNormal3f(0, 0, 1);
-
+    glEnable(GL_NORMALIZE);
     glBegin(GL_QUADS);
 
     glTexCoord2d(0, 0); glVertex3f(-100, -100, 0);

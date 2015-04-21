@@ -25,7 +25,6 @@ void DragonBody::init(Viewer& v)
 
 void DragonBody::draw()
 {
-
    glPushMatrix();
     glTranslatef(-8, 0, 16);
     glRotatef(120,1,0,0);

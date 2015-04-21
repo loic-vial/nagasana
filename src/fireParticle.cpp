@@ -80,6 +80,7 @@ void FireParticle::setLife(int cste)
 void FireParticle::draw() const
 {
 		glPushMatrix();
+            glCullFace(GL_FRONT_AND_BACK);
 		glTranslatef(position.x, position.y, position.z);
 		glColor4d(red, green, blue, 1);
 		//glutSolidSphere(size, 2, 2);
