@@ -19,17 +19,17 @@ void Dragon::draw()
 
 {
 
-    GLfloat direction[4];
+  /*  GLfloat direction[4];
     direction[0]=0 ;
     direction[1]=0;
     direction[2]=10;
     direction[3]=0.0;
     glLightfv(GL_LIGHT0, GL_POSITION, direction);
-
+*/
     glPushMatrix();
 
     glPushMatrix();
-    glTranslatef(0, 48,38);
+    glTranslatef(0, 50,38);
     glRotatef(-55,1,0,0);
     fire.draw();
     glPopMatrix();
