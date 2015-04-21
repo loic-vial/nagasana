@@ -31,8 +31,8 @@ void DragonBody::draw()
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(-10, -12, -14);
-    glRotatef(16,1,0,0);
+    glTranslatef(-10, -10, -14.5);
+    glRotatef(20,1,0,0);
     leftbottom.draw();
     glPopMatrix();
 
@@ -47,8 +47,8 @@ void DragonBody::draw()
 
 
     glPushMatrix();
-    glTranslatef(10, -12, -14);
-    glRotatef(16,1,0,0);
+    glTranslatef(10, -10, -14.5);
+    glRotatef(20,1,0,0);
     rightbottom.draw();
     glPopMatrix();
 
