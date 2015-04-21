@@ -1,23 +1,17 @@
 #pragma once
 
-#include <renderable.h>
-#include <shaderprogram.h>
+#include <glut.h>
+#include <viewer.h>
 
 class Foot
 {
-public:
+    public:
 
-    void init(Viewer&);
-    void draw();
+        void init(Viewer&);
 
+        void draw();
 
+    private:
 
-private:
-    GLuint foot_id;
-
-    ShaderProgram program;
-
-    GLint texture0;
-
-    GLint texcoord0;
+        GLuint foot_id;
 };
