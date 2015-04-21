@@ -1,14 +1,15 @@
 #pragma once
 
 #include <renderable.h>
-#include <glew.h>
-#include <shaderprogram.h>
+#include <glut.h>
 
 class Ground : public Renderable
 {
-    public:
+    public :
 
         Ground();
+
+        virtual ~Ground() {}
 
         void init(Viewer&);
 
@@ -18,9 +19,4 @@ class Ground : public Renderable
 
         GLuint texture_id;
 
-        ShaderProgram program;
-
-        GLint texture0;
-
-        GLint texcoord0;
 };

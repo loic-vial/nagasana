@@ -11,8 +11,6 @@ Membrane::Membrane(qglviewer::Vec pbegin,qglviewer::Vec pmid, qglviewer::Vec pen
 }
 void Membrane::init(Viewer&)
 {
-    //load texture
-    //membrane_texture = loadTexture("");
 }
 
 void Membrane::draw()
