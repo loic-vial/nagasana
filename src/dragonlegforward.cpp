@@ -8,9 +8,7 @@ DragonLegForward::DragonLegForward():
     second_part(13,0,1,1.5),
     joint_body(2.5, Vec(0, 0, 0)),
     joint(1.5, Vec(0, 0, 15)),
-    footjoint(1, Vec(0, 8.3, 13.5)),
-    foot()
-
+    footjoint(1, Vec(0, 8.3, 13.5))
 {
 }
 
@@ -37,7 +35,6 @@ void DragonLegForward::draw()
     glPushMatrix();
     glTranslatef(0,4.5,3.8);
     footjoint.draw();
-    foot.draw();
     glPopMatrix();
 
 

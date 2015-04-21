@@ -8,9 +8,7 @@ DragonLegBackward::DragonLegBackward():
     second_part(9,0,1,1.5),
     joint_body(2.5, Vec(0, 0, 0)),
     joint(1.5, Vec(0, 0, 12)),
-    footjoint(1, Vec(0, 5, 12.4)),
-    foot()
-
+    footjoint(1, Vec(0, 5, 12.4))
 {
 }
 
@@ -38,10 +36,6 @@ void DragonLegBackward::draw()
     footjoint.draw();
     glPopMatrix();
 
-    glPushMatrix();
-   glTranslatef(0,-5,0);
-    glRotatef(-60,1,0,0);
-    foot.draw();
-    glPopMatrix();
+
 }
 

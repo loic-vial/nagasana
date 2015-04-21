@@ -14,9 +14,10 @@ DragonWing::DragonWing():
 {
 }
 
-void DragonWing::init(Viewer&)
+void DragonWing::init(Viewer& viewer)
 {
-
+first_membrane.init(viewer);
+second_membrane.init(viewer);
 }
 
 void DragonWing::draw()

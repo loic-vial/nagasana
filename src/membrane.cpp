@@ -1,5 +1,7 @@
 #include <membrane.h>
 
+#include <QGLViewer/qglviewer.h>
+
 #define PI 3.1416
 Membrane::Membrane(qglviewer::Vec pbegin,qglviewer::Vec pmid, qglviewer::Vec pend)
 {
@@ -9,7 +11,8 @@ Membrane::Membrane(qglviewer::Vec pbegin,qglviewer::Vec pmid, qglviewer::Vec pen
 }
 void Membrane::init(Viewer&)
 {
-
+    //load texture
+    //membrane_texture = loadTexture("");
 }
 
 void Membrane::draw()

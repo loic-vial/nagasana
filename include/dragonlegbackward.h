@@ -23,6 +23,5 @@ private :
     Sphere joint_body;
     Sphere joint;
     Sphere footjoint;
-    Foot foot;
 };
 

@@ -6,10 +6,14 @@ DragonBody::DragonBody():
     leftlegfor(),
     rightlegfor(),
     leftlegback(),
-    rightlegback()
+    rightlegback(),
+    leftbottom(),
+    lefttop(),
+    righttop(),
+    rightbottom()
 {}
 
-  void DragonBody::init(Viewer&)
+void DragonBody::init(Viewer&)
 {
 
 }
@@ -25,6 +29,12 @@ void DragonBody::draw()
     leftlegback.draw();
     glPopMatrix();
 
+    glPushMatrix();
+    glTranslatef(-10, -12, -14);
+    glRotatef(16,1,0,0);
+    leftbottom.draw();
+    glPopMatrix();
+
 
     glPushMatrix();
     glTranslatef(8, 0, 16);
@@ -32,6 +42,13 @@ void DragonBody::draw()
     glRotatef(18,0,1,0);
     glRotatef(180,0,0,1);
     rightlegback.draw();
+    glPopMatrix();
+
+
+    glPushMatrix();
+    glTranslatef(10, -12, -14);
+    glRotatef(16,1,0,0);
+    rightbottom.draw();
     glPopMatrix();
 
 
@@ -57,6 +74,13 @@ void DragonBody::draw()
     glPopMatrix();
 
     glPushMatrix();
+    glTranslatef(-16, 19, -13);
+    glRotatef(18,1,0,0);
+    lefttop.draw();
+    glPopMatrix();
+
+
+    glPushMatrix();
     glTranslatef(8, 20, 26);
     glRotatef(160,1,0,0);
     glRotatef(28,0,1,0);
@@ -64,7 +88,11 @@ void DragonBody::draw()
     rightlegfor.draw();
     glPopMatrix();
 
-
+    glPushMatrix();
+    glTranslatef(16, 19, -13);
+    glRotatef(18,1,0,0);
+    righttop.draw();
+    glPopMatrix();
 
 
 

@@ -21,6 +21,10 @@ private :
     DragonLegForward rightlegfor;
     DragonLegBackward leftlegback;
     DragonLegBackward rightlegback;
+    Foot lefttop;
+    Foot leftbottom;
+    Foot righttop;
+    Foot rightbottom;
 
 
 };
