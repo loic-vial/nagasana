@@ -37,7 +37,13 @@ void Dragon::draw()
     tail.draw();
     glPopMatrix();
 
+
+    glPushMatrix();
+   glTranslatef(-18, 18,49);
+  glRotatef(-44,1,0,0);
     fire.draw();
+    glPopMatrix();
+
 }
 
 void Dragon::animate()
