@@ -23,15 +23,18 @@ second_membrane.init(viewer);
 void DragonWing::draw()
 {
     glPushMatrix();
-
     joint_body.draw();
     first_part.draw();
+    glPopMatrix();
 
     glPushMatrix();
     first_membrane.draw();
     glPopMatrix();
 
+     glPushMatrix();
     joint.draw();
+    glPopMatrix();
+
 
     glPushMatrix();
     glTranslatef(0,0,25);
@@ -49,6 +52,6 @@ void DragonWing::draw()
     second_membrane.draw();
     glPopMatrix();
 
-    glPopMatrix();
+
 }
 

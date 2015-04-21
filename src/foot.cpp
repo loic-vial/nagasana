@@ -24,7 +24,7 @@ void Foot::init(Viewer &)
 void Foot::draw()
 {
 
-    GLCHECK(glBindTexture(GL_TEXTURE_2D, foot_id));
+/*    GLCHECK(glBindTexture(GL_TEXTURE_2D, foot_id));
     GLCHECK(glUseProgram((GLint)program));
     GLCHECK(glActiveTexture(GL_TEXTURE0));
     GLCHECK(glBindTexture(GL_TEXTURE_2D, foot_id));
@@ -32,7 +32,7 @@ void Foot::draw()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
     glNormal3f(0.0, 0.0, 1.0);
-
+*/
 
     glPushMatrix();
       glTranslatef(0,13.5,17);
@@ -64,63 +64,63 @@ void Foot::draw()
       //face de la jointure
       glBegin(GL_POLYGON);
       glNormal3f(0,-1,0.0);
-         glVertexAttrib2f(texcoord0, 0, 0);
+      //   glVertexAttrib2f(texcoord0, 0, 0);
       glVertex3f(1,-1,0);
-         glVertexAttrib2f(texcoord0, 0, 1);
+     //    glVertexAttrib2f(texcoord0, 0, 1);
       glVertex3f(1,1,0);
-         glVertexAttrib2f(texcoord0, 1, 1);
+     //    glVertexAttrib2f(texcoord0, 1, 1);
       glVertex3f(0,1,0);
-         glVertexAttrib2f(texcoord0, 1, 0);
+     //    glVertexAttrib2f(texcoord0, 1, 0);
       glVertex3f(0,-1,0);
       glEnd();
       //1ere face
       glBegin(GL_POLYGON);
       glNormal3f(0, 1,-1);
-        glVertexAttrib2f(texcoord0, 0, 0);
+     //   glVertexAttrib2f(texcoord0, 0, 0);
       glVertex3f(1,1,0);
-      glVertexAttrib2f(texcoord0, 0, 1);
+    //  glVertexAttrib2f(texcoord0, 0, 1);
       glVertex3f(1,3,5);
-        glVertexAttrib2f(texcoord0, 1, 1);
+   //    glVertexAttrib2f(texcoord0, 1, 1);
       glVertex3f(0,3,5);
-        glVertexAttrib2f(texcoord0, 1, 0);
+     //  glVertexAttrib2f(texcoord0, 1, 0);
       glVertex3f(0,1,0);
       glEnd();
       //2eme face
       glBegin(GL_POLYGON);
       glNormal3f(0, 1,1);
-        glVertexAttrib2f(texcoord0, 0, 0);
+    //    glVertexAttrib2f(texcoord0, 0, 0);
       glVertex3f(1,3,5);
-        glVertexAttrib2f(texcoord0, 0, 1);
+     //   glVertexAttrib2f(texcoord0, 0, 1);
       glVertex3f(1,0,8);
-        glVertexAttrib2f(texcoord0, 1, 1);
+     //   glVertexAttrib2f(texcoord0, 1, 1);
       glVertex3f(0,0,8);
-        glVertexAttrib2f(texcoord0, 1, 0);
+      //  glVertexAttrib2f(texcoord0, 1, 0);
       glVertex3f(0,3,5);
       glEnd();
 
       //3eme face
       glBegin(GL_POLYGON);
       glNormal3f(0, -1,1.0);
-        glVertexAttrib2f(texcoord0, 0, 0);
+       // glVertexAttrib2f(texcoord0, 0, 0);
       glVertex3f(1,0,8);
-        glVertexAttrib2f(texcoord0, 0, 1);
+       // glVertexAttrib2f(texcoord0, 0, 1);
       glVertex3f(1,-3,5);
-        glVertexAttrib2f(texcoord0, 1, 1);
+      //  glVertexAttrib2f(texcoord0, 1, 1);
       glVertex3f(0,-3,5);
-        glVertexAttrib2f(texcoord0, 1, 0);
+      //  glVertexAttrib2f(texcoord0, 1, 0);
       glVertex3f(0,0,8);
       glEnd();
 
       //4eme face
       glBegin(GL_POLYGON);
       glNormal3f(0, -1,-1.0);
-        glVertexAttrib2f(texcoord0, 0, 0);
+     //  glVertexAttrib2f(texcoord0, 0, 0);
       glVertex3f(1,-3,5);
-        glVertexAttrib2f(texcoord0, 0, 1);
+       // glVertexAttrib2f(texcoord0, 0, 1);
       glVertex3f(1,-1,0);
-        glVertexAttrib2f(texcoord0, 1, 1);
+     //   glVertexAttrib2f(texcoord0, 1, 1);
       glVertex3f(0,-1,0);
-        glVertexAttrib2f(texcoord0, 1, 0);
+       // glVertexAttrib2f(texcoord0, 1, 0);
       glVertex3f(0,-3,5);
       glEnd();
       glPopMatrix();
