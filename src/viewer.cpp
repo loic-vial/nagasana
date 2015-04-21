@@ -3,6 +3,8 @@
 #include <viewer.h>
 #include <renderable.h>
 
+using namespace std;
+
 Viewer::Viewer() {
 }
 

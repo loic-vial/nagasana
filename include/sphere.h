@@ -1,6 +1,7 @@
 #pragma once
 
 #include <glut.h>
+#include <qglviewer.h>
 #include <particle.h>
 
 class Sphere : public Particle

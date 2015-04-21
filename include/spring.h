@@ -1,10 +1,7 @@
-#ifndef _SPRING_H_
-#define _SPRING_H_
-
-#include <QGLViewer/vec.h>
+#pragma once
 
 #include <particle.h>
-
+#include <qglviewer.h>
 
 class Spring 
 {
@@ -39,6 +36,4 @@ public:
 	
 	void draw() const;
 };
-
-#endif // _SPRING_H_
 

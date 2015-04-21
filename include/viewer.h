@@ -1,21 +1,10 @@
-/*
- * Main GL viewer class, based on the QGLViewer library.
- * 
- * QGLViewer is a Qt-based viewer, which provides an OpenGL rendering
- * context and GUI event management.
- * The documentation of the QGLViewer library can be found at the following 
- * url: http://www.libqglviewer.com
- */
+#pragma once
 
-#ifndef _VIEWER_
-#define _VIEWER_
-
-#include <QGLViewer/qglviewer.h>
+#include <glut.h>
+#include <qglviewer.h>
 #include <list>
-using namespace std;
 
 class Renderable;
-
 
 class Viewer : public QGLViewer
 {
@@ -28,7 +17,7 @@ public :
 /* Scene methods */
 protected :
 	/// List of the scene objects, to render, animate, ...
-	list<Renderable *> renderableList;
+    std::list<Renderable *> renderableList;
 		
 	/// Create the scene and initializes rendering parameters
 	virtual void init();
@@ -55,4 +44,3 @@ protected :
 	virtual QString helpString() const;
 };
 
-#endif

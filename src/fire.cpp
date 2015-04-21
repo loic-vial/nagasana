@@ -42,7 +42,7 @@ void Fire::setViscosity(bool onOff)
 
 
 ///////////////////////////////////////////////////////////////////////////////
-void Fire::init(Viewer &viewer)
+void Fire::init(Viewer&)
 {
 	toggleGravity = true;
 	toggleViscosity = true;

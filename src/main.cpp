@@ -1,4 +1,5 @@
 #include <qapplication.h>
+#include <glew.h>
 #include <viewer.h>
 #include <dragon.h>
 #include <ground.h>

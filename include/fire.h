@@ -1,7 +1,6 @@
 #pragma once
 
-#include <QGLViewer/vec.h>
-#include <QGLViewer/manipulatedFrame.h>
+#include <glut.h>
 #include <vector>
 #include <fireParticle.h>
 #include <renderable.h>

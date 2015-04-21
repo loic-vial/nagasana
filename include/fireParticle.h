@@ -1,6 +1,6 @@
 #pragma once
 
-#include <QGLViewer/vec.h>
+#include <qglviewer.h>
 #include <iostream>
 
 class FireParticle
