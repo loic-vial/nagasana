@@ -87,16 +87,13 @@ void Fire::createSystemScene()
 void Fire::draw()
 {
     // FireParticles
-    glEnable(GL_LIGHT1);
-    /*   GLfloat direction[]={1.0, -1.0, 1.0};
+   /* glEnable(GL_LIGHT1);
+    GLfloat direction[]={1.0, 40.0, 40.0};
     GLfloat blanc[4] = { 1.0, 1.0, 1.0, 1.0 };
-    glLightfv(GL_LIGHT1, GL_DIFFUSE, blanc);
+    glLightfv(GL_LIGHT1, GL_SPECULAR, blanc);
 
-    glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 90.0);
-  glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, direction);
-
-    glLightfv(GL_LIGHT1,GL_POSITION,direction);
- glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,90);*/
+    glLightfv(GL_LIGHT1,GL_POSITION,direction);*/
+//    glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,90);
 
 
     glColor3f(1,0,0);

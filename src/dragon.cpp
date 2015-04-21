@@ -29,8 +29,8 @@ void Dragon::draw()
     glPushMatrix();
 
     glPushMatrix();
-    glTranslatef(0, 50,42);
-    glRotatef(-50,1,0,0);
+    glTranslatef(0, 48,38);
+    glRotatef(-55,1,0,0);
     fire.draw();
     glPopMatrix();
 
