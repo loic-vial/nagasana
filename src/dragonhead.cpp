@@ -6,6 +6,7 @@ DragonHead::DragonHead():
 
 void DragonHead::init(Viewer&)
 {
+
 }
 
 void DragonHead::draw()

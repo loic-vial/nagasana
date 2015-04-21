@@ -104,11 +104,11 @@ void DragonBody::draw()
     glPopMatrix();
 
 
-    glPushMatrix();
+   /* glPushMatrix();
     glTranslatef(0, 23,29);
      glRotatef(-30,1,0,0);
     neck.draw();
-    glPopMatrix();
+    glPopMatrix();*/
 
 
 

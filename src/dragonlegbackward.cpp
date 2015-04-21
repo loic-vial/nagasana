@@ -1,3 +1,4 @@
+#include<glew.h>
 #include <dragonlegbackward.h>
 
 using qglviewer::Vec;

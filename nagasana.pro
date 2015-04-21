@@ -41,7 +41,8 @@ HEADERS += \
     include/dragonlegforward.h \
     include/dragonlegbackward.h \
     include/foot.h \
-    include/dragonneck.h
+    include/dragonneck.h \
+    include/utils.h
 
 SOURCES += \
     src/cube.cpp \
@@ -64,5 +65,6 @@ SOURCES += \
     src/dragonlegforward.cpp \
     src/dragonlegbackward.cpp \
     src/foot.cpp \
-    src/dragonneck.cpp
+    src/dragonneck.cpp \
+    src/utils.cpp
 

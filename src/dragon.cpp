@@ -1,6 +1,8 @@
+#include <glew.h>
 #include <dragon.h>
 #include <viewer.h>
 #include <iostream>
+#include <utils.h>
 
 using namespace std;
 
