@@ -11,7 +11,8 @@ DragonBody::DragonBody():
     lefttop(),
     righttop(),
     rightbottom(),
-    head()
+    head(),
+    neck()
 {}
 
 void DragonBody::init(Viewer&)
@@ -22,7 +23,7 @@ void DragonBody::init(Viewer&)
 void DragonBody::draw()
 {
 
-    glPushMatrix();
+   glPushMatrix();
     glTranslatef(-8, 0, 16);
     glRotatef(120,1,0,0);
     glRotatef(-18,0,1,0);
@@ -97,12 +98,17 @@ void DragonBody::draw()
 
 
     glPushMatrix();
-   glTranslatef(0, 47, 50);
-   glRotatef(40,1,0,0);
+    glTranslatef(0, 47, 50);
+     glRotatef(40,1,0,0);
     head.draw();
     glPopMatrix();
 
 
+    glPushMatrix();
+    glTranslatef(0, 23,29);
+     glRotatef(-30,1,0,0);
+    neck.draw();
+    glPopMatrix();
 
 
 

@@ -8,6 +8,7 @@
 #include <dragonlegbackward.h>
 #include <foot.h>
 #include <dragonhead.h>
+#include <dragonneck.h>
 
 class DragonBody : public Renderable
 {
@@ -26,6 +27,7 @@ private :
     Foot leftbottom;
     Foot righttop;
     Foot rightbottom;
-DragonHead head;
+    DragonHead head;
+    DragonNeck neck;
 
 };

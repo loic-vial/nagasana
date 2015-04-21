@@ -4,7 +4,6 @@
 #include <sphere.h>
 #include <renderable.h>
 #include <glut.h>
-#include <membrane.h>
 #include <foot.h>
 
 class DragonLegForward : public Renderable

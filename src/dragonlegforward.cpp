@@ -4,10 +4,10 @@ using qglviewer::Vec;
 using namespace std;
 
 DragonLegForward::DragonLegForward():
-    first_part(15,0,1.5,2.5),
-    second_part(13,0,1,1.5),
-    joint_body(2.5, Vec(0, 0, 0)),
-    joint(1.5, Vec(0, 0, 15)),
+    first_part(15,0,2,3.5),
+    second_part(13,0,1,2),
+    joint_body(3.5, Vec(0, 0, 0)),
+    joint(2, Vec(0, 0, 15)),
     footjoint(1, Vec(0, 8.3, 13.5))
 {
 }

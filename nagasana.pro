@@ -40,7 +40,8 @@ HEADERS += \
     include/qglviewer.h \
     include/dragonlegforward.h \
     include/dragonlegbackward.h \
-    include/foot.h
+    include/foot.h \
+    include/dragonneck.h
 
 SOURCES += \
     src/cube.cpp \
@@ -62,5 +63,6 @@ SOURCES += \
     src/shaderprogram.cpp \
     src/dragonlegforward.cpp \
     src/dragonlegbackward.cpp \
-    src/foot.cpp
+    src/foot.cpp \
+    src/dragonneck.cpp
 
