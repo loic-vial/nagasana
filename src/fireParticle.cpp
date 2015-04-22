@@ -80,6 +80,10 @@ void FireParticle::setLife(int cste)
 void FireParticle::draw() const
 {
     glPushMatrix();
+
+
+
+
     glTranslatef(position.x, position.y, position.z);
     //to make fire visible in all angles
     glRotatef(10, position.x, position.y, 0);
@@ -94,6 +98,7 @@ void FireParticle::draw() const
     glVertex3d(position.x-size,position.y,position.z-size); // Sud-Est
     glEnd();
     glPopMatrix();
+
 
 }
 
