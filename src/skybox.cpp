@@ -94,7 +94,7 @@ void Skybox::draw()
         glTexCoord2f(0, 0); glVertex3f(  1000,  1000, 0 );
     glEnd();
  
- 	/*
+    /*
     // Render the bottom quad
     glBindTexture(GL_TEXTURE_2D, _skybox[5]);
     glBegin(GL_QUADS);
