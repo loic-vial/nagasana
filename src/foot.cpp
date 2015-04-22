@@ -15,6 +15,8 @@ void Foot::draw()
     glEnable(GL_TEXTURE_2D);
     GLCHECK(glBindTexture(GL_TEXTURE_2D, foot_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+
     glPushMatrix();
 
     glTranslatef(0, 13.5, 17);

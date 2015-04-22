@@ -14,4 +14,5 @@ class DragonHead : public Renderable
         void draw();
 private:
         Cylinder face;
+        GLuint eye_id;
 };

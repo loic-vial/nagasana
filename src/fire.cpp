@@ -87,14 +87,22 @@ void Fire::createSystemScene()
 void Fire::draw()
 {
     // FireParticles
-   /* glEnable(GL_LIGHT1);
-    GLfloat direction[]={1.0, 40.0, 40.0};
-    GLfloat blanc[4] = { 1.0, 1.0, 1.0, 1.0 };
-    glLightfv(GL_LIGHT1, GL_SPECULAR, blanc);
 
-    glLightfv(GL_LIGHT1,GL_POSITION,direction);*/
-//    glMateriali(GL_FRONT_AND_BACK,GL_SHININESS,90);
+    //lumiere
+    glEnable(GL_LIGHT2);
+    GLfloat color[4];
+    color[0]=1.f;
+    color[1]=-0.19f;
+    color[2]=-0.3f;
+    color[3]=0.f;
+    glLightfv(GL_LIGHT2,GL_DIFFUSE,color);
 
+    GLfloat position[4];
+    position[0]=0 ;
+    position[1]=0;
+    position[2]=0;
+    position[3]=1;
+    glLightfv(GL_LIGHT2, GL_POSITION, position);
 
     glColor3f(1,0,0);
     std::vector<FireParticle *>::iterator itP;
