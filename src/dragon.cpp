@@ -20,20 +20,6 @@ void Dragon::draw()
 {
 
     glEnable(GL_LIGHT0);
-    GLfloat direction[4];
-    direction[0]=5 ;
-    direction[1]=5;
-    direction[2]=10;
-    direction[3]=0.1;
-    glLightfv(GL_LIGHT0, GL_POSITION, direction);
-
-    glEnable(GL_LIGHT1);
-    GLfloat color[4];
-    color[0]=0.5 ;
-    color[1]=0.5;
-    color[2]=0.5;
-    color[3]=0.0;
-    glLightfv(GL_LIGHT1,GL_AMBIENT,color);
 
     glPushMatrix();
 
@@ -43,13 +29,11 @@ void Dragon::draw()
     fire.draw();
     glPopMatrix();
 
-
     glDisable(GL_LIGHT2);
     glPushMatrix();
     glTranslatef(-18, -3, 5);
     tail.draw();
     glPopMatrix();
-
 
     glEnable(GL_LIGHT2);
     glPushMatrix();
@@ -73,11 +57,7 @@ void Dragon::draw()
     left_wing.draw();
     glPopMatrix();
 
-
-
     glPopMatrix();
-
-    glDisable(GL_LIGHT1);
 
 }
 
