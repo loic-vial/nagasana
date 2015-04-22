@@ -30,4 +30,7 @@ private :
     DragonHead head;
     DragonNeck neck;
 
+
+    GLuint cone_id;
+
 };

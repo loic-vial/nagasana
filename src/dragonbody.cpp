@@ -1,4 +1,8 @@
+#include <glew.h>
+#include <utils.h>
 #include <dragonbody.h>
+#include <glut.h>
+#include <glcheck.h>
 using qglviewer::Vec;
 
 DragonBody::DragonBody():
@@ -23,7 +27,9 @@ void DragonBody::init(Viewer& v)
     righttop.init(v);
     head.init(v);
     neck.init(v);
+    cone_id = loadTexture("res/corne.jpg");
 }
+
 
 void DragonBody::draw()
 {
@@ -76,22 +82,33 @@ void DragonBody::draw()
     glPopMatrix();
 
     glDisable(GL_LIGHT2);
+
+    //crete
     glPushMatrix();
     glTranslatef(0, 8, 17);
     glRotatef(32, 1, 0, 0);
     glTranslatef(0, -1, 10);
-    glutSolidCone(2,8,20,20);
+    glEnable(GL_TEXTURE_2D);
+    GLCHECK(glBindTexture(GL_TEXTURE_2D, cone_id));
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glColor3ub(255,255,255);
+    glBindTexture(GL_TEXTURE_2D,cone_id);
+    GLUquadric* params = gluNewQuadric();
+    gluQuadricDrawStyle(params,GLU_FILL);
+    gluQuadricTexture(params,GL_TRUE);
+    gluCylinder(params,2,0,8,20,1);
     glTranslatef(0, 5, 0);
-    glutSolidCone(2,8,20,20);
+    gluCylinder(params,2,0,8,20,1);
     glTranslatef(0, 5, 0);
-    glutSolidCone(2,8,20,20);
+    gluCylinder(params,2,0,8,20,1);
     glTranslatef(0, 5, 0);
-    glutSolidCone(2,8,20,20);
+    gluCylinder(params,2,0,8,20,1);
     glTranslatef(0, 5, 0);
-    glutSolidCone(2,8,20,20);
-
+    gluCylinder(params,2,0,8,20,1);
     glTranslatef(0, 5, 0);
-    glutSolidCone(2,8,20,20);
+    gluCylinder(params,2,0,8,20,1);
+    gluDeleteQuadric(params);
+    glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
 
