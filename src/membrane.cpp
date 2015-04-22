@@ -20,7 +20,8 @@ void Membrane::draw()
 
     glEnable(GL_BLEND) ;
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA) ;
-    glCullFace(GL_FRONT_AND_BACK);
+
+    glLightModeli(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
     glBegin(GL_POLYGON);
     glNormal3f(1, 0,0);
     glColor4ub(255,255,255,150);
