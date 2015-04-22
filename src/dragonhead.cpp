@@ -22,7 +22,7 @@ void DragonHead::draw()
    glPushMatrix();
    glColor3ub(255,255,255);
    glTranslatef(-2.2, 4.3,7.5);
-   glRotatef(180, -1, 0, 0);
+   glRotatef(215, -1, 0, 0);
    glBindTexture(GL_TEXTURE_2D,eye_id);
    GLUquadric* params2 = gluNewQuadric();
    gluQuadricDrawStyle(params2,GLU_FILL);
@@ -35,7 +35,7 @@ void DragonHead::draw()
    glPushMatrix();
    glColor3ub(255,255,255);
    glTranslatef(2.2, 4.3,7.5);
-   glRotatef(180, -1, 0, 0);
+   glRotatef(215 ,-1, 0, 0);
    glBindTexture(GL_TEXTURE_2D,eye_id);
    GLUquadric* params = gluNewQuadric();
    gluQuadricDrawStyle(params,GLU_FILL);
