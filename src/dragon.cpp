@@ -55,23 +55,23 @@ void Dragon::draw()
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(6, 16, 26);
+    glTranslatef(2, 16, 22);
     glRotatef(100,0,0,1);
     glRotatef(45,-1,0,0);
     right_wing.draw();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(-6, 16, 26);
-    glRotatef(100,0,0,1);
+    glTranslatef(-2, 16, 22);
+    glRotatef(100,0,0,-1);
     glRotatef(45,-1,0,0);
     left_wing.draw();
     glPopMatrix();
 
 
     glPopMatrix();
-glDisable(GL_LIGHT2);
-glDisable(GL_LIGHT1);
+    glDisable(GL_LIGHT2);
+    glDisable(GL_LIGHT1);
 
 
 }

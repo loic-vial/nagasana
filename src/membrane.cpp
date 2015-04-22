@@ -22,7 +22,7 @@ void Membrane::draw()
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA) ;
     glCullFace(GL_FRONT_AND_BACK);
     glBegin(GL_POLYGON);
-    glNormal3f(1, 0,0.0);
+    glNormal3f(1, 0,0);
     glColor4ub(255,255,255,150);
     glVertex3fv(mid);
 

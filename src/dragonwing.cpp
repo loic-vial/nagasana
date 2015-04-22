@@ -22,6 +22,7 @@ second_membrane.init(viewer);
 
 void DragonWing::draw()
 {
+
     glPushMatrix();
     joint_body.draw();
     first_part.draw();
