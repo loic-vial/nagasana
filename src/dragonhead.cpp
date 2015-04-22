@@ -48,6 +48,8 @@ void DragonHead::draw()
     //face du haut
     glBegin(GL_POLYGON);
     glNormal3f(1, 0, 0);
+
+    glColor3ub(0,0,255);
     glTexCoord2d(4, 2); glVertex3f(1, -size, 0);
     glTexCoord2d(2, 2); glVertex3f(1, size, 0);
     glTexCoord2d(4, 3); glVertex3f(1, 0, height);
@@ -57,6 +59,8 @@ void DragonHead::draw()
     //face de la jointure
     glBegin(GL_POLYGON);
     glNormal3f(0,1,0.0);
+
+    glColor3ub(255,255,255);
     glTexCoord2d(1, 0); glVertex3f(1, -size, 0);
     glTexCoord2d(1, 0); glVertex3f(1, size, 0);
     glTexCoord2d(1, 0); glVertex3f(0, size, 0);
@@ -108,6 +112,8 @@ void DragonHead::draw()
         //face du haut
         glBegin(GL_POLYGON);
         glNormal3f(1, 0, 0);
+
+        glColor3ub(0,0,255);
         glTexCoord2d(4, 2); glVertex3f(1, -size, 0);
         glTexCoord2d(2, 2); glVertex3f(1, size, 0);
         glTexCoord2d(4, 3); glVertex3f(1, 0, height);
@@ -117,6 +123,8 @@ void DragonHead::draw()
         //face de la jointure
         glBegin(GL_POLYGON);
         glNormal3f(0,1,0.0);
+
+        glColor3ub(255,255,255);
         glTexCoord2d(1, 0); glVertex3f(1, -size, 0);
         glTexCoord2d(1, 0); glVertex3f(1, size, 0);
         glTexCoord2d(1, 0); glVertex3f(0, size, 0);

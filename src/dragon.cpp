@@ -20,11 +20,19 @@ void Dragon::draw()
 {
 
     GLfloat direction[4];
-    direction[0]=0 ;
-    direction[1]=0;
+    direction[0]=5 ;
+    direction[1]=5;
     direction[2]=10;
-    direction[3]=0.0;
+    direction[3]=0.1;
     glLightfv(GL_LIGHT0, GL_POSITION, direction);
+
+    glEnable(GL_LIGHT1);
+    GLfloat color[4];
+    color[0]=0.3 ;
+    color[1]=0.3;
+    color[2]=0.5;
+    color[3]=0.0;
+    glLightfv(GL_LIGHT1,GL_AMBIENT,color);
 
     glPushMatrix();
 
