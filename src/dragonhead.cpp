@@ -1,16 +1,26 @@
+#include <glew.h>
+#include <utils.h>
 #include <dragonhead.h>
-
+#include <glut.h>
+#include <glcheck.h>
 DragonHead::DragonHead():
     face(9,0,5.5,5)
 {}
 
 void DragonHead::init(Viewer&)
 {
-
+ eye_id = loadTexture("res/oeil.jpg");
 }
 
 void DragonHead::draw()
 {
+    glEnable(GL_TEXTURE_2D);
+    GLCHECK(glBindTexture(GL_TEXTURE_2D, eye_id));
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glPushMatrix();
+
+
+
     glPushMatrix();
     glColor3ub(255,255,255);
     face.draw();
@@ -23,6 +33,18 @@ void DragonHead::draw()
     glutSolidSphere(5.5, 20, 20);
     glPopMatrix();
 
+    glPushMatrix();
+    glColor3ub(255,255,255);
+    glTranslatef(2.2, 4.3,7.5);
+    // gluSphere(qObj, 1.5f, 24, 24);
+    glutSolidSphere(1.5, 20, 20);
+    glPopMatrix();
+
+    glPushMatrix();
+    glColor3ub(255,255,255);
+    glTranslatef(-2.2, 4.3,7.5);
+    glutSolidSphere(1.5, 20, 20);
+    glPopMatrix();
 
     //oreille
     GLfloat size = 1.8;
