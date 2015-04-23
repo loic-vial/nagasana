@@ -32,7 +32,19 @@ void Skybox::draw()
 	// Store the current matrix
     glPushMatrix();
  
- 	//glCullFace(GL_FRONT_AND_BACK);
+ 	
+
+            glEnable(GL_FOG) ;
+            GLfloat fogcolor[4] = {255, 0, 0, 1} ;
+            GLint fogmode = GL_EXP ;
+            glFogi (GL_FOG_MODE, fogmode) ;
+            glFogfv(GL_FOG_COLOR, fogcolor) ;
+            glFogf(GL_FOG_DENSITY, 0.0005) ;
+            glFogf(GL_FOG_START, 1.0) ;
+            glFogf(GL_FOG_END, 10.0) ;
+
+
+ 
     // Enable/Disable features
     glPushAttrib(GL_ENABLE_BIT);
     glEnable(GL_TEXTURE_2D);
