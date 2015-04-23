@@ -33,4 +33,6 @@ private :
 
     GLuint cone_id;
 
+    GLuint scale_id;
+
 };

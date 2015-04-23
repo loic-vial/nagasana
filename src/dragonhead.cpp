@@ -29,7 +29,6 @@ void DragonHead::draw()
    gluQuadricTexture(params2,GL_TRUE);
    gluSphere(params2,1.5,10,20);
    gluDeleteQuadric(params2);
-
    glPopMatrix();
 
    glPushMatrix();
