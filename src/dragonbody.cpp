@@ -29,7 +29,7 @@ void DragonBody::init(Viewer& v)
     neck.init(v);
     cone_id = loadTexture("res/corne.jpg");
 
-    scale_id = loadTexture("res/scale.jpg");
+    scale_id = loadTexture("res/scaleb.jpg");
 }
 
 
