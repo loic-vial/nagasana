@@ -1,5 +1,8 @@
+#include <glew.h>
+#include <utils.h>
 #include <membrane.h>
-
+#include <glut.h>
+#include <glcheck.h>
 #include <QGLViewer/qglviewer.h>
 
 #define PI 3.1416
@@ -11,6 +14,7 @@ Membrane::Membrane(qglviewer::Vec pbegin,qglviewer::Vec pmid, qglviewer::Vec pen
 }
 void Membrane::init(Viewer&)
 {
+    membrane_id=loadTexture("res/metal.jpg");
 }
 
 void Membrane::draw()
@@ -33,7 +37,7 @@ void Membrane::draw()
     {
         glVertex3f(0,-(end[2]-begin[2])*cos(f)+end[2], end[1]*sin(f)+begin[1]);
     }
-    glVertex3fv(end);
+    glVertex3f(0,end[1],end[2]+begin[0]);
     glVertex3fv(mid);
     glEnd();
     glDisable(GL_BLEND);

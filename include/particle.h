@@ -37,6 +37,8 @@ class Particle
         double mass;
 
         double invMass;
+
+        GLfloat radius;
 };
 
 std::ostream& operator<<(std::ostream& os, const Particle& p);

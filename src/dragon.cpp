@@ -21,9 +21,11 @@ void Dragon::draw()
 
     glEnable(GL_LIGHT0);
 
-    glPushMatrix();
 
-    glPushMatrix();
+
+
+
+     glPushMatrix();
     glTranslatef(0, 45,34);
     glRotatef(-55,1,0,0);
     fire.draw();
@@ -57,7 +59,7 @@ void Dragon::draw()
     left_wing.draw();
     glPopMatrix();
 
-    glPopMatrix();
+    glDisable(GL_LIGHT1);
 
 }
 
