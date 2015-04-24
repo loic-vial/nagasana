@@ -43,7 +43,8 @@ HEADERS += \
     include/foot.h \
     include/dragonneck.h \
     include/utils.h \
-    include/skybox.h
+    include/skybox.h \
+    include/castle.h
 
 SOURCES += \
     src/cube.cpp \
@@ -68,5 +69,6 @@ SOURCES += \
     src/foot.cpp \
     src/dragonneck.cpp \
     src/utils.cpp \
-    src/skybox.cpp
+    src/skybox.cpp \
+    src/castle.cpp
 

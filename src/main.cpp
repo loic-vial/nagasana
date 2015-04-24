@@ -4,6 +4,7 @@
 #include <dragon.h>
 #include <ground.h>
 #include <skybox.h>
+#include <castle.h>
 
 using namespace std;
 using namespace qglviewer;
@@ -22,9 +23,10 @@ int main(int argc, char** argv)
     glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuse);
     glLightfv(GL_LIGHT0,GL_POSITION,light0_position);
 
-    viewer.addRenderable(new Skybox());
-   viewer.addRenderable(new Ground());
+  //  viewer.addRenderable(new Skybox());
+  // viewer.addRenderable(new Ground());
     viewer.addRenderable(new Dragon());
+    viewer.addRenderable(new Castle);
 
     viewer.setWindowTitle("Nagasana");
     viewer.show();
