@@ -7,21 +7,24 @@
 using qglviewer::Vec;
 using namespace std;
 
-void Dragon::init(Viewer& viewer)
+void Dragon::init(Viewer& v)
 {
-    body.init(viewer);
-    left_wing.init(viewer);
-    right_wing.init(viewer);
-    tail.init(viewer);
-    fire.init(viewer);
+    body.init(v);
+    left_wing.init(v);
+    right_wing.init(v);
+    tail.init(v);
+    fire.init(v);
 
     max_rotation = 50;
     min_rotation = -10;
     wings_rotation = 20;
     rotate_backward = true;
     is_flying = false;
+    camera_focus = false;
     position = Vec(0, 0, 0);
     rotation = Vec(0, 0, 0);
+
+    viewer = &v;
 }
 
 void Dragon::draw()
@@ -123,6 +126,8 @@ void Dragon::animate()
     right_wing.animate();
     tail.animate();
     fire.animate();
+
+    if (camera_focus) viewer->camera()->lookAt(position);
 }
 
 void Dragon::keyPressEvent(QKeyEvent* key, Viewer&)
@@ -130,5 +135,9 @@ void Dragon::keyPressEvent(QKeyEvent* key, Viewer&)
     if (key->key() == Qt::Key_O)
     {
         is_flying = !is_flying;
+    }
+    else if (key->key() == Qt::Key_P)
+    {
+        camera_focus = !camera_focus;
     }
 }

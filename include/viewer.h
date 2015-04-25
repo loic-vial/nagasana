@@ -8,39 +8,32 @@ class Renderable;
 
 class Viewer : public QGLViewer
 {
-public :
-	        
-	Viewer();
-	virtual ~Viewer();
-	void addRenderable(Renderable *r);
+    public :
 
-/* Scene methods */
-protected :
-	/// List of the scene objects, to render, animate, ...
-    std::list<Renderable *> renderableList;
-		
-	/// Create the scene and initializes rendering parameters
-	virtual void init();
-		
-	/// Draw every objects of the scene
-	virtual void draw();
-		
-	/// Animate every objects of the scene
-	virtual void animate();
+        virtual ~Viewer();
 
+        void addRenderable(Renderable* r);
 
-/* Viewing parameters */
-protected :
-	bool toogleWireframe;
-	bool toogleLight;
+    protected :
 
-	/// Handle keyboard events specifically
-	virtual void keyPressEvent(QKeyEvent *e);
+        std::list<Renderable*> renderableList;
 
-	/// Handle keyboard events specifically
-	virtual void mouseMoveEvent(QMouseEvent *e);
-		
-	/// Draw every objects of the scene
-	virtual QString helpString() const;
+        virtual void init();
+
+        virtual void draw();
+
+        virtual void animate();
+
+    protected :
+
+        bool toogleWireframe;
+
+        bool toogleLight;
+
+        virtual void keyPressEvent(QKeyEvent *e);
+
+        virtual void mouseMoveEvent(QMouseEvent *e);
+
+        virtual QString helpString() const;
 };
 

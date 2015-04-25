@@ -4,6 +4,7 @@
 #include <dragonwing.h>
 #include <dragontail.h>
 #include <fire.h>
+#include <qglviewer.h>
 
 class Dragon : public Renderable
 {
@@ -45,7 +46,11 @@ private :
 
         bool is_flying;
 
+        bool camera_focus;
+
         qglviewer::Vec position;
 
         qglviewer::Vec rotation;
+
+        QGLViewer* viewer;
 };

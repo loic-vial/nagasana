@@ -4,14 +4,13 @@
 #include <renderable.h>
 
 using namespace std;
-
-Viewer::Viewer() {
-}
+using qglviewer::Vec;
 
 Viewer::~Viewer()
 {
     list<Renderable *>::iterator it;
-    for (it = renderableList.begin(); it != renderableList.end(); ++it) {
+    for (it = renderableList.begin(); it != renderableList.end(); ++it)
+    {
         delete(*it);
     }
     renderableList.clear();
@@ -24,38 +23,39 @@ void Viewer::addRenderable(Renderable *r)
 
 void Viewer::init()
 {
-    // glut initialisation (mandatory)
     int dum = 0;
     glutInit(&dum, NULL);
 
-    //=== VIEWING PARAMETERS
-    restoreStateFromFile();   // Restore previous viewer state.
+    restoreStateFromFile();
 
-    toogleWireframe = false;  // filled faces
-    toogleLight = true;       // light on
-    help();                   // display help
+    //camera()->setPosition(Vec(-150, 200, 70));
+    //camera()->setUpVector(Vec(0, 0, 1));
+    //camera()->lookAt(Vec(0, 0, 0));
 
-    if (toogleLight == true)
-        glEnable(GL_LIGHTING);
-    else
-        glDisable(GL_LIGHTING);
+    toogleWireframe = false;
+    toogleLight = true;
+    help();
 
-    glEnable((GL_LIGHT0));
-    glEnable((GL_LIGHT1));
+    if (toogleLight == true) glEnable(GL_LIGHTING);
+    else glDisable(GL_LIGHTING);
+
+    glEnable(GL_LIGHT0);
+    glEnable(GL_LIGHT1);
     setSceneRadius(1000);
 
     list<Renderable *>::iterator it;
-    for (it = renderableList.begin(); it != renderableList.end(); ++it) {
+    for (it = renderableList.begin(); it != renderableList.end(); ++it)
+    {
         (*it)->init(*this);
     }
 }
 
 
 void Viewer::draw()
-{  
-    // draw every objects in renderableList
+{
     list<Renderable *>::iterator it;
-    for(it = renderableList.begin(); it != renderableList.end(); ++it) {
+    for(it = renderableList.begin(); it != renderableList.end(); ++it)
+    {
         (*it)->draw();
     }
 }
@@ -63,59 +63,47 @@ void Viewer::draw()
 
 void Viewer::animate()
 {
-    // animate every objects in renderableList
-    list<Renderable *>::iterator it;
-    for(it = renderableList.begin(); it != renderableList.end(); ++it) {
+    for(list<Renderable *>::iterator it = renderableList.begin(); it != renderableList.end(); ++it)
+    {
         (*it)->animate();
     }
-
-    // this code might change if some rendered objets (stored as
-    // attributes) need to be specifically updated with common
-    // attributes, like real CPU time (?)
 }
 
 
 void Viewer::mouseMoveEvent(QMouseEvent *e)
 {
-    // all renderables may respond to key events
-    list<Renderable *>::iterator it;
-    for(it = renderableList.begin(); it != renderableList.end(); ++it) {
+    for(list<Renderable*>::iterator it = renderableList.begin(); it != renderableList.end(); ++it)
+    {
         (*it)->mouseMoveEvent(e, *this);
     }
 
-    // default QGLViewer behaviour
     QGLViewer::mouseMoveEvent(e);
     updateGL();
 }
 
 void Viewer::keyPressEvent(QKeyEvent *e)
 {
-    // Get event modifiers key
     const Qt::KeyboardModifiers modifiers = e->modifiers();
 
-    // all renderables may respond to key events
-    list<Renderable *>::iterator it;
-    for(it = renderableList.begin(); it != renderableList.end(); ++it) {
+    for(list<Renderable*>::iterator it = renderableList.begin(); it != renderableList.end(); ++it)
+    {
         (*it)->keyPressEvent(e, *this);
     }
 
-    if ((e->key()==Qt::Key_W) && (modifiers==Qt::NoButton)) {
-        // events with modifiers: CTRL+W, ALT+W, ... to handle separately
+    if ((e->key()==Qt::Key_W) && (modifiers==Qt::NoButton))
+    {
         toogleWireframe = !toogleWireframe;
-        if (toogleWireframe)
-            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        else
-            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    } else if ((e->key()==Qt::Key_L) && (modifiers==Qt::NoButton)) {
+        if (toogleWireframe) glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        else glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+    }
+    else if ((e->key()==Qt::Key_L) && (modifiers==Qt::NoButton))
+    {
         toogleLight = !toogleLight;
-        if (toogleLight == true)
-            glEnable(GL_LIGHTING);
-        else
-            glDisable(GL_LIGHTING);
-        // ... and so on with all events to handle here!
-
-    } else {
-        // if the event is not handled here, process it as default
+        if (toogleLight == true) glEnable(GL_LIGHTING);
+        else glDisable(GL_LIGHTING);
+    }
+    else
+    {
         QGLViewer::keyPressEvent(e);
     }
     updateGL();
@@ -124,7 +112,6 @@ void Viewer::keyPressEvent(QKeyEvent *e)
 
 QString Viewer::helpString() const
 {
-    // Some usefull hints...
     QString text("<h2>V i e w e r</h2>");
     text += "Use the mouse to move the camera around the object. ";
     text += "You can respectively revolve around, zoom and translate with the three mouse buttons. ";
