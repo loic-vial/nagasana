@@ -33,11 +33,13 @@ class Dragon : public Renderable
 
         float min_rotation;
 
-        float rotation;
+        float wings_rotation;
 
         bool rotate_backward;
 
         bool is_flying;
 
-        float position;
+        qglviewer::Vec position;
+
+        qglviewer::Vec rotation;
 };

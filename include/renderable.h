@@ -23,7 +23,8 @@ public:
     virtual void init(Viewer&) {}
 	
 	/** 
-	 * Draw a Renderable object.
+     * Draw a Re
+    glNormal3f(0, 0, 1);nderable object.
 	 * This pure virtual method must be overriden if child classes.
 	 */
 	virtual void draw() = 0;

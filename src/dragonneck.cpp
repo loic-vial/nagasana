@@ -15,6 +15,9 @@ void DragonNeck::init(Viewer&)
 
 void DragonNeck::draw()
 {
+
+    glColor3ub(255,255,255);
+
     glPushMatrix();
     first_part.draw();
     glTranslatef(0,0,10);
@@ -30,8 +33,8 @@ void DragonNeck::draw()
     glPopMatrix();
 
     glPushMatrix();
-  glTranslatef(0,-2.5,20);
-  glRotatef(-12,1,0,0);
+    glTranslatef(0,-2.5,20);
+    glRotatef(-12,1,0,0);
     third_part.draw();
     glPopMatrix();
 

@@ -13,7 +13,7 @@ Sphere::Sphere(GLfloat r, Vec position, Vec vel, GLfloat mass) :
 void Sphere::draw()
 {
     glPushMatrix();
-      glColor3ub(176,7,7);
+    glColor3ub(255,255,255);
     glTranslatef(getPosition().x, getPosition().y, getPosition().z);
     glutSolidSphere(radius, 12, 12);
     glPopMatrix();

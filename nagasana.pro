@@ -4,12 +4,12 @@ CONFIG += qt opengl warn_on debug
 QT *= xml opengl 
 
 macx:LIBS *= -framework Glut
-linux-g++*:LIBS *= -lglut -lGLEW
+linux-g++*:LIBS *= -lglut -lGLEW -lGLU
 
 QGL = -lqglviewer
 exists(/usr/lib/libqglviewer-qt4.so): QGL = -lqglviewer-qt4
 exists(/usr/lib/x86_64-linux-gnu/libqglviewer-qt4.so): QGL = -lqglviewer-qt4
-exists(/usr/lib/x86_64-linux-gnu/libQGLViewer.so.2): QGL = -lQGLViewer -lGLU
+exists(/usr/lib/x86_64-linux-gnu/libQGLViewer.so.2): QGL = -lQGLViewer
 exists(/usr/lib64/libQGLViewer.so): QGL = -lQGLViewer
 
 LIBS *= $${QGL}
@@ -42,7 +42,10 @@ HEADERS += \
     include/dragonlegbackward.h \
     include/foot.h \
     include/dragonneck.h \
-    include/utils.h
+    include/utils.h \
+    include/skybox.h \
+    include/castle.h \
+    include/big_castle.h
 
 SOURCES += \
     src/cube.cpp \
@@ -66,5 +69,8 @@ SOURCES += \
     src/dragonlegbackward.cpp \
     src/foot.cpp \
     src/dragonneck.cpp \
-    src/utils.cpp
+    src/utils.cpp \
+    src/skybox.cpp \
+    src/castle.cpp \
+    src/big_castle.cpp
 

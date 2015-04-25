@@ -14,4 +14,6 @@ private :
     qglviewer::Vec begin;
     qglviewer::Vec mid;
     qglviewer::Vec end;
+
+    GLuint membrane_id;
 };
