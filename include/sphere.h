@@ -12,7 +12,7 @@ class Sphere : public Particle
 
         void draw();
 
-    private :
+    public :
 
         GLfloat radius;
 };
