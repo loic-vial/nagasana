@@ -56,7 +56,6 @@ void Fire::init(Viewer&)
     nbParticules = 10000;
     particleMass = 1.0;
     particleRadius = 0.1;
-
     // global scene parameters
     defaultGravity = qglviewer::Vec(0.0, 0.0, -0.001);
     gravity = defaultGravity;

@@ -39,7 +39,7 @@ void DragonWing::draw()
     GLUquadric* body = gluNewQuadric();
     gluQuadricDrawStyle(body,GLU_FILL);
     gluQuadricTexture(body,GL_TRUE);
-    gluSphere(body,1.5,10,20);
+    gluSphere(body,1.5,10,10);
 
     first_part.draw();
     glPopMatrix();
@@ -54,7 +54,7 @@ void DragonWing::draw()
     GLUquadric* joint = gluNewQuadric();
     gluQuadricDrawStyle(joint,GLU_FILL);
     gluQuadricTexture(joint,GL_TRUE);
-    gluSphere(joint,1,10,20);
+    gluSphere(joint,1,10,10);
 
     glPopMatrix();
 

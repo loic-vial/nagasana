@@ -37,29 +37,36 @@ void Dragon::draw()
     //  glRotatef(-55,1,0,0);
 
     //lumiere
-    glEnable(GL_LIGHT2);
-    GLfloat ambient2[] = {0.15f,0.15f,0.15f,1.0f};
-    GLfloat diffuse2[] = {1.0f,-0.29f,-0.4f,1.0f};
-    GLfloat light2_position [] = {0.0f, 20.0f, 0.0f, 1.0f};
-    glLightfv(GL_LIGHT2,GL_AMBIENT,ambient2);
-    glLightfv(GL_LIGHT2,GL_DIFFUSE,diffuse2);
-    glLightfv(GL_LIGHT2,GL_POSITION,light2_position);
 
 
-    glTranslatef(position.x, position.y, position.z);
+   glTranslatef(position.x, position.y, position.z);
     glRotatef(rotation.x, 1, 0, 0);
     glRotatef(rotation.y, 0, 1, 0);
     glRotatef(rotation.z, 0, 0, 1);
 
     glPushMatrix();
     glTranslatef(0, 45,34);
-    glRotatef(-55,1,0,0);
+   glRotatef(-55,1,0,0);
+
+    glEnable(GL_LIGHT2);
+    GLfloat ambient2[] = {0.15f,0.15f,0.15f,1.0f};
+    GLfloat diffuse2[] = {1.0f,-0.39f,-0.5f,1.0f};
+    GLfloat light2_position [] = {0.0f, 0.0f, 0.0f, 1.0f};
+
+    GLfloat light2_direction [] = {0.0f, 1.0f, 0.0f};
+    glLightfv(GL_LIGHT2,GL_AMBIENT,ambient2);
+    glLightfv(GL_LIGHT2,GL_DIFFUSE,diffuse2);
+    glLightfv(GL_LIGHT2,GL_POSITION,light2_position);
+    glLightfv(GL_LIGHT2,GL_SPOT_DIRECTION,light2_direction);
+    glLighti(GL_LIGHT2,GL_SPOT_CUTOFF,90);
+    glLighti(GL_LIGHT2,GL_SPOT_EXPONENT,10);
+
     fire.draw();
     glPopMatrix();
 
-    glDisable(GL_LIGHT2);
+   glDisable(GL_LIGHT2);
     glPushMatrix();
-    glTranslatef(-20, -3, 2);
+    glTranslatef(-18, 0, 4);
     tail.draw();
     glPopMatrix();
 
@@ -69,7 +76,7 @@ void Dragon::draw()
     glRotatef(-1.8,1,0,0);
     body.draw();
     glPopMatrix();
-    glDisable(GL_LIGHT2);
+  //  glDisable(GL_LIGHT2);
 
 
 
@@ -94,7 +101,6 @@ void Dragon::draw()
 
     glPopMatrix();
 
-    glDisable(GL_LIGHT1);
 }
 
 void Dragon::animate()

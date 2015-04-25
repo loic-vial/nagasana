@@ -35,7 +35,7 @@ void DragonNeck::draw()
     GLUquadric* joint_first = gluNewQuadric();
     gluQuadricDrawStyle(joint_first,GLU_FILL);
     gluQuadricTexture(joint_first,GL_TRUE);
-    gluSphere(joint_first,4,10,20);
+    gluSphere(joint_first,4,10,10);
     glPopMatrix();
 
     glPushMatrix();
@@ -47,7 +47,7 @@ void DragonNeck::draw()
     GLUquadric* joint_second = gluNewQuadric();
     gluQuadricDrawStyle(joint_second,GLU_FILL);
     gluQuadricTexture(joint_second,GL_TRUE);
-    gluSphere(joint_second,3,10,20);
+    gluSphere(joint_second,3,10,10);
     glPopMatrix();
 
     glPushMatrix();

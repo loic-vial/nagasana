@@ -33,14 +33,14 @@ void BigCastle::draw()
 */
     //dessin du cube en couleur normale
     glPushMatrix();
-   glTranslatef(600,600,0);
-   glRotatef(45,0,0,-1);
+    glTranslatef(600,600,0);
+    glRotatef(45,0,0,-1);
     first.draw();
     glTranslatef(0,0,70);
-   second.draw();
+    second.draw();
     glPopMatrix();
 
-/*
+    /*
 
     //on initialise la transparence
     glEnable(GL_BLEND);
@@ -71,13 +71,14 @@ void BigCastle::draw()
 
 void BigCastle::animate()
 {
-    burned = true;
+    burned = false;
     if(burned)
     {
-    first.animate();
-    first.burned = true;
-    second.animate();
-    second.burned = true;
+
+        first.burned = burned;
+        second.burned = burned;
+        first.animate();
+        second.animate();
     }
 }
 

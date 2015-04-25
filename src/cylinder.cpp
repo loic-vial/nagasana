@@ -43,7 +43,7 @@ void Cylinder::draw()
     glBindTexture(GL_TEXTURE_2D,id);
     gluQuadricDrawStyle(cylinder,GLU_FILL);
     gluQuadricTexture(cylinder,GL_TRUE);
-    gluCylinder(cylinder,radiusL,radiusR,length,20,20);
+    gluCylinder(cylinder,radiusL,radiusR,length,10,10);
 
     glPopMatrix();
 }

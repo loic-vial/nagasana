@@ -34,11 +34,11 @@ void DragonLegForward::draw()
     GLUquadric* joint = gluNewQuadric();
     gluQuadricDrawStyle(joint,GLU_FILL);
     gluQuadricTexture(joint,GL_TRUE);
-    gluSphere(joint,3.5,10,20);
+    gluSphere(joint,3.5,10,10);
 
     first_part.draw();
     glTranslatef(0,0,15);
-    gluSphere(joint,2,10,20);
+    gluSphere(joint,2,10,10);
     glPopMatrix();
 
     glPushMatrix();
@@ -49,7 +49,7 @@ void DragonLegForward::draw()
 
     glPushMatrix();
     glTranslatef(0,12.6,17.2);
-    gluSphere(joint,1,10,20);
+    gluSphere(joint,1,10,10);
 glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 

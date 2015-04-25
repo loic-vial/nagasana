@@ -40,7 +40,7 @@ void DragonHead::draw()
     GLUquadric* nose = gluNewQuadric();
     gluQuadricDrawStyle(nose,GLU_FILL);
     gluQuadricTexture(nose,GL_TRUE);
-    gluSphere(nose,3.5,10,20);
+    gluSphere(nose,3.5,10,10);
     glPopMatrix();
 
     glPushMatrix();
@@ -49,7 +49,7 @@ void DragonHead::draw()
     GLUquadric* top = gluNewQuadric();
     gluQuadricDrawStyle(top,GLU_FILL);
     gluQuadricTexture(top,GL_TRUE);
-    gluSphere(top,5.5,10,20);
+    gluSphere(top,5.5,10,10);
     glPopMatrix();
 
     glPushMatrix();
@@ -145,7 +145,7 @@ void DragonHead::eye()
     GLUquadric* params = gluNewQuadric();
     gluQuadricDrawStyle(params,GLU_FILL);
     gluQuadricTexture(params,GL_TRUE);
-    gluSphere(params,1.5,10,20);
+    gluSphere(params,1.5,10,10);
     glDisable(GL_TEXTURE_2D);
     gluDeleteQuadric(params);
 }

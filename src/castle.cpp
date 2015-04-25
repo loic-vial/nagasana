@@ -3,7 +3,12 @@
 #include <castle.h>
 #include <glut.h>
 #include <glcheck.h>
+
+
+
+#include <iostream>
 using qglviewer::Vec;
+using namespace std;
 
 Castle::Castle(GLfloat l,GLfloat h, GLfloat r)
 {
@@ -18,13 +23,15 @@ void Castle::init(Viewer& v)
     wall_id = loadTexture("res/mur.jpg");
     door_id = loadTexture("res/door.jpg");
     wall_burned = loadTexture("res/mur_burned.jpg");
-        door_burned = loadTexture("res/door_burned.jpg");
+    door_burned = loadTexture("res/door_burned.jpg");
     fire.init(v);
+    burned= false;
 }
 
 
 void Castle::draw()
 {
+
 
     if(burned)
     {
@@ -113,56 +120,62 @@ void Castle::draw()
     glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
- /*   glPushMatrix();
+    if(burned)
+    {
+        /*   glPushMatrix();
     glRotatef(90,1,0,0);
     glRotatef(180,0,1,0);
     glTranslatef(lenght/2,hight,lenght/2);
     fire.draw();
     glPopMatrix();*/
 
- /*   glPushMatrix();
+        /*   glPushMatrix();
     glRotatef(90,1,0,0);
     glRotatef(180,0,1,0);
     glTranslatef(-lenght/2,hight,lenght/2);
     fire.draw();
     glPopMatrix();
 */
-    glPushMatrix();
-    glRotatef(90,1,0,0);
-    glRotatef(180,0,1,0);
-    glTranslatef(-lenght/2,hight,-lenght/2);
-    fire.draw();
-    glPopMatrix();
+        glPushMatrix();
+        glRotatef(90,1,0,0);
+        glRotatef(180,0,1,0);
+        glTranslatef(-lenght/2,hight,-lenght/2);
+        fire.draw();
+        glPopMatrix();
 
-    glPushMatrix();
-    glRotatef(90,1,0,0);
-    glRotatef(180,0,1,0);
-    glTranslatef(lenght/2,hight,-lenght/2);
-    fire.draw();
-    glPopMatrix();
+        glPushMatrix();
+        glRotatef(90,1,0,0);
+        glRotatef(180,0,1,0);
+        glTranslatef(lenght/2,hight,-lenght/2);
+        fire.draw();
+        glPopMatrix();
 
-    glPushMatrix();
-    glRotatef(90,1,0,0);
-    glRotatef(180,0,1,0);
-    glTranslatef(lenght/4,0,-lenght/2-2);
-    fire.draw();
-    glPopMatrix();
+        glPushMatrix();
+        glRotatef(90,1,0,0);
+        glRotatef(180,0,1,0);
+        glTranslatef(lenght/4,0,-lenght/2-2);
+        fire.draw();
+        glPopMatrix();
 
-    glPushMatrix();
-    glRotatef(90,1,0,0);
-    glRotatef(180,0,1,0);
-    glTranslatef(-lenght/4,0,-lenght/2-2);
-    fire.draw();
-    glPopMatrix();
+        glPushMatrix();
+        glRotatef(90,1,0,0);
+        glRotatef(180,0,1,0);
+        glTranslatef(-lenght/4,0,-lenght/2-2);
+        fire.draw();
+        glPopMatrix();
+    }
 
 }
 
 
 void Castle::animate()
 {
-    glPushMatrix();
-    fire.animate();
-    glPopMatrix();
+    if(burned)
+    {
+        glPushMatrix();
+        fire.animate();
+        glPopMatrix();
+    }
 }
 
 void Castle::tower()
@@ -172,13 +185,13 @@ void Castle::tower()
     glBindTexture(GL_TEXTURE_2D,wall_id);
     gluQuadricDrawStyle(tower,GLU_FILL);
     gluQuadricTexture(tower,GL_TRUE);
-    gluCylinder(tower,radius+3,radius,hight,20,20);
+    gluCylinder(tower,radius+3,radius,hight,10,10);
     glTranslatef(0, 0,hight);
 
     GLUquadric* top = gluNewQuadric();
     gluQuadricDrawStyle(top,GLU_FILL);
     gluQuadricTexture(top,GL_TRUE);
-    gluDisk(top,0,radius,20,1);
+    gluDisk(top,0,radius,10,1);
     gluDeleteQuadric(tower);
     gluDeleteQuadric(top);
     glDisable(GL_TEXTURE_2D);
