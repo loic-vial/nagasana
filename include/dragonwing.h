@@ -20,8 +20,6 @@ private :
     Cylinder first_part;
     Cylinder second_part;
     Cylinder member;
-    Sphere joint_body;
-    Sphere joint;
     Membrane first_membrane;
     Membrane second_membrane;
       GLuint scale_id;

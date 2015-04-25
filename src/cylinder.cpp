@@ -27,6 +27,7 @@ void Cylinder::setId(GLuint id)
 void Cylinder::draw()
 {
     glPushMatrix();
+
     glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, id);
    // GLCHECK(glBindTexture(GL_TEXTURE_2D, id));

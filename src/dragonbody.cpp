@@ -121,19 +121,21 @@ void DragonBody::draw()
 
     //crete
     glPushMatrix();
-    glTranslatef(0, 8, 17);
+    glTranslatef(0, -2, 22);
     glRotatef(32, 1, 0, 0);
-    glTranslatef(0, -1, 10);
+    glColor3f(0.5,0.5,1);
     glEnable(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, cone_id);
     // GLCHECK(glBindTexture(GL_TEXTURE_2D, cone_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glColor3ub(255,255,255);
+
     glBindTexture(GL_TEXTURE_2D,cone_id);
     GLUquadric* crete = gluNewQuadric();
     gluQuadricDrawStyle(crete,GLU_FILL);
     gluQuadricTexture(crete,GL_TRUE);
+    gluCylinder(crete,2,0,8,20,1);
+    glTranslatef(0, 5, 0);
     gluCylinder(crete,2,0,8,20,1);
     glTranslatef(0, 5, 0);
     gluCylinder(crete,2,0,8,20,1);
@@ -153,6 +155,7 @@ void DragonBody::draw()
     glEnable(GL_LIGHT2);
 
     glPushMatrix();
+    glColor3ub(255,255,255);
     glTranslatef(-8, 20, 26);
     glRotatef(160,1,0,0);
     glRotatef(-28,0,1,0);

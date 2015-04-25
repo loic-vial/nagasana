@@ -81,9 +81,6 @@ void FireParticle::draw() const
 {
     glPushMatrix();
 
-
-
-
     glTranslatef(position.x, position.y, position.z);
     //to make fire visible in all angles
     glRotatef(10, position.x, position.y, 0);

@@ -6,15 +6,15 @@
 
 void Foot::init(Viewer &)
 {
-    foot_id = loadTexture("res/scale2.jpg");
+    foot_id = loadTexture("res/scale.jpg");
 }
 
 void Foot::draw()
 {
 
     glEnable(GL_TEXTURE_2D);
-        glBindTexture(GL_TEXTURE_2D, foot_id);
-   // GLCHECK(glBindTexture(GL_TEXTURE_2D, foot_id));
+    glBindTexture(GL_TEXTURE_2D, foot_id);
+    // GLCHECK(glBindTexture(GL_TEXTURE_2D, foot_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
 

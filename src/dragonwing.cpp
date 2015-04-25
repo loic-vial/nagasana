@@ -7,8 +7,6 @@ DragonWing::DragonWing():
     first_part(25,1,1.5),
     second_part(22,0.5,1),
     member(20,0.3,1),
-    joint_body(1.5, Vec(0, 0, 0)),
-    joint(2, Vec(0, 0, 25)),
     first_membrane(qglviewer::Vec(0,0,0), qglviewer::Vec(0,0,25),qglviewer::Vec(0,17,15)),
     second_membrane(qglviewer::Vec(0,17,15),qglviewer::Vec(0,0,25),qglviewer::Vec(0,17,39))
 {
@@ -16,9 +14,9 @@ DragonWing::DragonWing():
 
 void DragonWing::init(Viewer& viewer)
 {
-     scale_id = loadTexture("res/scale.jpg");
-first_membrane.init(viewer);
-second_membrane.init(viewer);
+    scale_id = loadTexture("res/scale.jpg");
+    first_membrane.init(viewer);
+    second_membrane.init(viewer);
 }
 
 void DragonWing::draw()
@@ -27,8 +25,19 @@ void DragonWing::draw()
     first_part.setId(scale_id);
     second_part.setId(scale_id);
     member.setId(scale_id);
+
+    glEnable(GL_TEXTURE_2D);
+
+    glBindTexture(GL_TEXTURE_2D, scale_id);
+    //  GLCHECK(glBindTexture(GL_TEXTURE_2D, eye_id));
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
     glPushMatrix();
-    joint_body.draw();
+    GLUquadric* body = gluNewQuadric();
+    gluQuadricDrawStyle(body,GLU_FILL);
+    gluQuadricTexture(body,GL_TRUE);
+    gluSphere(body,1.5,10,20);
+
     first_part.draw();
     glPopMatrix();
 
@@ -36,8 +45,14 @@ void DragonWing::draw()
     first_membrane.draw();
     glPopMatrix();
 
-     glPushMatrix();
-    joint.draw();
+    glPushMatrix();
+    glTranslatef(0,0,25);
+    glRotatef(50,1,0,0);
+    GLUquadric* joint = gluNewQuadric();
+    gluQuadricDrawStyle(joint,GLU_FILL);
+    gluQuadricTexture(joint,GL_TRUE);
+    gluSphere(joint,1,10,20);
+
     glPopMatrix();
 
 

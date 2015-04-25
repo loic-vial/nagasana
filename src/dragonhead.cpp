@@ -158,14 +158,14 @@ void DragonHead::mouth()
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
     glColor3ub(255,255,255);
-    glTranslatef(0, -5.5, 0);
-    glRotatef(5, -1, 0, 0);
+    glTranslatef(0, -7, -1);
+    glRotatef(25, -1, 0, 0);
     glRotatef(90, 0, 0, 1);
     glEnable(GL_NORMALIZE);
 
     GLfloat begin = 4;
     GLfloat end = 8;
-//face du bas
+    //face du bas
     glBegin(GL_POLYGON);
     glTexCoord2d(1, 0.3); glVertex3f(0, -1, 0);
     glTexCoord2d(1, 0.8); glVertex3f(0, 1, 0);
@@ -173,7 +173,8 @@ void DragonHead::mouth()
     glTexCoord2d(0, 0); glVertex3f(0, -begin, end);
     glTexCoord2d(1, 0.3); glVertex3f(0, -1, 0);
     glEnd();
-//face du haut
+    //face du haut
+    glColor3ub(100,0,0);
     glBegin(GL_POLYGON);
     glNormal3f(1, 0, 0);
     glTexCoord2d(1, 0.3); glVertex3f(1, -1, 0);
@@ -182,7 +183,8 @@ void DragonHead::mouth()
     glTexCoord2d(0, 0); glVertex3f(1, -begin, end);
     glTexCoord2d(1, 0.3); glVertex3f(1, -1, 0);
     glEnd();
-//face de la jointure
+    glColor3ub(255,255,255);
+    //face de la jointure
     glBegin(GL_POLYGON);
     glNormal3f(0,-1,0.0);
     glTexCoord2d(0, 0.3); glVertex3f(1, -1, 0);

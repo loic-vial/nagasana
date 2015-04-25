@@ -88,16 +88,6 @@ void Fire::draw()
 {
     // FireParticles
 
-    //lumiere    
-    glEnable(GL_LIGHT2);
-    GLfloat ambient2[] = {0.15f,0.15f,0.15f,1.0f};
-    GLfloat diffuse2[] = {1.0f,-0.19f,-0.3f,0.0f};
-    GLfloat light2_position [] = {0.0f, 0.0f, 0.0f, 1.0f};
-   glLightfv(GL_LIGHT2,GL_AMBIENT,ambient2);
-    glLightfv(GL_LIGHT2,GL_DIFFUSE,diffuse2);
-    glLightfv(GL_LIGHT2,GL_POSITION,light2_position);
-
-
     glColor3f(1,0,0);
     std::vector<FireParticle *>::iterator itP;
     for (itP = particles.begin(); itP != particles.end(); ++itP) {
