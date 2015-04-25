@@ -85,7 +85,6 @@ void FireParticle::draw() const
     //to make fire visible in all angles
     glRotatef(10, position.x, position.y, 0);
     glCullFace(GL_FRONT_AND_BACK);
-
     glColor4d(red, green, blue, 1);
     //glutSolidSphere(size, 2, 2);
     glBegin(GL_TRIANGLE_STRIP);

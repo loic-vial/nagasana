@@ -20,6 +20,15 @@ void Membrane::init(Viewer&)
 void Membrane::draw()
 {
 
+
+    GLfloat    surf_diffuse[]={0.9,0.8,0.0,1.0};
+    GLfloat surf_speculaire[]={1.0,1.0,0.0,1.0};
+    GLfloat   surf_shininess[]={5.0};
+    glMaterialfv(GL_FRONT,GL_DIFFUSE,surf_diffuse);
+    glMaterialfv(GL_FRONT ,GL_SPECULAR,surf_speculaire);
+    glMaterialfv(GL_FRONT,GL_SHININESS,surf_shininess);
+
+
     glPushMatrix();
     glEnable(GL_NORMALIZE);
 

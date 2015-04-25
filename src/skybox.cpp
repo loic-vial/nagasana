@@ -29,12 +29,19 @@ void Skybox::init(Viewer&)
 
 void Skybox::draw()
 {
-	// Store the current matrix
+    // Store the current matrix
     glPushMatrix();
- 
- 	
 
-        /*    glEnable(GL_FOG) ;
+
+    glEnable(GL_LIGHT0);
+    GLfloat ambient[] = {0.4f,0.4f,0.4f,1.0f};
+    GLfloat diffuse[] = {0.3f,0.3f,0.3f,1.0f};
+    GLfloat light0_position [] = {100.0f, 100.0f, 100.0f, 0.0f};
+    glLightfv(GL_LIGHT0,GL_AMBIENT,ambient);
+    glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuse);
+    glLightfv(GL_LIGHT0,GL_POSITION,light0_position);
+
+    /*    glEnable(GL_FOG) ;
             GLfloat fogcolor[4] = {255, 0, 0, 1} ;
             GLint fogmode = GL_EXP ;
             glFogi (GL_FOG_MODE, fogmode) ;
@@ -44,74 +51,74 @@ void Skybox::draw()
             glFogf(GL_FOG_END, 10.0) ;
 
 */
- 
+
     // Enable/Disable features
     glPushAttrib(GL_ENABLE_BIT);
     glEnable(GL_TEXTURE_2D);
     glDisable(GL_DEPTH_TEST);
     glDisable(GL_LIGHTING);
     glDisable(GL_BLEND);
- 
+
     // Just in case we set all vertices to white.
     glColor4f(1,1,1,1);
- 
+
     // Render the back quad
 
     glBindTexture(GL_TEXTURE_2D, texture_back);
-   // GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_back));
+    // GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_back));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
-    	glTexCoord2f(0, 0); glVertex3f( -1000, -1000, 0 );
-        glTexCoord2f(0, 1); glVertex3f( -1000, -1000,  1000 );
-        glTexCoord2f(1, 1); glVertex3f(  1000, -1000,  1000 );
-        glTexCoord2f(1, 0); glVertex3f(  1000, -1000, 0 );
+    glTexCoord2f(0, 0); glVertex3f( -1000, -1000, 0 );
+    glTexCoord2f(0, 1); glVertex3f( -1000, -1000,  1000 );
+    glTexCoord2f(1, 1); glVertex3f(  1000, -1000,  1000 );
+    glTexCoord2f(1, 0); glVertex3f(  1000, -1000, 0 );
     glEnd();
- 	
+
     // Render the left quad
-        glBindTexture(GL_TEXTURE_2D, texture_left);
-   // GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_left));
+    glBindTexture(GL_TEXTURE_2D, texture_left);
+    // GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_left));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
-        glTexCoord2f(0, 1); glVertex3f(  1000, -1000,  1000 );
-        glTexCoord2f(0, 0); glVertex3f(  1000, -1000,   0 );
-        glTexCoord2f(1, 0); glVertex3f(  1000,  1000, 	0 );
-        glTexCoord2f(1, 1); glVertex3f(  1000,  1000,  1000 );
+    glTexCoord2f(0, 1); glVertex3f(  1000, -1000,  1000 );
+    glTexCoord2f(0, 0); glVertex3f(  1000, -1000,   0 );
+    glTexCoord2f(1, 0); glVertex3f(  1000,  1000, 	0 );
+    glTexCoord2f(1, 1); glVertex3f(  1000,  1000,  1000 );
     glEnd();
- 	
+
     // Render the top quad
-        glBindTexture(GL_TEXTURE_2D, texture_top);
+    glBindTexture(GL_TEXTURE_2D, texture_top);
     //GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_top));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
-        glTexCoord2f(0, 0); glVertex3f( -1000, -1000,  1000 );
-        glTexCoord2f(0, 1); glVertex3f(  1000, -1000,  1000 );
-        glTexCoord2f(1, 1); glVertex3f(  1000,  1000,  1000 );
-        glTexCoord2f(1, 0); glVertex3f( -1000,  1000,  1000 );
- 
+    glTexCoord2f(0, 0); glVertex3f( -1000, -1000,  1000 );
+    glTexCoord2f(0, 1); glVertex3f(  1000, -1000,  1000 );
+    glTexCoord2f(1, 1); glVertex3f(  1000,  1000,  1000 );
+    glTexCoord2f(1, 0); glVertex3f( -1000,  1000,  1000 );
+
     glEnd();
- 
+
     // Render the right quad
-        glBindTexture(GL_TEXTURE_2D, texture_right);
- //   GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_right));
+    glBindTexture(GL_TEXTURE_2D, texture_right);
+    //   GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_right));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
-        glTexCoord2f(1, 0); glVertex3f( -1000, -1000, 0 );
-        glTexCoord2f(1, 1); glVertex3f( -1000, -1000,  1000 );
-        glTexCoord2f(0, 1); glVertex3f( -1000,  1000,  1000 );
-        glTexCoord2f(0, 0); glVertex3f( -1000,  1000, 0 );
+    glTexCoord2f(1, 0); glVertex3f( -1000, -1000, 0 );
+    glTexCoord2f(1, 1); glVertex3f( -1000, -1000,  1000 );
+    glTexCoord2f(0, 1); glVertex3f( -1000,  1000,  1000 );
+    glTexCoord2f(0, 0); glVertex3f( -1000,  1000, 0 );
     glEnd();
- 
+
     // Render the front quad
-        glBindTexture(GL_TEXTURE_2D, texture_front);
-   // GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_front));
+    glBindTexture(GL_TEXTURE_2D, texture_front);
+    // GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_front));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
-        glTexCoord2f(1, 0); glVertex3f( -1000,  1000, 0 );
-        glTexCoord2f(1, 1); glVertex3f( -1000,  1000,  1000 );
-        glTexCoord2f(0, 1); glVertex3f(  1000,  1000,  1000 );
-        glTexCoord2f(0, 0); glVertex3f(  1000,  1000, 0 );
+    glTexCoord2f(1, 0); glVertex3f( -1000,  1000, 0 );
+    glTexCoord2f(1, 1); glVertex3f( -1000,  1000,  1000 );
+    glTexCoord2f(0, 1); glVertex3f(  1000,  1000,  1000 );
+    glTexCoord2f(0, 0); glVertex3f(  1000,  1000, 0 );
     glEnd();
- 
+
     /*
     // Render the bottom quad
     glBindTexture(GL_TEXTURE_2D, _skybox[5]);
@@ -121,7 +128,7 @@ void Skybox::draw()
         glTexCoord2f(1, 1); glVertex3f(  1000, -1000,  1000 );
         glTexCoord2f(1, 0); glVertex3f(  1000, -1000, -1000 );
     glEnd();*/
- 
+
     // Restore enable bits and matrix
     glPopAttrib();
     glPopMatrix();

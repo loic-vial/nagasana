@@ -87,8 +87,8 @@ void Fire::createSystemScene()
 void Fire::draw()
 {
     // FireParticles
-
     glColor3f(1,0,0);
+    glRotatef(90,0,1,0);
     std::vector<FireParticle *>::iterator itP;
     for (itP = particles.begin(); itP != particles.end(); ++itP) {
 

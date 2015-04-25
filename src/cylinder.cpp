@@ -28,6 +28,13 @@ void Cylinder::draw()
 {
     glPushMatrix();
 
+    GLfloat    surf_diffuse[]={0.8,0.8,0.0,1.0};
+    GLfloat surf_speculaire[]={1.0,1.0,0.0,1.0};
+    GLfloat   surf_shininess[]={5.0};
+    glMaterialfv(GL_FRONT,GL_DIFFUSE,surf_diffuse);
+    glMaterialfv(GL_FRONT ,GL_SPECULAR,surf_speculaire);
+    glMaterialfv(GL_FRONT,GL_SHININESS,surf_shininess);
+
     glEnable(GL_TEXTURE_2D);
         glBindTexture(GL_TEXTURE_2D, id);
    // GLCHECK(glBindTexture(GL_TEXTURE_2D, id));
