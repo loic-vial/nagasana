@@ -97,8 +97,7 @@ void Castle::draw()
     glPopMatrix();
 
     glEnd();
-
-
+glPopMatrix();
 }
 
 

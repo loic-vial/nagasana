@@ -44,7 +44,8 @@ HEADERS += \
     include/dragonneck.h \
     include/utils.h \
     include/skybox.h \
-    include/castle.h
+    include/castle.h \
+    include/big_castle.h
 
 SOURCES += \
     src/cube.cpp \
@@ -70,5 +71,6 @@ SOURCES += \
     src/dragonneck.cpp \
     src/utils.cpp \
     src/skybox.cpp \
-    src/castle.cpp
+    src/castle.cpp \
+    src/big_castle.cpp
 
