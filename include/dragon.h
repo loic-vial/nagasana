@@ -15,6 +15,8 @@ class Dragon : public Renderable
 
         void animate();
 
+        void keyPressEvent(QKeyEvent*, Viewer&);
+
     private :
 
         DragonBody body;
@@ -26,4 +28,16 @@ class Dragon : public Renderable
         DragonTail tail;
 
         Fire fire;
+
+        float max_rotation;
+
+        float min_rotation;
+
+        float rotation;
+
+        bool rotate_backward;
+
+        bool is_flying;
+
+        float position;
 };

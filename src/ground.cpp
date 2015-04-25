@@ -35,10 +35,10 @@ void Ground::draw()
 
     glBegin(GL_QUADS);
 
-    glTexCoord2d(0, 0); glVertex3f(-100, -100, 0);
-    glTexCoord2d(0, 10); glVertex3f(-100, 100, 0);
-    glTexCoord2d(10, 10); glVertex3f(100, 100, 0);
-    glTexCoord2d(10, 0); glVertex3f(100, -100, 0);
+    glTexCoord2d(0, 0); glVertex3f(-1000, -1000, 0);
+    glTexCoord2d(0, 10); glVertex3f(-1000, 1000, 0);
+    glTexCoord2d(10, 10); glVertex3f(1000, 1000, 0);
+    glTexCoord2d(10, 0); glVertex3f(1000, -1000, 0);
 
     glEnd();
 
