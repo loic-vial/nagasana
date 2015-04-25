@@ -5,15 +5,23 @@
 
 class Castle : public Renderable
 {
-    public:
+public:
 
+    Castle(GLfloat l,GLfloat h,GLfloat r);
     void init(Viewer&);
 
     void draw();
 
     void animate();
+    void wall(GLuint id);
+    void tower();
 
-    private:
+private:
+    GLfloat lenght ;
+    GLfloat hight ;
+    GLfloat radius;
     GLuint wall_id;
+    GLuint door_id;
+
 
 };
