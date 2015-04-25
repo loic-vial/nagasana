@@ -28,7 +28,8 @@ void Dragon::draw()
     //lumiere
    glEnable(GL_LIGHT2);
     GLfloat ambient2[] = {0.15f,0.15f,0.15f,1.0f};
-    GLfloat diffuse2[] = {1.0f,-0.19f,-0.3f,1.0f};
+ //   GLfloat diffuse2[] = {1.0f,-0.19f,-0.3f,1.0f};
+      GLfloat diffuse2[] = {1.0f,-0.29f,-0.4f,1.0f};
     GLfloat light2_position [] = {0.0f, 20.0f, 0.0f, 1.0f};
     glLightfv(GL_LIGHT2,GL_AMBIENT,ambient2);
     glLightfv(GL_LIGHT2,GL_DIFFUSE,diffuse2);
@@ -77,3 +78,5 @@ void Dragon::animate()
     tail.animate();
     fire.animate();
 }
+
+

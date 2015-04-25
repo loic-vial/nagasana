@@ -7,23 +7,26 @@
 
 class Dragon : public Renderable
 {
-    public:
+public:
 
-        void init(Viewer&);
+    void init(Viewer&);
 
-        void draw();
+    void draw();
 
-        void animate();
+        void draw1();
+    void animate();
 
-    private :
+    void ombre();
 
-        DragonBody body;
+private :
 
-        DragonWing left_wing;
+    DragonBody body;
 
-        DragonWing right_wing;
+    DragonWing left_wing;
 
-        DragonTail tail;
+    DragonWing right_wing;
 
-        Fire fire;
+    DragonTail tail;
+
+    Fire fire;
 };

@@ -18,11 +18,12 @@ int main(int argc, char** argv)
 
 
 
-   viewer.addRenderable(new Skybox());
+    viewer.addRenderable(new Skybox());
     viewer.addRenderable(new Ground());
-    viewer.addRenderable(new Dragon());
 
     viewer.addRenderable(new BigCastle());
+    viewer.addRenderable(new Dragon());
+
 
     viewer.setWindowTitle("Nagasana");
     viewer.show();

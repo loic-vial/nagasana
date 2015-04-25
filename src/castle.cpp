@@ -31,7 +31,7 @@ void Castle::draw()
 
     //first tower
     glPushMatrix();
-    glColor3ub(255,255,255);
+//  glColor3ub(255,255,255);
     glTranslatef(lenght/2.0, lenght/2.0,0);
     tower();
     glPopMatrix();
@@ -39,7 +39,7 @@ void Castle::draw()
 
     //second tower
     glPushMatrix();
-    glColor3ub(255,255,255);
+  //  glColor3ub(255,255,255);
     glTranslatef(-lenght/2.0, lenght/2.0,0);
     tower();
     glPopMatrix();
@@ -47,14 +47,14 @@ void Castle::draw()
 
     //third tower
     glPushMatrix();
-    glColor3ub(255,255,255);
+  //  glColor3ub(255,255,255);
     glTranslatef(-lenght/2.0, -lenght/2.0,0);
     tower();
     glPopMatrix();
 
     //fourth tower
     glPushMatrix();
-    glColor3ub(255,255,255);
+  //  glColor3ub(255,255,255);
     glTranslatef(lenght/2.0, -lenght/2.0,0);
     tower();
     glPopMatrix();
