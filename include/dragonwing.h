@@ -24,5 +24,6 @@ private :
     Sphere joint;
     Membrane first_membrane;
     Membrane second_membrane;
+      GLuint scale_id;
 };
 

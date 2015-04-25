@@ -6,7 +6,7 @@
 using qglviewer::Vec;
 
 DragonBody::DragonBody():
-    body(20,0,9,10),
+    body(20,9,10),
     leftlegfor(),
     rightlegfor(),
     leftlegback(),
@@ -27,15 +27,17 @@ void DragonBody::init(Viewer& v)
     righttop.init(v);
     head.init(v);
     neck.init(v);
+    leftlegback.init(v);
+    leftlegfor.init(v);
+    rightlegback.init(v);
+    rightlegfor.init(v);
     cone_id = loadTexture("res/corne.jpg");
-
-    scale_id = loadTexture("res/scaleb.jpg");
+    scale_id = loadTexture("res/scale.jpg");
 }
 
 
 void DragonBody::draw()
 {
-
 
     glDisable(GL_LIGHT2);
     glPushMatrix();
@@ -71,19 +73,22 @@ void DragonBody::draw()
 
 
     glEnable(GL_LIGHT2);
+    body.setId(scale_id);
+    glEnable(GL_TEXTURE_2D);
     glPushMatrix();
     glTranslatef(0, 20.9, 26);
     glRotatef(120, 1, 0, 0);
     body.draw();
     glColor3ub(255,255,255);
     glRotatef(240, -1, 0, 0);
-    glEnable(GL_TEXTURE_2D);
-    GLCHECK(glBindTexture(GL_TEXTURE_2D, scale_id));
+    glBindTexture(GL_TEXTURE_2D, scale_id);
+    //   GLCHECK(glBindTexture(GL_TEXTURE_2D, scale_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBindTexture(GL_TEXTURE_2D,scale_id);
     GLUquadric* params = gluNewQuadric();
     gluQuadricDrawStyle(params,GLU_FILL);
     gluQuadricTexture(params,GL_TRUE);
+    glRotatef(95, -1, 0, 0);
     gluSphere(params,10,10,20);
     gluDeleteQuadric(params);
     glDisable(GL_TEXTURE_2D);
@@ -93,7 +98,9 @@ void DragonBody::draw()
     glTranslatef(0, 4, 16.4);
     glRotatef(100, 1, 0, 0);
     glEnable(GL_TEXTURE_2D);
-    GLCHECK(glBindTexture(GL_TEXTURE_2D, scale_id));
+
+    glBindTexture(GL_TEXTURE_2D, scale_id);
+    //  GLCHECK(glBindTexture(GL_TEXTURE_2D, scale_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBindTexture(GL_TEXTURE_2D,scale_id);
     GLUquadric* params2 = gluNewQuadric();
@@ -118,7 +125,9 @@ void DragonBody::draw()
     glRotatef(32, 1, 0, 0);
     glTranslatef(0, -1, 10);
     glEnable(GL_TEXTURE_2D);
-    GLCHECK(glBindTexture(GL_TEXTURE_2D, cone_id));
+
+    glBindTexture(GL_TEXTURE_2D, cone_id);
+    // GLCHECK(glBindTexture(GL_TEXTURE_2D, cone_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glColor3ub(255,255,255);
     glBindTexture(GL_TEXTURE_2D,cone_id);

@@ -19,4 +19,5 @@ private:
         Cylinder third_part;
         Sphere first_joint;
         Sphere second_joint;
+          GLuint scale_id;
 };

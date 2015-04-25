@@ -34,7 +34,7 @@ void Skybox::draw()
  
  	
 
-            glEnable(GL_FOG) ;
+        /*    glEnable(GL_FOG) ;
             GLfloat fogcolor[4] = {255, 0, 0, 1} ;
             GLint fogmode = GL_EXP ;
             glFogi (GL_FOG_MODE, fogmode) ;
@@ -43,7 +43,7 @@ void Skybox::draw()
             glFogf(GL_FOG_START, 1.0) ;
             glFogf(GL_FOG_END, 10.0) ;
 
-
+*/
  
     // Enable/Disable features
     glPushAttrib(GL_ENABLE_BIT);
@@ -56,7 +56,9 @@ void Skybox::draw()
     glColor4f(1,1,1,1);
  
     // Render the back quad
-    GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_back));
+
+    glBindTexture(GL_TEXTURE_2D, texture_back);
+   // GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_back));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
     	glTexCoord2f(0, 0); glVertex3f( -1000, -1000, 0 );
@@ -66,7 +68,8 @@ void Skybox::draw()
     glEnd();
  	
     // Render the left quad
-    GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_left));
+        glBindTexture(GL_TEXTURE_2D, texture_left);
+   // GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_left));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
         glTexCoord2f(0, 1); glVertex3f(  1000, -1000,  1000 );
@@ -76,7 +79,8 @@ void Skybox::draw()
     glEnd();
  	
     // Render the top quad
-    GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_top));
+        glBindTexture(GL_TEXTURE_2D, texture_top);
+    //GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_top));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
         glTexCoord2f(0, 0); glVertex3f( -1000, -1000,  1000 );
@@ -87,7 +91,8 @@ void Skybox::draw()
     glEnd();
  
     // Render the right quad
-    GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_right));
+        glBindTexture(GL_TEXTURE_2D, texture_right);
+ //   GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_right));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
         glTexCoord2f(1, 0); glVertex3f( -1000, -1000, 0 );
@@ -97,7 +102,8 @@ void Skybox::draw()
     glEnd();
  
     // Render the front quad
-    GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_front));
+        glBindTexture(GL_TEXTURE_2D, texture_front);
+   // GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_front));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBegin(GL_QUADS);
         glTexCoord2f(1, 0); glVertex3f( -1000,  1000, 0 );

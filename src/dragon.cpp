@@ -20,11 +20,7 @@ void Dragon::draw()
 {
 
     glEnable(GL_LIGHT0);
-
-
-
-
-
+/*
      glPushMatrix();
     glTranslatef(0, 45,34);
     glRotatef(-55,1,0,0);
@@ -36,7 +32,7 @@ void Dragon::draw()
     glTranslatef(-18, -3, 5);
     tail.draw();
     glPopMatrix();
-
+*/
     glEnable(GL_LIGHT2);
     glPushMatrix();
     glTranslatef(0, 0, -5);
@@ -45,7 +41,7 @@ void Dragon::draw()
     glPopMatrix();
     glDisable(GL_LIGHT2);
 
-    glPushMatrix();
+ /*   glPushMatrix();
     glTranslatef(2, 16, 22);
     glRotatef(100,0,0,1);
     glRotatef(45,-1,0,0);
@@ -58,7 +54,7 @@ void Dragon::draw()
     glRotatef(45,-1,0,0);
     left_wing.draw();
     glPopMatrix();
-
+*/
     glDisable(GL_LIGHT1);
 
 }
@@ -66,8 +62,8 @@ void Dragon::draw()
 void Dragon::animate()
 {
     body.animate();
-    left_wing.animate();
+  /*  left_wing.animate();
     right_wing.animate();
     tail.animate();
-    fire.animate();
+    fire.animate();*/
 }

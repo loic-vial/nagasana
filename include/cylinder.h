@@ -7,17 +7,18 @@ class Cylinder : public Renderable
 {
     public:
 
-        Cylinder(GLfloat length, GLfloat starting_point, GLfloat radiusR, GLfloat radiusL);
+        Cylinder(GLfloat lengt, GLfloat radiusR, GLfloat radiusL);
 
         void init(Viewer&);
 
         void draw();
+        void setId(GLuint id);
 
     private:
 
         GLfloat length;
 
-        GLfloat starting_point;
+        GLuint id;
 
         GLfloat radiusR;
 
