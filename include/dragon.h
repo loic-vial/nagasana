@@ -16,7 +16,11 @@ public:
         void draw1();
     void animate();
 
-    void ombre();
+
+        void keyPressEvent(QKeyEvent*, Viewer&);
+
+
+
 
 private :
 
@@ -26,7 +30,22 @@ private :
 
     DragonWing right_wing;
 
-    DragonTail tail;
+  DragonTail tail;
 
-    Fire fire;
+
+        Fire fire;
+
+        float max_rotation;
+
+        float min_rotation;
+
+        float wings_rotation;
+
+        bool rotate_backward;
+
+        bool is_flying;
+
+        qglviewer::Vec position;
+
+        qglviewer::Vec rotation;
 };

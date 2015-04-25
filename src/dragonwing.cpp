@@ -1,5 +1,8 @@
 #include <dragonwing.h>
+
 #include <utils.h>
+
+#include <iostream>
 using qglviewer::Vec;
 using namespace std;
 
@@ -55,23 +58,27 @@ void DragonWing::draw()
 
     glPopMatrix();
 
-
     glPushMatrix();
     glTranslatef(0,0,25);
     glRotatef(120,-1,0,0);
+    //glRotatef(rotation, 0, 0.3, 0.3);
     member.draw();
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(0,0,25);
     glRotatef(50,-50,0,0);
+    //glRotatef(rotation, 0, 0.3, 0.3);
     second_part.draw();
     glPopMatrix();
 
     glPushMatrix();
     second_membrane.draw();
     glPopMatrix();
-
-
 }
 
+void DragonWing::animate()
+{
+    cout << "hey " << endl;
+    //rotation += 10;
+}

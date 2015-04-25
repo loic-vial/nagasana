@@ -17,12 +17,20 @@ void Castle::init(Viewer& v)
 
     wall_id = loadTexture("res/mur.jpg");
     door_id = loadTexture("res/door.jpg");
+    wall_burned = loadTexture("res/mur_burned.jpg");
+        door_burned = loadTexture("res/door_burned.jpg");
+    fire.init(v);
 }
 
 
 void Castle::draw()
 {
 
+    if(burned)
+    {
+        wall_id = wall_burned;
+        door_id =door_burned;
+    }
     glEnable(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, wall_id);
@@ -31,7 +39,7 @@ void Castle::draw()
 
     //first tower
     glPushMatrix();
-//  glColor3ub(255,255,255);
+    //  glColor3ub(255,255,255);
     glTranslatef(lenght/2.0, lenght/2.0,0);
     tower();
     glPopMatrix();
@@ -39,7 +47,7 @@ void Castle::draw()
 
     //second tower
     glPushMatrix();
-  //  glColor3ub(255,255,255);
+    //  glColor3ub(255,255,255);
     glTranslatef(-lenght/2.0, lenght/2.0,0);
     tower();
     glPopMatrix();
@@ -47,14 +55,14 @@ void Castle::draw()
 
     //third tower
     glPushMatrix();
-  //  glColor3ub(255,255,255);
+    //  glColor3ub(255,255,255);
     glTranslatef(-lenght/2.0, -lenght/2.0,0);
     tower();
     glPopMatrix();
 
     //fourth tower
     glPushMatrix();
-  //  glColor3ub(255,255,255);
+    //  glColor3ub(255,255,255);
     glTranslatef(lenght/2.0, -lenght/2.0,0);
     tower();
     glPopMatrix();
@@ -77,15 +85,15 @@ void Castle::draw()
     wall(wall_id);
     glPopMatrix();
 
-glDisable(GL_TEXTURE_2D);
+    glDisable(GL_TEXTURE_2D);
 
     //floor
     glPushMatrix();
     glTranslatef(0,0,hight);
-     glEnable(GL_TEXTURE_2D);
+    glEnable(GL_TEXTURE_2D);
 
-     glBindTexture(GL_TEXTURE_2D, wall_id);
-   // GLCHECK(glBindTexture(GL_TEXTURE_2D, wall_id));
+    glBindTexture(GL_TEXTURE_2D, wall_id);
+    // GLCHECK(glBindTexture(GL_TEXTURE_2D, wall_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_NEAREST);
     GLfloat s0[] = {+lenght/2.0f, -lenght/2.0f, 0};
     GLfloat s1[] = {+lenght/2.0f, +lenght/2.0f, 0};
@@ -104,17 +112,63 @@ glDisable(GL_TEXTURE_2D);
     glEnd();
     glDisable(GL_TEXTURE_2D);
     glPopMatrix();
+
+ /*   glPushMatrix();
+    glRotatef(90,1,0,0);
+    glRotatef(180,0,1,0);
+    glTranslatef(lenght/2,hight,lenght/2);
+    fire.draw();
+    glPopMatrix();*/
+
+ /*   glPushMatrix();
+    glRotatef(90,1,0,0);
+    glRotatef(180,0,1,0);
+    glTranslatef(-lenght/2,hight,lenght/2);
+    fire.draw();
+    glPopMatrix();
+*/
+    glPushMatrix();
+    glRotatef(90,1,0,0);
+    glRotatef(180,0,1,0);
+    glTranslatef(-lenght/2,hight,-lenght/2);
+    fire.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glRotatef(90,1,0,0);
+    glRotatef(180,0,1,0);
+    glTranslatef(lenght/2,hight,-lenght/2);
+    fire.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glRotatef(90,1,0,0);
+    glRotatef(180,0,1,0);
+    glTranslatef(lenght/4,0,-lenght/2-2);
+    fire.draw();
+    glPopMatrix();
+
+    glPushMatrix();
+    glRotatef(90,1,0,0);
+    glRotatef(180,0,1,0);
+    glTranslatef(-lenght/4,0,-lenght/2-2);
+    fire.draw();
+    glPopMatrix();
+
 }
 
 
 void Castle::animate()
 {
+    glPushMatrix();
+    fire.animate();
+    glPopMatrix();
 }
 
 void Castle::tower()
 {
     GLUquadric* tower = gluNewQuadric();
-         glEnable(GL_TEXTURE_2D);
+    glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,wall_id);
     gluQuadricDrawStyle(tower,GLU_FILL);
     gluQuadricTexture(tower,GL_TRUE);
@@ -127,16 +181,16 @@ void Castle::tower()
     gluDisk(top,0,radius,20,1);
     gluDeleteQuadric(tower);
     gluDeleteQuadric(top);
-        glDisable(GL_TEXTURE_2D);
+    glDisable(GL_TEXTURE_2D);
 
 }
 
 void Castle::wall(GLuint id)
 {
     //wall
-          glEnable(GL_TEXTURE_2D);
+    glEnable(GL_TEXTURE_2D);
 
-          glBindTexture(GL_TEXTURE_2D, id);
+    glBindTexture(GL_TEXTURE_2D, id);
     //GLCHECK(glBindTexture(GL_TEXTURE_2D, id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_NEAREST);
     GLfloat s0[] = {+lenght/2.0f, 0, 0};
@@ -170,7 +224,7 @@ void Castle::wall(GLuint id)
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, wall_id);
-  //  GLCHECK(glBindTexture(GL_TEXTURE_2D, wall_id));
+    //  GLCHECK(glBindTexture(GL_TEXTURE_2D, wall_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 
     glBegin(GL_QUADS);

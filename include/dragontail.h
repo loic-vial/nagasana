@@ -21,5 +21,7 @@ class DragonTail : public Renderable
         std::vector<Sphere*> particles;
 
         std::vector<Spring*> springs;
+
+        GLuint scale_id;
 };
 

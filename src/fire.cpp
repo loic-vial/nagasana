@@ -94,6 +94,7 @@ void Fire::draw()
 
         (*itP)->draw();
     }
+        glColor3f(1,1,1);
 }
 
 
