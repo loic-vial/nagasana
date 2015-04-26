@@ -43,7 +43,6 @@ void Skybox::draw()
 
 
 
-
     /*
     glColor4f(1,1,1,1);
     glEnable(GL_TEXTURE_2D);

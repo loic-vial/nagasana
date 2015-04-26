@@ -46,7 +46,8 @@ HEADERS += \
     include/castle.h \
     include/big_castle.h \
     include/forest.h \
-    include/tree.h
+    include/tree.h \
+    include/terrain.h
 
 SOURCES += \
     src/cylinder.cpp \
@@ -74,5 +75,6 @@ SOURCES += \
     src/castle.cpp \
     src/big_castle.cpp \
     src/tree.cpp \
-    src/forest.cpp
+    src/forest.cpp \
+    src/terrain.cpp
 
