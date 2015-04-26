@@ -118,7 +118,7 @@ void DragonHead::ear()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(0,0,255);
+        else  glColor3ub(255,0,0);
     glTexCoord2d(0, 0); glVertex3f(1, -size, 0);
     glTexCoord2d(0, 1); glVertex3f(1, size, 0);
     glTexCoord2d(0.5, 0.7); glVertex3f(1, 0, height);

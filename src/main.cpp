@@ -18,8 +18,8 @@ int main(int argc, char** argv)
     Dragon* dragon = new Dragon();
     BigCastle* castle = new BigCastle();
 
-    viewer.addRenderable(new Skybox());
-    viewer.addRenderable(new Ground());
+   viewer.addRenderable(new Skybox());
+   viewer.addRenderable(new Ground());
     viewer.addRenderable(castle);
     viewer.addRenderable(dragon);
 

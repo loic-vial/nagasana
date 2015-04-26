@@ -33,7 +33,7 @@ void Skybox::draw()
     glPushMatrix();
 
 
-    glEnable(GL_LIGHT0);
+   glEnable(GL_LIGHT0);
     GLfloat ambient[] = {0.4f,0.4f,0.4f,1.0f};
     GLfloat diffuse[] = {0.3f,0.3f,0.3f,1.0f};
     GLfloat light0_position [] = {20.0f, 100.0f, 100.0f, 0.0f};
@@ -41,8 +41,8 @@ void Skybox::draw()
     glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuse);
     glLightfv(GL_LIGHT0,GL_POSITION,light0_position);
 
-    /*    glEnable(GL_FOG) ;
-            GLfloat fogcolor[4] = {255, 0, 0, 1} ;
+     // glEnable(GL_FOG) ;
+            GLfloat fogcolor[4] = {50, 50, 50, 1} ;
             GLint fogmode = GL_EXP ;
             glFogi (GL_FOG_MODE, fogmode) ;
             glFogfv(GL_FOG_COLOR, fogcolor) ;
@@ -50,7 +50,7 @@ void Skybox::draw()
             glFogf(GL_FOG_START, 1.0) ;
             glFogf(GL_FOG_END, 10.0) ;
 
-*/
+
 
     // Enable/Disable features
     glPushAttrib(GL_ENABLE_BIT);
