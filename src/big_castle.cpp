@@ -16,31 +16,36 @@ void BigCastle::init(Viewer& v)
 
     first.init(v);
     second.init(v);
+    first.black = false;
+    second.black = false;
 }
 
 
 void BigCastle::draw()
 {
 
-    /*glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
+    //   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
     GLfloat ombre[4][4];
-    GLfloat light_pos[] = {100.0f, 100.0f, 100.0f, 0.0f};
+    GLfloat light_pos[] =  {100.0f, 20.0f, 100.0f, 0.0f};
 
-*/
+
     //dessin du cube en couleur normale
     glPushMatrix();
     glTranslatef(600,600,0);
     glRotatef(45,0,0,-1);
+        first.black = false;
     first.draw();
+
+    second.black = false;
     glTranslatef(0,0,70);
     second.draw();
     glPopMatrix();
 
-    /*
+
 
     //on initialise la transparence
     glEnable(GL_BLEND);
@@ -55,9 +60,12 @@ void BigCastle::draw()
     glPushMatrix();
     glTranslatef(600,600,0);
     glRotatef(45,0,0,-1);
-    glColor4f(0,0,0,100);
+    glColor4f(0,0,0,10);
+    glDisable(GL_LIGHT0);
+    first.black = true;
     first.draw();
     glTranslatef(0,0,70);
+    second.black = true;
     second.draw();
     glPopMatrix();
     glPopMatrix();
@@ -65,7 +73,7 @@ void BigCastle::draw()
     glDisable(GL_BLEND);
 
 
-*/
+
 }
 
 

@@ -18,4 +18,5 @@ private:
         Castle first;
         Castle second;
         bool burned;
+        bool black;
 };

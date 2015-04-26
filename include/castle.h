@@ -16,7 +16,7 @@ public:
     void wall(GLuint id);
     void tower();
     bool burned;
-
+bool black;
 private:
     GLfloat lenght ;
     GLfloat hight ;
