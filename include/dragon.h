@@ -74,6 +74,10 @@ private :
 
     int delay_before_castle_burn;
 
+    int delay_before_castle_burn2;
+
+    int delay_before_castle_burn3;
+
     int delay_before_circleing_around;
 
     double angle_around_castle;

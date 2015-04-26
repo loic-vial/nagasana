@@ -30,8 +30,10 @@ void Dragon::init(Viewer& v)
 
     state = ON_THE_GROUND;
     delay_before_castle_burn = 30;
+    delay_before_castle_burn2 = 60;
+    delay_before_castle_burn3 = 90;
     delay_before_circleing_around = 100;
-    angle_around_castle = 0;
+    angle_around_castle = 4;
 }
 
 void Dragon::set_castle_to_burn(BigCastle &castle)
@@ -41,7 +43,6 @@ void Dragon::set_castle_to_burn(BigCastle &castle)
 
 void Dragon::draw()
 {
-
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
@@ -50,10 +51,11 @@ void Dragon::draw()
 
     glPushMatrix();
 
-    glTranslatef(-600, -600, 0);
+    glTranslatef(-1100, -1100, 0);
     glScalef(1.5, 1.5, 1.5);
 
     glPushMatrix();
+
     glEnable(GL_LIGHT0);
     draw_with_color(true);
     glPopMatrix();
@@ -84,6 +86,13 @@ void Dragon::draw()
 void Dragon::draw_with_color(bool color)
 {
 
+    glTranslatef(position.x, position.y, position.z);
+    glRotatef(rotation.x, 1, 0, 0);
+    glRotatef(rotation.y, 0, 1, 0);
+    glRotatef(rotation.z, 0, 0, 1);
+    glScalef(2, 2, 2);
+
+
     body.black = !color;
     left_wing.black = !color;
     right_wing.black=!color;
@@ -102,11 +111,6 @@ void Dragon::draw_with_color(bool color)
     else glDisable(GL_TEXTURE_2D);
 
     glPushMatrix();
-
-    glTranslatef(position.x, position.y, position.z);
-    glRotatef(rotation.x, 1, 0, 0);
-    glRotatef(rotation.y, 0, 1, 0);
-    glRotatef(rotation.z, 0, 0, 1);
 
     glPushMatrix();
     glTranslatef(0, 45,34);
@@ -234,7 +238,7 @@ void Dragon::animate()
         {
             rotate_backward = false;
         }
-        if (position.z > 50)
+        if (position.z > 150)
         {
             state = FLY_TOWARD_CASTLE;
         }
@@ -262,7 +266,7 @@ void Dragon::animate()
         position.x += 2;
         position.y += 2;
         rotation.z -= abs((float)(-45 - rotation.z)) * 0.1;
-        if (position.x > 300 && position.y > 300)
+        if (position.x > 500 && position.y > 500)
         {
             state = FLY_AND_FIRE;
         }
@@ -289,13 +293,17 @@ void Dragon::animate()
         }
         fire.start();
         body.display_mouth();
-        if (delay_before_castle_burn < 0)
+        if (delay_before_castle_burn-- < 0)
         {
-            castle_to_burn->burn();
+            castle_to_burn->burn1();
         }
-        else
+        if (delay_before_castle_burn2-- < 0)
         {
-            delay_before_castle_burn--;
+            castle_to_burn->burn2();
+        }
+        if (delay_before_castle_burn3-- < 0)
+        {
+            castle_to_burn->burn3();
         }
         if (delay_before_circleing_around-- < 0)
         {
@@ -325,9 +333,9 @@ void Dragon::animate()
         fire.stop();
         angle_around_castle = angle_around_castle + 0.07;
         if (angle_around_castle > 2 * 3.14) angle_around_castle = 0;
-        position.x = 400 + 100 * cos(angle_around_castle);
-        position.y = 400 + 100 * sin(angle_around_castle);
-        rotation.z += abs((float)(45 - rotation.z)) * 0.1;
+        position.x = 700 + 300 * cos(angle_around_castle);
+        position.y = 700 + 300 * sin(angle_around_castle);
+        rotation.z = (angle_around_castle / 6.28) * 360;
     }
 
     position.x += velocity.x * 0.1;

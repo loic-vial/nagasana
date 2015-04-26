@@ -7,21 +7,25 @@ using namespace std;
 
 void Forest::init(Viewer &v)
 {
-    trees_nb = 10;
-    tree = new Tree();
-    tree->init(v);
+    trees_nb = 20;
+    for (int i = 0 ; i < trees_nb ; i++)
+    {
+        Tree* tree = new Tree();
+        tree->init(v);
+        float angle = -0.50 + (((float)i) / ((float)trees_nb)) * 3.14 * 1.0;
+        float posx = (1100 + rand() % 1000) * cos(angle);
+        float posy = (1100 + rand() % 1000) * sin(angle);
+        tree->position.x = posx;
+        tree->position.y = posy;
+        tree->rotation = rand() % 360;
+        trees.push_back(tree);
+    }
 }
 
 void Forest::draw()
 {
     for (int i = 0 ; i < trees_nb ; i++)
     {
-        glPushMatrix();
-        float angle = (((float)i) / ((float)trees_nb)) * 3.14 / 2.0;
-        float posx = 1000 * cos(angle) + rand()angle;
-        float posy = 1000 * sin(angle);
-        glTranslatef(posx, posy, 0);
-        tree->draw();
-        glPopMatrix();
+        trees[i]->draw();
     }
 }

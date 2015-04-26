@@ -14,8 +14,6 @@ class Forest : public Renderable
 
     private :
 
-        Tree* tree;
-
         int trees_nb;
 
         std::vector<Tree*> trees;

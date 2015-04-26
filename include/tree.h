@@ -2,6 +2,7 @@
 
 #include <renderable.h>
 #include <glut.h>
+#include <qglviewer.h>
 
 class Tree : public Renderable
 {
@@ -11,7 +12,13 @@ class Tree : public Renderable
 
         void draw();
 
+        qglviewer::Vec position;
+
+        float rotation;
+
     private :
 
-        GLuint texture;
+        GLuint texture_trunk;
+
+        GLuint texture_foliage;
 };

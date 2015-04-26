@@ -17,7 +17,6 @@ LIBS *= $${QGL}
 INCLUDEPATH += include
 
 HEADERS += \
-    include/cube.h \
     include/cylinder.h \
     include/dragon.h \
     include/dragonbody.h \
@@ -50,7 +49,6 @@ HEADERS += \
     include/tree.h
 
 SOURCES += \
-    src/cube.cpp \
     src/cylinder.cpp \
     src/dragon.cpp \
     src/dragonbody.cpp \
