@@ -12,7 +12,7 @@ DragonNeck::DragonNeck():
 
 void DragonNeck::init(Viewer&)
 {
-    scale_id = loadTexture("res/scale.jpg");
+    scale_id = loadTexture("res/scalea.jpg");
     black=false;
 }
 

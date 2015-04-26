@@ -24,7 +24,7 @@ void Ground::init(Viewer&)
 
 void Ground::draw()
 {
-
+glEnable(GL_LIGHT3);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture_id);
     //  GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_id));

@@ -151,6 +151,12 @@ void DragonBody::draw()
 
     //crete
     glPushMatrix();
+
+    GLfloat ambient[] = {0.4f,0.4f,0.4f,1.0f};
+    GLfloat specular[] = {1.0f,1.0f,1.0f};
+    glMaterialfv(GL_FRONT,GL_AMBIENT,ambient);
+    glMaterialfv(GL_FRONT,GL_SPECULAR,specular);
+
     glTranslatef(0, -2, 22);
     glRotatef(32, 1, 0, 0);
     if(black)
@@ -159,7 +165,7 @@ void DragonBody::draw()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-    else    glColor3f(0,0,0);
+    else    glColor3f(0,0,1);
     glEnable(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, cone_id);
@@ -224,7 +230,7 @@ void DragonBody::draw()
     righttop.draw();
     glPopMatrix();
 
-    glPushMatrix();
+  glPushMatrix();
     glTranslatef(-16, 19, -13);
     glRotatef(18,1,0,0);
     lefttop.draw();
@@ -242,8 +248,7 @@ void DragonBody::draw()
 
 void DragonBody::animate()
 {
-   // if(debut_rotate && rotate <=50)
-         if(rotate <=50)
+ if(debut_rotate && rotate <=50)
     {
         rotate +=1;
     }

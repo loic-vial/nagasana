@@ -44,9 +44,18 @@ void Dragon::set_castle_to_burn(BigCastle &castle)
 
 void Dragon::draw()
 {
+
+    GLfloat    surf_diffuse[]={0.8,0.0,0.0,1.0};
+    GLfloat surf_speculaire[]={0.5,0.5,0.5,1.0};
+    GLfloat   surf_shininess[]={1.0};
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,surf_diffuse);
+    glMaterialfv(GL_FRONT_AND_BACK ,GL_SPECULAR,surf_speculaire);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SHININESS,surf_shininess);
+
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
+
     GLfloat ombre[4][4];
     GLfloat light_pos[] =  {20.0f, 100.0f, 100.0f, 0.0f};
 
@@ -70,13 +79,13 @@ void Dragon::draw()
     glMultMatrixf((GLfloat *) ombre);
     //dessin de l'objet
 
-    //on dessine le cube en noir transparent
     glPushMatrix();
     glDisable(GL_LIGHT0);
     draw_with_color(false);
     glPopMatrix();
     glEnable(GL_LIGHT0);
     glPopMatrix();
+
 
     glDisable(GL_BLEND);
 
@@ -111,9 +120,9 @@ void Dragon::draw_with_color(bool color)
     else  glColor3ub(255,255,255);
 
 
-    if(color) { glEnable(GL_TEXTURE_2D);}
+ /* if(color) { glEnable(GL_TEXTURE_2D);}
     else glDisable(GL_TEXTURE_2D);
-
+*/
     glPushMatrix();
 
     glPushMatrix();
@@ -144,10 +153,19 @@ void Dragon::draw_with_color(bool color)
         glLighti(GL_LIGHT3,GL_SPOT_EXPONENT,10);
         glLightf(GL_LIGHT3, GL_CONSTANT_ATTENUATION, 8.0);
 
-
     }
     glPopMatrix();
 
+
+    if(color)
+    { glPushMatrix();
+        glTranslatef(0, 45,34);
+        glRotatef(-55,1,0,0);
+
+        glRotatef(90,0,1,0);
+        glScalef(2, 4, 2);
+        fire.draw();
+        glPopMatrix();}
 
     glDisable(GL_LIGHT2);
     glDisable(GL_LIGHT3);
@@ -189,18 +207,6 @@ void Dragon::draw_with_color(bool color)
     glRotatef(-wings_rotation, 0, 0, 1);
     left_wing.draw();
     glPopMatrix();
-
-
-//glDisable(GL_LIGHT2);
-    if(color)
-    { glPushMatrix();
-        glTranslatef(0, 45,34);
-       glRotatef(-55,1,0,0);
-
-        glRotatef(90,0,1,0);
-        glScalef(2, 4, 2);
-        fire.draw();
-        glPopMatrix();}
 
     glPopMatrix();
 

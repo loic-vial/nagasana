@@ -16,6 +16,8 @@ void DragonLegBackward::init(Viewer&)
 {
     scale_id = loadTexture("res/scale.jpg");
     black = false;
+
+    debut_rotate=false;
 }
 
 void DragonLegBackward::draw()
@@ -28,7 +30,7 @@ void DragonLegBackward::draw()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(255,255,255);
+    else  glColor3ub(255,255,255);
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, scale_id);
@@ -44,8 +46,8 @@ void DragonLegBackward::draw()
     first_part.draw();
     glTranslatef(0,0,12);
     gluSphere(joint,1.5,10,10);
-
     glPopMatrix();
+
 
     glPushMatrix();
     glTranslatef(0,0,12);
@@ -56,10 +58,13 @@ void DragonLegBackward::draw()
     glPushMatrix();
     glTranslatef(0,7.8,7.5);
     gluSphere(joint,1,10,10);
-
     glPopMatrix();
 
     gluDeleteQuadric(joint);
 
 }
 
+void DragonLegBackward::animate()
+{
+
+}
