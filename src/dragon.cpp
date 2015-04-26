@@ -30,6 +30,11 @@ void Dragon::init(Viewer& v)
     state = ON_THE_GROUND;
 }
 
+void Dragon::set_castle_to_burn(BigCastle &castle)
+{
+    this->castle_to_burn = &castle;
+}
+
 void Dragon::draw()
 {
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
@@ -121,7 +126,10 @@ void Dragon::draw_with_color(bool color)
     glLighti(GL_LIGHT3,GL_SPOT_EXPONENT,10);
     glLightf(GL_LIGHT3, GL_CONSTANT_ATTENUATION, 8.0);
 
+    glPushMatrix();
+    glScalef(2, 4, 2);
     fire.draw();
+    glPopMatrix();
 
     }
  glPopMatrix();
@@ -169,7 +177,7 @@ void Dragon::animate()
     {
         if (rotate_backward)
         {
-            velocity = Vec(0, 0, 10);
+            velocity = Vec(0, 0, 15);
             wings_rotation -= 5;
         }
         else
@@ -240,6 +248,7 @@ void Dragon::animate()
         }
         fire.start();
         body.display_mouth();
+        castle_to_burn->burn();
     }
 
     position.x += velocity.x * 0.1;

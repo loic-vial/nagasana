@@ -15,12 +15,15 @@ int main(int argc, char** argv)
 
     Viewer viewer;
 
+    Dragon* dragon = new Dragon();
+    BigCastle* castle = new BigCastle();
 
     viewer.addRenderable(new Skybox());
     viewer.addRenderable(new Ground());
-    viewer.addRenderable(new BigCastle());
-   viewer.addRenderable(new Dragon());
+    viewer.addRenderable(castle);
+    viewer.addRenderable(dragon);
 
+    dragon->set_castle_to_burn(*castle);
 
     viewer.setWindowTitle("Nagasana");
     viewer.show();
