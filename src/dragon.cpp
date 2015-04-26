@@ -28,8 +28,7 @@ void Dragon::init(Viewer& v)
     velocity = Vec(0, 0, 0);
     viewer = &v;
 
-   // state = ON_THE_GROUND;
-    state = FLY_AND_FIRE;
+    state = ON_THE_GROUND;
     delay_before_castle_burn = 30;
     delay_before_castle_burn2 = 60;
     delay_before_castle_burn3 = 90;
