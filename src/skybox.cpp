@@ -35,7 +35,7 @@ void Skybox::draw()
 
     glEnable(GL_LIGHT0);
     GLfloat ambient[] = {0.4f,0.4f,0.4f,1.0f};
-    GLfloat diffuse[] = {0.9f,0.3f,0.3f,1.0f};
+    //GLfloat diffuse[] = {0.9f,0.3f,0.3f,1.0f};
     GLfloat light0_position [] = {20.0f, 100.0f, 100.0f, 0.0f};
     glLightfv(GL_LIGHT0,GL_AMBIENT,ambient);
    // glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuse);
