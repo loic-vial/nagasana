@@ -35,7 +35,7 @@ void BigCastle::draw()
 
     //dessin du cube en couleur normale
     glPushMatrix();
-    glTranslatef(600,600,0);
+    glTranslatef(0,0,0);
     glRotatef(45,0,0,-1);
         first.black = false;
     first.draw();
@@ -58,7 +58,7 @@ void BigCastle::draw()
 
     //on dessine le cube en noir transparent
     glPushMatrix();
-    glTranslatef(600,600,0);
+    glTranslatef(0,0,0);
     glRotatef(45,0,0,-1);
     glColor4f(0,0,0,10);
     glDisable(GL_LIGHT0);

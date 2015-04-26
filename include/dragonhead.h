@@ -8,15 +8,27 @@ class DragonHead : public Renderable
 {
     public :
 
-    DragonHead();
+        DragonHead();
+
         void init(Viewer&);
-void eye();
-void ear();
-void mouth();
+
+        void eye();
+
+        void ear();
+
+        void mouth();
+
         void draw();
-private:
+
+        void display_mouth();
+
+    private:
+
         Cylinder face;
+
         GLuint eye_id;
 
         GLuint scale_id;
+
+        bool mouth_displayed;
 };

@@ -35,6 +35,10 @@ void DragonBody::init(Viewer& v)
     scale_id = loadTexture("res/scale.jpg");
 }
 
+void DragonBody::display_mouth()
+{
+    head.display_mouth();
+}
 
 void DragonBody::draw()
 {

@@ -8,14 +8,14 @@
 
 class Dragon : public Renderable
 {
-public:
+    public:
 
-    void init(Viewer&);
+        void init(Viewer&);
 
-    void draw();
+        void draw();
 
         void draw1();
-    void animate();
+        void animate();
 
 
         void keyPressEvent(QKeyEvent*, Viewer&);
@@ -23,15 +23,15 @@ public:
 
 
 
-private :
+    private :
 
-    DragonBody body;
+        DragonBody body;
 
-    DragonWing left_wing;
+        DragonWing left_wing;
 
-    DragonWing right_wing;
+        DragonWing right_wing;
 
-  DragonTail tail;
+        DragonTail tail;
 
 
         Fire fire;
@@ -52,5 +52,17 @@ private :
 
         qglviewer::Vec rotation;
 
+        qglviewer::Vec velocity;
+
         QGLViewer* viewer;
+
+        enum State
+        {
+            ON_THE_GROUND,
+            FLY_HOLD_POSITION,
+            FLY_TOWARD_CASTLE,
+            FLY_AND_FIRE
+        };
+
+        State state;
 };
