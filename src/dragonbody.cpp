@@ -33,8 +33,8 @@ void DragonBody::init(Viewer& v)
     rightlegfor.init(v);
     cone_id = loadTexture("res/corne.jpg");
     scale_id = loadTexture("res/scale.jpg");
-
-     black=false;
+    is_fired = false;
+    black=false;
 
 }
 
@@ -96,7 +96,8 @@ void DragonBody::draw()
     rightbottom.draw();
     glPopMatrix();
 
-    glEnable(GL_LIGHT2);
+    if(is_fired) glEnable(GL_LIGHT2);
+    else glDisable(GL_LIGHT2);
     body.setId(scale_id);
     glEnable(GL_TEXTURE_2D);
     glPushMatrix();
@@ -152,7 +153,7 @@ void DragonBody::draw()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-    else    glColor3f(0.5,0.5,1);
+    else    glColor3f(0,0,0);
     glEnable(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, cone_id);
@@ -188,7 +189,8 @@ void DragonBody::draw()
     }
     else  glColor3ub(255,255,255);
 
-    glEnable(GL_LIGHT2);
+    if(is_fired) glEnable(GL_LIGHT2);
+    else glDisable(GL_LIGHT2);
 
     glPushMatrix();
 

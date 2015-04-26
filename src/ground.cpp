@@ -26,8 +26,8 @@ void Ground::draw()
 {
 
     glEnable(GL_TEXTURE_2D);
-        glBindTexture(GL_TEXTURE_2D, texture_id);
-  //  GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_id));
+    glBindTexture(GL_TEXTURE_2D, texture_id);
+    //  GLCHECK(glBindTexture(GL_TEXTURE_2D, texture_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
     glPushMatrix();
@@ -46,6 +46,6 @@ void Ground::draw()
     glEnd();
 
     glPopMatrix();
-
+    glDisable(GL_FOG);
     glDisable(GL_TEXTURE_2D);
 }

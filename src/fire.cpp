@@ -50,6 +50,7 @@ void Fire::createSystemScene()
 
 void Fire::draw()
 {
+
     if (started)
     {
         glPushMatrix();

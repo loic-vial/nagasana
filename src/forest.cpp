@@ -18,7 +18,7 @@ void Forest::draw()
     {
         glPushMatrix();
         float angle = (((float)i) / ((float)trees_nb)) * 3.14 / 2.0;
-        float posx = 1000 * cos(angle);
+        float posx = 1000 * cos(angle) + rand()angle;
         float posy = 1000 * sin(angle);
         glTranslatef(posx, posy, 0);
         tree->draw();

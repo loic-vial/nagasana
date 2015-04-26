@@ -23,6 +23,7 @@ public :
     void display_mouth();
 
     bool black;
+    bool is_fired;
 private :
     Cylinder body;
     DragonLegForward leftlegfor;

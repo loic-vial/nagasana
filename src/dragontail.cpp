@@ -37,6 +37,7 @@ void DragonTail::draw()
     vector<Sphere*>::iterator itP;
     for (itP = particles.begin(); itP != particles.end(); ++itP)
     {
+        (*itP)->black = black;
         (*itP)->draw();
     }
 
@@ -55,8 +56,7 @@ void DragonTail::draw()
         GLUquadric* params = gluNewQuadric();
         gluQuadricDrawStyle(params,GLU_FILL);
         gluQuadricNormals(params, GLU_SMOOTH);
-        if(!black) { gluQuadricTexture(params,GL_TRUE); }
-        else gluQuadricTexture(params,GL_FALSE);
+        gluQuadricTexture(params, GL_TRUE);
         renderCylinder(particles[i-1]->getPosition(), particles[i]->getPosition(),
                        particles[i-1]->radius, particles[i]->radius, 15, params);
         gluDeleteQuadric(params);

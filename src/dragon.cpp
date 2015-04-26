@@ -27,6 +27,7 @@ void Dragon::init(Viewer& v)
     rotation = Vec(0, 0, 0);
     velocity = Vec(0, 0, 0);
     viewer = &v;
+
     state = ON_THE_GROUND;
     delay_before_castle_burn = 30;
     delay_before_circleing_around = 100;
@@ -40,6 +41,7 @@ void Dragon::set_castle_to_burn(BigCastle &castle)
 
 void Dragon::draw()
 {
+
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
@@ -67,10 +69,10 @@ void Dragon::draw()
 
     //on dessine le cube en noir transparent
     glPushMatrix();
-       glDisable(GL_LIGHT0);
+    glDisable(GL_LIGHT0);
     draw_with_color(false);
     glPopMatrix();
-
+    glEnable(GL_LIGHT0);
     glPopMatrix();
 
     glDisable(GL_BLEND);
@@ -87,9 +89,17 @@ void Dragon::draw_with_color(bool color)
     right_wing.black=!color;
     tail.black=!color;
 
-    if(!black) { glEnable(GL_TEXTURE_2D);}
-    else glDisable(GL_TEXTURE_2D);
+    if(!color)
+    {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glColor4ub(0,0,0,200);
+    }
+    else  glColor3ub(255,255,255);
 
+
+    if(color) { glEnable(GL_TEXTURE_2D);}
+    else glDisable(GL_TEXTURE_2D);
 
     glPushMatrix();
 
@@ -101,54 +111,60 @@ void Dragon::draw_with_color(bool color)
     glPushMatrix();
     glTranslatef(0, 45,34);
     glRotatef(-55,1,0,0);
-
     if(color){
-    glEnable(GL_LIGHT2);
-    GLfloat ambient2[] = {0.15f,0.15f,0.15f,1.0f};
-    GLfloat diffuse2[] = {10.0f,-0.39f,-0.5f,1.0f};
-    GLfloat light2_position [] = {0.0f, 0.0f, 0.0f, 1.0f};
+        GLfloat ambient2[] = {0.15f,0.15f,0.15f,1.0f};
+        GLfloat diffuse2[] = {10.0f,-0.39f,-0.5f,1.0f};
+        GLfloat light2_position [] = {0.0f, 0.0f, 0.0f, 1.0f};
+        GLfloat light2_direction [] = {0.0f, -1.0f,-0.5f};
+        glLightfv(GL_LIGHT2,GL_AMBIENT,ambient2);
+        glLightfv(GL_LIGHT2,GL_DIFFUSE,diffuse2);
+        glLightfv(GL_LIGHT2,GL_POSITION,light2_position);
+        glLightfv(GL_LIGHT2,GL_SPOT_DIRECTION,light2_direction);
+        glLighti(GL_LIGHT2,GL_SPOT_CUTOFF,90);
+        glLighti(GL_LIGHT2,GL_SPOT_EXPONENT,1);
 
-    GLfloat light2_direction [] = {0.0f, -1.0f,-0.5f};
-    glLightfv(GL_LIGHT2,GL_AMBIENT,ambient2);
-    glLightfv(GL_LIGHT2,GL_DIFFUSE,diffuse2);
-    glLightfv(GL_LIGHT2,GL_POSITION,light2_position);
-    glLightfv(GL_LIGHT2,GL_SPOT_DIRECTION,light2_direction);
-    glLighti(GL_LIGHT2,GL_SPOT_CUTOFF,90);
-    glLighti(GL_LIGHT2,GL_SPOT_EXPONENT,1);
+        glEnable(GL_LIGHT3);
+        GLfloat ambient3[] = {0.15f,0.15f,0.15f,1.0f};
+        GLfloat diffuse3[] = {10.0f,-0.39f,-0.5f,1.0f};
+        GLfloat light3_position [] = {0.0f, 10.0f, 0.0f, 1.0f};
+        GLfloat light3_direction [] = {0.0f, 0.8f,-0.0f};
+        glLightfv(GL_LIGHT3,GL_AMBIENT,ambient3);
+        glLightfv(GL_LIGHT3,GL_DIFFUSE,diffuse3);
+        glLightfv(GL_LIGHT3,GL_POSITION,light3_position);
+        glLightfv(GL_LIGHT3,GL_SPOT_DIRECTION,light3_direction);
+        glLighti(GL_LIGHT3,GL_SPOT_CUTOFF,70);
+        glLighti(GL_LIGHT3,GL_SPOT_EXPONENT,10);
+        glLightf(GL_LIGHT3, GL_CONSTANT_ATTENUATION, 8.0);
 
-    glEnable(GL_LIGHT3);
-    GLfloat ambient3[] = {0.15f,0.15f,0.15f,1.0f};
-    GLfloat diffuse3[] = {10.0f,-0.39f,-0.5f,1.0f};
-    GLfloat light3_position [] = {0.0f, 10.0f, 0.0f, 1.0f};
-    GLfloat light3_direction [] = {0.0f, 0.8f,-0.0f};
-    glLightfv(GL_LIGHT3,GL_AMBIENT,ambient3);
-    glLightfv(GL_LIGHT3,GL_DIFFUSE,diffuse3);
-    glLightfv(GL_LIGHT3,GL_POSITION,light3_position);
-    glLightfv(GL_LIGHT3,GL_SPOT_DIRECTION,light3_direction);
-    glLighti(GL_LIGHT3,GL_SPOT_CUTOFF,70);
-    glLighti(GL_LIGHT3,GL_SPOT_EXPONENT,10);
-    glLightf(GL_LIGHT3, GL_CONSTANT_ATTENUATION, 8.0);
-
-    glPushMatrix();
-    glScalef(2, 4, 2);
-    fire.draw();
-    glPopMatrix();
 
     }
- glPopMatrix();
+    glPopMatrix();
+
+
     glDisable(GL_LIGHT2);
+    glDisable(GL_LIGHT3);
     glPushMatrix();
     glTranslatef(-18, 0, 4);
     tail.draw();
     glPopMatrix();
 
-    glEnable(GL_LIGHT2);
+
+
+    if(state == FLY_AND_FIRE)
+    {
+        glEnable(GL_LIGHT2);
+        body.is_fired = true;
+    }
+    else
+    {
+        glDisable(GL_LIGHT2);
+        body.is_fired = false;
+    }
     glPushMatrix();
     glTranslatef(0, 0, -5);
     glRotatef(-1.8,1,0,0);
     body.draw();
     glPopMatrix();
-    //  glDisable(GL_LIGHT2);
 
     glPushMatrix();
     glTranslatef(2, 16, 22);
@@ -166,7 +182,29 @@ void Dragon::draw_with_color(bool color)
     left_wing.draw();
     glPopMatrix();
 
+
+//glDisable(GL_LIGHT2);
+    if(color)
+    { glPushMatrix();
+        glTranslatef(0, 45,34);
+       glRotatef(-55,1,0,0);
+
+        glRotatef(90,0,1,0);
+        glScalef(2, 4, 2);
+        fire.draw();
+        glPopMatrix();}
+
     glPopMatrix();
+
+
+    if(state == FLY_AND_FIRE)
+    {
+        glEnable(GL_LIGHT3);
+    }
+    else
+    {
+        glDisable(GL_LIGHT3);
+    }
 
 }
 

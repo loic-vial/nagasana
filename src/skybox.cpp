@@ -41,7 +41,10 @@ void Skybox::draw()
     glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuse);
     glLightfv(GL_LIGHT0,GL_POSITION,light0_position);
 
-/*
+
+
+
+    /*
     glColor4f(1,1,1,1);
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, texture_sky);
@@ -55,16 +58,15 @@ void Skybox::draw()
     glDisable(GL_TEXTURE_2D);
 */
 
-    /*    glEnable(GL_FOG) ;
-            GLfloat fogcolor[4] = {255, 0, 0, 1} ;
-            GLint fogmode = GL_EXP ;
-            glFogi (GL_FOG_MODE, fogmode) ;
-            glFogfv(GL_FOG_COLOR, fogcolor) ;
-            glFogf(GL_FOG_DENSITY, 0.0005) ;
-            glFogf(GL_FOG_START, 1.0) ;
-            glFogf(GL_FOG_END, 10.0) ;
-
-*/
+    glEnable(GL_FOG) ;
+    GLfloat fogcolor[4] = {0.2, 0.2, 0.2, 1} ;
+    GLint fogmode = GL_EXP ;
+    glFogi (GL_FOG_MODE, fogmode) ;
+    glFogfv(GL_FOG_COLOR, fogcolor) ;
+    glFogf(GL_FOG_DENSITY, 0.0002) ;
+    glFogf(GL_FOG_START, 1.0) ;
+    glFogf(GL_FOG_END, 10.0) ;
+glFogf(GL_FOG_COORD_SRC,GL_FRAGMENT_DEPTH);
 
     // Enable/Disable features
     glPushAttrib(GL_ENABLE_BIT);
