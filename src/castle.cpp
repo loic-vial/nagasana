@@ -121,51 +121,14 @@ void Castle::draw()
     glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
-    if(burned)
-    {
-        /*   glPushMatrix();
-    glRotatef(90,1,0,0);
+if(!black){
+    glPushMatrix();
+   glRotatef(90,1,0,0);
     glRotatef(180,0,1,0);
-    glTranslatef(lenght/2,hight,lenght/2);
-    fire.draw();
-    glPopMatrix();*/
-
-        /*   glPushMatrix();
-    glRotatef(90,1,0,0);
-    glRotatef(180,0,1,0);
-    glTranslatef(-lenght/2,hight,lenght/2);
+    glScaled(radius/2,5,radius/2);
     fire.draw();
     glPopMatrix();
-*/
-        glPushMatrix();
-        glRotatef(90,1,0,0);
-        glRotatef(180,0,1,0);
-        glTranslatef(-lenght/2,hight,-lenght/2);
-        fire.draw();
-        glPopMatrix();
-
-        glPushMatrix();
-        glRotatef(90,1,0,0);
-        glRotatef(180,0,1,0);
-        glTranslatef(lenght/2,hight,-lenght/2);
-        fire.draw();
-        glPopMatrix();
-
-        glPushMatrix();
-        glRotatef(90,1,0,0);
-        glRotatef(180,0,1,0);
-        glTranslatef(lenght/4,0,-lenght/2-2);
-        fire.draw();
-        glPopMatrix();
-
-        glPushMatrix();
-        glRotatef(90,1,0,0);
-        glRotatef(180,0,1,0);
-        glTranslatef(-lenght/4,0,-lenght/2-2);
-        fire.draw();
-        glPopMatrix();
-    }
-
+}
 }
 
 
@@ -186,14 +149,14 @@ void Castle::tower()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(255,255,255);
+    else  glColor3ub(255,255,255);
 
     GLUquadric* tower = gluNewQuadric();
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D,wall_id);
     gluQuadricDrawStyle(tower,GLU_FILL);
-   if(!black) { gluQuadricTexture(tower,GL_TRUE); }
-   else gluQuadricTexture(tower,GL_FALSE);
+    if(!black) { gluQuadricTexture(tower,GL_TRUE); }
+    else gluQuadricTexture(tower,GL_FALSE);
     gluCylinder(tower,radius+3,radius,hight,10,10);
     glTranslatef(0, 0,hight);
 
@@ -221,7 +184,7 @@ void Castle::wall(GLuint id)
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(255,255,255);
+    else  glColor3ub(255,255,255);
     glBindTexture(GL_TEXTURE_2D, id);
     //GLCHECK(glBindTexture(GL_TEXTURE_2D, id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER,GL_NEAREST);
@@ -290,6 +253,6 @@ void Castle::wall(GLuint id)
 
     glEnd();
     glDisable(GL_TEXTURE_2D);
-        glDisable(GL_BLEND);
+    glDisable(GL_BLEND);
 
 }

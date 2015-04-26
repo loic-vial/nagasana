@@ -23,7 +23,7 @@ void BigCastle::init(Viewer& v)
 
 void BigCastle::draw()
 {
-   GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
+    GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
     GLfloat ombre[4][4];
@@ -75,7 +75,6 @@ void BigCastle::animate()
     burned = false;
     if(burned)
     {
-
         first.burned = burned;
         second.burned = burned;
         first.animate();
