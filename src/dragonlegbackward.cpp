@@ -15,15 +15,21 @@ DragonLegBackward::DragonLegBackward():
 void DragonLegBackward::init(Viewer&)
 {
     scale_id = loadTexture("res/scale.jpg");
+    black = false;
 }
 
 void DragonLegBackward::draw()
 {
     first_part.setId(scale_id);
     second_part.setId(scale_id);
-
     glPushMatrix();
-    glColor3ub(255,255,255);
+    if(black) {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glColor4ub(0,0,0,200);
+    }
+        else  glColor3ub(255,255,255);
+
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, scale_id);
     //   GLCHECK(glBindTexture(GL_TEXTURE_2D,scale_id));
@@ -31,7 +37,8 @@ void DragonLegBackward::draw()
 
     GLUquadric* joint = gluNewQuadric();
     gluQuadricDrawStyle(joint,GLU_FILL);
-    gluQuadricTexture(joint,GL_TRUE);
+    if(!black) { gluQuadricTexture(joint,GL_TRUE); }
+    else gluQuadricTexture(joint,GL_FALSE);
     gluSphere(joint,2.5,10,10);
 
     first_part.draw();

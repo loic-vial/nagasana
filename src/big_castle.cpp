@@ -13,7 +13,7 @@ BigCastle::BigCastle():
 
 void BigCastle::init(Viewer& v)
 {
-
+    burned = false;
     first.init(v);
     second.init(v);
     first.black = false;
@@ -23,28 +23,22 @@ void BigCastle::init(Viewer& v)
 
 void BigCastle::draw()
 {
-
-    //   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
     GLfloat ombre[4][4];
-    GLfloat light_pos[] =  {100.0f, 20.0f, 100.0f, 0.0f};
-
-
-    //dessin du cube en couleur normale
+    GLfloat light_pos[] =  {20.0f, 100.0f, 100.0f, 0.0f};
     glPushMatrix();
-    glTranslatef(600,600,0);
+    glTranslatef(0,0,0);
     glRotatef(45,0,0,-1);
-        first.black = false;
+    glScalef(3, 3, 3);
+    first.black = false;
     first.draw();
 
     second.black = false;
     glTranslatef(0,0,70);
     second.draw();
     glPopMatrix();
-
 
 
     //on initialise la transparence
@@ -58,8 +52,9 @@ void BigCastle::draw()
 
     //on dessine le cube en noir transparent
     glPushMatrix();
-    glTranslatef(600,600,0);
+    glTranslatef(0,0,0);
     glRotatef(45,0,0,-1);
+    glScalef(3, 3, 3);
     glColor4f(0,0,0,10);
     glDisable(GL_LIGHT0);
     first.black = true;
@@ -79,15 +74,25 @@ void BigCastle::draw()
 
 void BigCastle::animate()
 {
-    burned = false;
-    if(burned)
-    {
-
-        first.burned = burned;
-        second.burned = burned;
-        first.animate();
-        second.animate();
-    }
+    first.animate();
+    second.animate();
 }
 
+void BigCastle::burn1()
+{
+    first.burn1();
+    second.burn1();
+}
+
+void BigCastle::burn2()
+{
+    first.burn2();
+    second.burn2();
+}
+
+void BigCastle::burn3()
+{
+    first.burn3();
+    second.burn3();
+}
 

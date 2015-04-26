@@ -20,6 +20,7 @@ void DragonWing::init(Viewer& viewer)
     scale_id = loadTexture("res/scale.jpg");
     first_membrane.init(viewer);
     second_membrane.init(viewer);
+    black=false;
 }
 
 void DragonWing::draw()
@@ -28,19 +29,27 @@ void DragonWing::draw()
     first_part.setId(scale_id);
     second_part.setId(scale_id);
     member.setId(scale_id);
+    first_membrane.black= black;
+    second_membrane.black = black;
 
-    glEnable(GL_TEXTURE_2D);
+    if(black) {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glColor4ub(0,0,0,200);
+    }
+    else  glColor3ub(255,255,255);
 
+    if(black) glDisable(GL_TEXTURE_2D);
+    else glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, scale_id);
-    //  GLCHECK(glBindTexture(GL_TEXTURE_2D, eye_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
     glPushMatrix();
     GLUquadric* body = gluNewQuadric();
     gluQuadricDrawStyle(body,GLU_FILL);
-    gluQuadricTexture(body,GL_TRUE);
+    if(!black) { gluQuadricTexture(body,GL_TRUE); }
+    else gluQuadricTexture(body,GL_FALSE);
     gluSphere(body,1.5,10,10);
-
     first_part.draw();
     glPopMatrix();
 
@@ -53,7 +62,8 @@ void DragonWing::draw()
     glRotatef(50,1,0,0);
     GLUquadric* joint = gluNewQuadric();
     gluQuadricDrawStyle(joint,GLU_FILL);
-    gluQuadricTexture(joint,GL_TRUE);
+    if(!black) { gluQuadricTexture(joint,GL_TRUE); }
+    else gluQuadricTexture(joint,GL_FALSE);
     gluSphere(joint,1,10,10);
 
     glPopMatrix();
@@ -79,6 +89,5 @@ void DragonWing::draw()
 
 void DragonWing::animate()
 {
-    cout << "hey " << endl;
-    //rotation += 10;
+
 }

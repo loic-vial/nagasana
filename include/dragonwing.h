@@ -16,6 +16,8 @@ class DragonWing : public Renderable
         void draw();
 
         void animate();
+
+        bool black;
 private :
     Cylinder first_part;
     Cylinder second_part;

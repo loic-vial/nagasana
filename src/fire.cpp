@@ -4,46 +4,14 @@
 #include <viewer.h>
 #include <fire.h>
 
-
-Fire::Fire()
-    :
-      defaultGravity(0.0, 0.0, -10.0),
-      defaultMediumViscosity(1.0),
-      dt(0.1)
-{
-    // default values reset in init()
-}
-
 Fire::~Fire()
 {
     clear();
 }
 
-
-void Fire::clear()
-{
-    std::vector<FireParticle *>::iterator itP;
-    for (itP = particles.begin(); itP != particles.end(); ++itP) {
-        delete(*itP);
-    }
-    particles.clear();
-}
-
-
-void Fire::setGravity(bool onOff)
-{
-    gravity = (onOff ? defaultGravity : qglviewer::Vec());
-}
-
-void Fire::setViscosity(bool onOff)
-{
-    mediumViscosity = (onOff ? defaultMediumViscosity : 0.0);
-}
-
-
-///////////////////////////////////////////////////////////////////////////////
 void Fire::init(Viewer&)
 {
+    started = false;
     toggleGravity = true;
     toggleViscosity = true;
     clear();
@@ -68,8 +36,6 @@ void Fire::init(Viewer&)
     createSystemScene();
 }
 
-
-///////////////////////////////////////////////////////////////////////////////
 void Fire::createSystemScene()
 {
     for(int i = 1; i<nbParticules; i++){
@@ -82,98 +48,92 @@ void Fire::createSystemScene()
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
 void Fire::draw()
 {
-    // FireParticles
-    glColor3f(1,0,0);
-    glRotatef(90,0,1,0);
-    std::vector<FireParticle *>::iterator itP;
-    for (itP = particles.begin(); itP != particles.end(); ++itP) {
 
-        (*itP)->draw();
+    if (started)
+    {
+        glPushMatrix();
+        glColor3f(1,0,0);
+        glRotatef(90,0,1,0);
+        std::vector<FireParticle *>::iterator itP;
+        for (itP = particles.begin(); itP != particles.end(); ++itP) {
+
+            (*itP)->draw();
+        }
+        glPopMatrix();
     }
-        glColor3f(1,1,1);
 }
 
-
-///////////////////////////////////////////////////////////////////////////////
 void Fire::animate()
 {
+    if (started)
+    {
+        std::map<const FireParticle *, qglviewer::Vec> forces;
 
-    //======== 1. Compute all forces
-    // map to accumulate the forces to apply on each particle
-    std::map<const FireParticle *, qglviewer::Vec> forces;
+        std::vector<FireParticle *>::iterator itP;
+        for (itP = particles.begin(); itP != particles.end(); ++itP)
+        {
+            FireParticle *p = *itP;
+            forces[p] = gravity * p->getMass() - mediumViscosity * p->getVelocity();
+        }
 
-    // weights and viscosity
-    std::vector<FireParticle *>::iterator itP;
-    for (itP = particles.begin(); itP != particles.end(); ++itP) {
-        FireParticle *p = *itP;
-        forces[p] = gravity * p->getMass() - mediumViscosity * p->getVelocity();
-    }
+        for (itP = particles.begin(); itP != particles.end(); ++itP)
+        {
+            FireParticle *p = *itP;
+            // x' = x' + dt * x''
+            if(p->getMass() != 0.0)
+                p->incrVelocity(dt * forces[p] / p->getMass());
+        }
 
+        for (itP = particles.begin(); itP != particles.end(); ++itP)
+        {
+            FireParticle *p = *itP;
+            // q = q + dt * v
+            p->incrLife(-1);
+        }
 
-    //======== 2. Integration scheme
-    // update particles velocity (qu. 1)
-    for (itP = particles.begin(); itP != particles.end(); ++itP) {
-        FireParticle *p = *itP;
-        // x' = x' + dt * x''
-        if(p->getMass() != 0.0)
-            p->incrVelocity(dt * forces[p] / p->getMass());
-    }
-
-    // update life
-    for (itP = particles.begin(); itP != particles.end(); ++itP) {
-        FireParticle *p = *itP;
-        // q = q + dt * v
-        p->incrLife(-1);
-    }
-
-    // update particles positions
-    for (itP = particles.begin(); itP != particles.end(); ++itP) {
-        FireParticle *p = *itP;
-        // q = q + dt * v
-        if(p->life > 0){
-            p->incrPosition(dt * p->getVelocity());
-        } else{
-            float theta = M_PI * myRand(0,2);
-            float phi = M_PI * myRand(0,1);
-            qglviewer::Vec pos = initPos + qglviewer::Vec(r*cos(theta)*cos(phi), r*sin(theta)*cos(phi), r*sin(phi));
-            p->setPosition(pos);
-            p->setLife(myRand(20,50));
-            p->red = 1; p->green = myRand(0,0.01); p->blue = 0;
+        for (itP = particles.begin(); itP != particles.end(); ++itP)
+        {
+            FireParticle *p = *itP;
+            // q = q + dt * v
+            if(p->life > 0)
+            {
+                p->incrPosition(dt * p->getVelocity());
+            }
+            else
+            {
+                float theta = M_PI * myRand(0,2);
+                float phi = M_PI * myRand(0,1);
+                qglviewer::Vec pos = initPos + qglviewer::Vec(r*cos(theta)*cos(phi), r*sin(theta)*cos(phi), r*sin(phi));
+                p->setPosition(pos);
+                p->setLife(myRand(20,50));
+                p->red = 1; p->green = myRand(0,0.01); p->blue = 0;
+            }
         }
     }
 }
 
-
-void Fire::keyPressEvent(QKeyEvent* e, Viewer& viewer)
+void Fire::clear()
 {
-    // Get event modifiers key
-    const Qt::KeyboardModifiers modifiers = e->modifiers();
-
-    /* Controls added for Lab Session 6 "Physicall Modeling" */
-    if ((e->key()==Qt::Key_G) && (modifiers==Qt::NoButton)) {
-        toggleGravity = !toggleGravity;
-        setGravity(toggleGravity);
-        viewer.displayMessage("Set gravity to "
-                              + (toggleGravity ? QString("true") : QString("false")));
-
-    } else if ((e->key()==Qt::Key_V) && (modifiers==Qt::NoButton)) {
-        toggleViscosity = !toggleViscosity;
-        setViscosity(toggleViscosity);
-        viewer.displayMessage("Set viscosity to "
-                              + (toggleViscosity ? QString("true") : QString("false")));
-
-    } else if ((e->key()==Qt::Key_Home) && (modifiers==Qt::NoButton)) {
-        // stop the animation, and reinit the scene
-        viewer.stopAnimation();
-        init(viewer);
-        toggleGravity = true;
-        toggleViscosity = true;
+    std::vector<FireParticle *>::iterator itP;
+    for (itP = particles.begin(); itP != particles.end(); ++itP) {
+        delete(*itP);
     }
-}	
+    particles.clear();
+}
+
+void Fire::start()
+{
+    started = true;
+}
+
+void Fire::stop()
+{
+    started = false;
+}
 
 double Fire::myRand(double min, double max)
-{   return (double) (min + ((float) rand() / RAND_MAX * (max - min + 1.0)));
+{
+    return (double) (min + ((float) rand() / RAND_MAX * (max - min + 1.0)));
 }

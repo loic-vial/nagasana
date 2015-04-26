@@ -37,7 +37,8 @@ void Membrane::draw()
 
     glBegin(GL_POLYGON);
     glNormal3f(-1, 0,0);
-    glColor4ub(255,255,255,150);
+    if(black)   glColor4ub(0,0,0,200);
+        else  glColor4ub(255,255,255,150);
     glVertex3fv(mid);
 
     glVertex3fv(begin);
@@ -51,7 +52,6 @@ void Membrane::draw()
     glEnd();
 
     glDisable(GL_BLEND);
-    glColor3ub(255,255,255);
     glPopMatrix();
 }
 

@@ -16,6 +16,7 @@ public :
 
     void draw();
 
+    bool black;
 private :
     Cylinder first_part;
     Cylinder second_part;

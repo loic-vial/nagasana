@@ -17,6 +17,6 @@ class Skybox : public Renderable
 
     private :
 
-        GLuint texture_back, texture_front, texture_top, texture_left, texture_right;
+        GLuint texture_back, texture_front, texture_top, texture_left, texture_right, texture_sky;
 
 };

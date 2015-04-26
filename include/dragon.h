@@ -4,53 +4,82 @@
 #include <dragonwing.h>
 #include <dragontail.h>
 #include <fire.h>
+#include <big_castle.h>
 #include <qglviewer.h>
 
 class Dragon : public Renderable
 {
-public:
+    public:
 
-    void init(Viewer&);
+        void init(Viewer&);
 
-    void draw();
+        void draw();
 
         void draw1();
+
+        void set_castle_to_burn(BigCastle& castle);
+
+    void draw_with_color(bool black);
+
     void animate();
 
-
-        void keyPressEvent(QKeyEvent*, Viewer&);
-
-
-
+    void keyPressEvent(QKeyEvent*, Viewer&);
 
 private :
 
-    DragonBody body;
+    bool black;
+        DragonBody body;
 
-    DragonWing left_wing;
+        DragonWing left_wing;
 
-    DragonWing right_wing;
+        DragonWing right_wing;
 
-  DragonTail tail;
+        DragonTail tail;
 
+    Fire fire;
 
-        Fire fire;
+    float max_rotation;
 
-        float max_rotation;
+    float min_rotation;
 
-        float min_rotation;
+    float wings_rotation;
 
-        float wings_rotation;
+    bool rotate_backward;
 
-        bool rotate_backward;
+    bool is_flying;
 
-        bool is_flying;
+    bool camera_focus;
 
-        bool camera_focus;
+    qglviewer::Vec position;
 
-        qglviewer::Vec position;
+    qglviewer::Vec rotation;
 
-        qglviewer::Vec rotation;
+    QGLViewer* viewer;
 
-        QGLViewer* viewer;
+        qglviewer::Vec velocity;
+
+        enum State
+        {
+            ON_THE_GROUND,
+            FLY_HOLD_POSITION,
+            FLY_TOWARD_CASTLE,
+            FLY_AND_FIRE,
+            PLACE_FOR_ROUND,
+            GET_AROUND_TOWN
+        };
+
+        State state;
+    bool dark;
+
+    BigCastle* castle_to_burn;
+
+    int delay_before_castle_burn;
+
+    int delay_before_castle_burn2;
+
+    int delay_before_castle_burn3;
+
+    int delay_before_circleing_around;
+
+    double angle_around_castle;
 };

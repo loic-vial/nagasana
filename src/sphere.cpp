@@ -12,11 +12,22 @@ Sphere::Sphere(GLfloat r, Vec position, Vec vel, GLfloat mass) :
 
 void Sphere::draw()
 {
-    glPushMatrix();
-    glColor3ub(255,255,255);
-    glTranslatef(getPosition().x, getPosition().y, getPosition().z);
-    glutSolidSphere(radius, 12, 12);
+glPushMatrix();
+    if(black)
+    {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glColor4ub(0,0,0,200);
+    }
+    else  glColor3ub(255,255,255);
+    GLUquadric* sphere = gluNewQuadric();
+    gluQuadricDrawStyle(sphere,GLU_FILL);
+    if(!black) { gluQuadricTexture(sphere,GL_TRUE); }
+    else gluQuadricTexture(sphere,GL_FALSE);
+     glTranslatef(getPosition().x, getPosition().y, getPosition().z);
+    gluSphere(sphere,radius,10,10);
     glPopMatrix();
+
 }
 
 

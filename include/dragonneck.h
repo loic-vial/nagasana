@@ -13,6 +13,8 @@ class DragonNeck : public Renderable
         void init(Viewer&);
 
         void draw();
+
+        bool black;
 private:
         Cylinder first_part;
         Cylinder second_part;
