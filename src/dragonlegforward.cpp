@@ -14,8 +14,10 @@ DragonLegForward::DragonLegForward():
 
 void DragonLegForward::init(Viewer&)
 {
- scale_id = loadTexture("res/scale.jpg");
-     black=false;
+    scale_id = loadTexture("res/scale.jpg");
+    black=false;
+    debut_rotate=false;
+    rotate =0;
 }
 
 void DragonLegForward::draw()
@@ -30,12 +32,12 @@ void DragonLegForward::draw()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(255,255,255);
+    else  glColor3ub(255,255,255);
 
     glEnable(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, scale_id);
-   // GLCHECK(glBindTexture(GL_TEXTURE_2D,scale_id));
+    // GLCHECK(glBindTexture(GL_TEXTURE_2D,scale_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
     GLUquadric* joint = gluNewQuadric();
@@ -49,6 +51,10 @@ void DragonLegForward::draw()
     gluSphere(joint,2,10,10);
     glPopMatrix();
 
+
+    glPushMatrix();
+    glRotatef(rotate,-1,0,0);
+    glTranslatef(0,-rotate/4,-rotate/18);
     glPushMatrix();
     glTranslatef(0,0,15);
     glRotatef(80,-1,0,0);
@@ -58,10 +64,18 @@ void DragonLegForward::draw()
     glPushMatrix();
     glTranslatef(0,12.6,17.2);
     gluSphere(joint,1,10,10);
-glDisable(GL_TEXTURE_2D);
+    glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
+    glPopMatrix();
 
     gluDeleteQuadric(joint);
 }
 
+void DragonLegForward::animate()
+{
+    if(rotate<=25)
+    {
+        rotate+=1;
+    }
+}

@@ -42,6 +42,15 @@ void Dragon::set_castle_to_burn(BigCastle &castle)
 void Dragon::draw()
 {
 
+    GLfloat    surf_diffuse[]={0.8,0.0,0.0,1.0};
+    GLfloat surf_speculaire[]={0.5,0.5,0.5,1.0};
+    GLfloat   surf_shininess[]={1.0};
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,surf_diffuse);
+    glMaterialfv(GL_FRONT_AND_BACK ,GL_SPECULAR,surf_speculaire);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SHININESS,surf_shininess);
+
+
+
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};

@@ -16,10 +16,14 @@ public :
 
     void draw();
 
+    void animate();
+    bool debut_rotate;
     bool black;
 private :
     Cylinder first_part;
     Cylinder second_part;
       GLuint scale_id;
+
+      GLfloat rotate;
 };
 
