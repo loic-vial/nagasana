@@ -119,9 +119,9 @@ void Dragon::draw_with_color(bool color)
     else  glColor3ub(255,255,255);
 
 
-    if(color) { glEnable(GL_TEXTURE_2D);}
+ /* if(color) { glEnable(GL_TEXTURE_2D);}
     else glDisable(GL_TEXTURE_2D);
-
+*/
     glPushMatrix();
 
     glPushMatrix();

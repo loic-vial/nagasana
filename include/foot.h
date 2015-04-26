@@ -15,4 +15,6 @@ class Foot
     private:
 
         GLuint foot_id;
+
+        GLuint scale_id;
 };

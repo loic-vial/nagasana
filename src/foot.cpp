@@ -6,7 +6,7 @@
 
 void Foot::init(Viewer &)
 {
-    foot_id = loadTexture("res/corne.jpg");
+    foot_id = loadTexture("res/scale.jpg");
     black = false;
 }
 
@@ -23,20 +23,6 @@ void Foot::draw()
     glRotatef(10, 0, -1, 0);
     glEnable(GL_NORMALIZE);
 
-
-
-    //face du haut
-    glBegin(GL_POLYGON);
-    glNormal3f(1, 0, 0);
-    glTexCoord2d(0.2, 0); glVertex3f(1, -1, 0);
-    glTexCoord2d(0.7, 0); glVertex3f(1, 1, 0);
-    glTexCoord2d(1, 0.6); glVertex3f(1, 3, 5);
-    glTexCoord2d(0.5, 1); glVertex3f(1, 0, 8);
-    glTexCoord2d(0, 0.6); glVertex3f(1, -3, 5);
-    glTexCoord2d(0.2, 0); glVertex3f(1, -1, 0);
-    glEnd();
-
-
     //face du bas
     glBegin(GL_POLYGON);
     glNormal3f(-1, 0, 0);
@@ -48,6 +34,16 @@ void Foot::draw()
     glTexCoord2d(2, 0); glVertex3f(0, -1, 0);
     glEnd();
 
+    //face du haut
+    glBegin(GL_POLYGON);
+    glNormal3f(1, 0, 0);
+    glTexCoord2d(0.2, 0); glVertex3f(1, -1, 0);
+    glTexCoord2d(0.7, 0); glVertex3f(1, 1, 0);
+    glTexCoord2d(1, 0.6); glVertex3f(1, 3, 5);
+    glTexCoord2d(0.5, 1); glVertex3f(1, 0, 8);
+    glTexCoord2d(0, 0.6); glVertex3f(1, -3, 5);
+    glTexCoord2d(0.2, 0); glVertex3f(1, -1, 0);
+    glEnd();
 
     //face de la jointure
     glBegin(GL_POLYGON);
