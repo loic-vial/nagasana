@@ -14,15 +14,13 @@ public:
 
     void draw();
 
-        void draw1();
+    void draw_with_color(bool black);
+
     void animate();
 
+    void keyPressEvent(QKeyEvent*, Viewer&);
 
-        void keyPressEvent(QKeyEvent*, Viewer&);
-
-
-
-
+bool black;
 private :
 
     DragonBody body;
@@ -31,26 +29,27 @@ private :
 
     DragonWing right_wing;
 
-  DragonTail tail;
+    DragonTail tail;
 
+    Fire fire;
 
-        Fire fire;
+    float max_rotation;
 
-        float max_rotation;
+    float min_rotation;
 
-        float min_rotation;
+    float wings_rotation;
 
-        float wings_rotation;
+    bool rotate_backward;
 
-        bool rotate_backward;
+    bool is_flying;
 
-        bool is_flying;
+    bool camera_focus;
 
-        bool camera_focus;
+    qglviewer::Vec position;
 
-        qglviewer::Vec position;
+    qglviewer::Vec rotation;
 
-        qglviewer::Vec rotation;
+    QGLViewer* viewer;
 
-        QGLViewer* viewer;
+    bool dark;
 };

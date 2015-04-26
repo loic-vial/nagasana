@@ -23,28 +23,21 @@ void BigCastle::init(Viewer& v)
 
 void BigCastle::draw()
 {
-
-    //   glClear (GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
-
-    GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
+   GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
     GLfloat ombre[4][4];
-    GLfloat light_pos[] =  {100.0f, 20.0f, 100.0f, 0.0f};
-
-
-    //dessin du cube en couleur normale
+    GLfloat light_pos[] =  {20.0f, 100.0f, 100.0f, 0.0f};
     glPushMatrix();
     glTranslatef(600,600,0);
     glRotatef(45,0,0,-1);
-        first.black = false;
+    first.black = false;
     first.draw();
 
     second.black = false;
     glTranslatef(0,0,70);
     second.draw();
     glPopMatrix();
-
 
 
     //on initialise la transparence

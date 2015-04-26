@@ -17,6 +17,8 @@ public :
     void init(Viewer&);
 
     void draw();
+
+    bool black;
 private :
     Cylinder body;
     DragonLegForward leftlegfor;

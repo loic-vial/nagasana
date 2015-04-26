@@ -200,7 +200,7 @@ void Castle::tower()
     GLUquadric* top = gluNewQuadric();
     gluQuadricDrawStyle(top,GLU_FILL);
     if(!black) { gluQuadricTexture(top,GL_TRUE); }
-    else gluQuadricTexture(tower,GL_FALSE);
+    else gluQuadricTexture(top,GL_FALSE);
 
     gluDisk(top,0,radius,10,1);
     gluDeleteQuadric(tower);

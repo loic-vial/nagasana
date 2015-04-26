@@ -9,6 +9,7 @@ using namespace std;
 
 void Dragon::init(Viewer& v)
 {
+    black=false;
     body.init(v);
     left_wing.init(v);
     right_wing.init(v);
@@ -28,16 +29,52 @@ void Dragon::init(Viewer& v)
 }
 
 void Dragon::draw()
-
 {
+    GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
+                         {4.0f,0.0f,0.05f},
+                         {0.0f,4.0f,0.05f}};
+    GLfloat ombre[4][4];
+    GLfloat light_pos[] =  {20.0f, 100.0f, 100.0f, 0.0f};
+    glPushMatrix();
     glEnable(GL_LIGHT0);
+    draw_with_color(true);
+    glPopMatrix();
+
+    //on initialise la transparence
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    //Calcul de la matrice de projection sur le sol
+    MakeShadowMatrix(sol,light_pos,ombre);
+    glPushMatrix();
+    glMultMatrixf((GLfloat *) ombre);
+    //dessin de l'objet
+
+    //on dessine le cube en noir transparent
+    glPushMatrix();
+       glDisable(GL_LIGHT0);
+    draw_with_color(false);
+    glPopMatrix();
+
+    glPopMatrix();
+
+    glDisable(GL_BLEND);
+
+}
+
+void Dragon::draw_with_color(bool color)
+{
+
+    body.black = !color;
+    left_wing.black = !color;
+    right_wing.black=!color;
+    tail.black=!color;
+
+
+    if(!black) { glEnable(GL_TEXTURE_2D);}
+    else glDisable(GL_TEXTURE_2D);
+
 
     glPushMatrix();
-    //  glTranslatef(0, 44,38);
-    //  glRotatef(-55,1,0,0);
-
-    //lumiere
-
 
     glTranslatef(position.x, position.y, position.z);
     glRotatef(rotation.x, 1, 0, 0);
@@ -45,9 +82,10 @@ void Dragon::draw()
     glRotatef(rotation.z, 0, 0, 1);
 
     glPushMatrix();
- glTranslatef(0, 45,34);
-  glRotatef(-55,1,0,0);
+    glTranslatef(0, 45,34);
+    glRotatef(-55,1,0,0);
 
+    if(color){
     glEnable(GL_LIGHT2);
     GLfloat ambient2[] = {0.15f,0.15f,0.15f,1.0f};
     GLfloat diffuse2[] = {10.0f,-0.39f,-0.5f,1.0f};
@@ -61,7 +99,7 @@ void Dragon::draw()
     glLighti(GL_LIGHT2,GL_SPOT_CUTOFF,90);
     glLighti(GL_LIGHT2,GL_SPOT_EXPONENT,1);
 
-  glEnable(GL_LIGHT3);
+    glEnable(GL_LIGHT3);
     GLfloat ambient3[] = {0.15f,0.15f,0.15f,1.0f};
     GLfloat diffuse3[] = {10.0f,-0.39f,-0.5f,1.0f};
     GLfloat light3_position [] = {0.0f, 10.0f, 0.0f, 1.0f};
@@ -72,13 +110,12 @@ void Dragon::draw()
     glLightfv(GL_LIGHT3,GL_SPOT_DIRECTION,light3_direction);
     glLighti(GL_LIGHT3,GL_SPOT_CUTOFF,70);
     glLighti(GL_LIGHT3,GL_SPOT_EXPONENT,10);
-    glLightf(GL_LIGHT3, GL_CONSTANT_ATTENUATION, 8.0);;
-
-
+    glLightf(GL_LIGHT3, GL_CONSTANT_ATTENUATION, 8.0);
 
     fire.draw();
-    glPopMatrix();
 
+    }
+ glPopMatrix();
     glDisable(GL_LIGHT2);
     glPushMatrix();
     glTranslatef(-18, 0, 4);
@@ -93,10 +130,7 @@ void Dragon::draw()
     glPopMatrix();
     //  glDisable(GL_LIGHT2);
 
-
-
     glPushMatrix();
-
     glTranslatef(2, 16, 22);
     glRotatef(100,0,0,1);
     glRotatef(45,-1,0,0);
