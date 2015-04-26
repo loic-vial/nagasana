@@ -152,7 +152,7 @@ void DragonBody::draw()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-    else    glColor3f(0.5,0.5,1);
+    else    glColor3f(0,0,0);
     glEnable(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, cone_id);

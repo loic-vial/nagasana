@@ -12,6 +12,8 @@ class Sphere : public Particle
 
         void draw();
 
+        bool black;
+
     public :
 
         GLfloat radius;
