@@ -32,6 +32,7 @@ void Viewer::init()
     //camera()->setUpVector(Vec(0, 0, 1));
     //camera()->lookAt(Vec(0, 0, 0));
 
+    toggleRecord = false;
     toogleWireframe = false;
     toogleLight = true;
     help();
@@ -58,6 +59,7 @@ void Viewer::draw()
     {
         (*it)->draw();
     }
+    if (toggleRecord) saveSnapshot();
 }
 
 
@@ -101,6 +103,10 @@ void Viewer::keyPressEvent(QKeyEvent *e)
         toogleLight = !toogleLight;
         if (toogleLight == true) glEnable(GL_LIGHTING);
         else glDisable(GL_LIGHTING);
+    }
+    else if (e->key()==Qt::Key_R)
+    {
+        toggleRecord = !toggleRecord;
     }
     else
     {

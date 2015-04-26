@@ -34,6 +34,7 @@ void Dragon::init(Viewer& v)
     delay_before_castle_burn3 = 90;
     delay_before_circleing_around = 100;
     angle_around_castle = 4;
+    go_go_fire = false;
 }
 
 void Dragon::set_castle_to_burn(BigCastle &castle)
@@ -94,6 +95,8 @@ void Dragon::draw()
 
 void Dragon::draw_with_color(bool color)
 {
+    //viewer->camera()->setPosition(position + Vec(20, 20, 20) - Vec(1100, 1100, 0);
+    //viewer->camera()->lookAt(position);
 
     glTranslatef(position.x, position.y, position.z);
     glRotatef(rotation.x, 1, 0, 0);
@@ -338,7 +341,7 @@ void Dragon::animate()
             rotate_backward = false;
         }
         fire.stop();
-        rotation.z -= abs(-135 - rotation.z) * 0.05;
+        rotation.z -= abs(-135 - rotation.z) * 0.1;
         if (position.z > 200)
         {
             state = GET_AROUND_TOWN;
@@ -364,7 +367,9 @@ void Dragon::animate()
         {
             rotate_backward = false;
         }
-        fire.stop();
+        if (go_go_fire) fire.start();
+        else fire.stop();
+        go_go_fire = false;
         angle_around_castle = angle_around_castle + 0.07;
         if (angle_around_castle > 2 * 3.14) angle_around_castle = 0;
         position.x = 700 + 300 * cos(angle_around_castle);
@@ -387,12 +392,12 @@ void Dragon::animate()
 
 void Dragon::keyPressEvent(QKeyEvent* key, Viewer&)
 {
-    if (key->key() == Qt::Key_O)
+    if (key->key() == Qt::Key_O && state == ON_THE_GROUND)
     {
         state = FLY_HOLD_POSITION;
     }
     else if (key->key() == Qt::Key_P)
     {
-        camera_focus = !camera_focus;
+        go_go_fire = true;
     }
 }
