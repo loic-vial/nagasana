@@ -10,6 +10,7 @@ public:
     void init(Viewer&);
     void draw();
 
+    bool black;
 private :
     qglviewer::Vec begin;
     qglviewer::Vec mid;

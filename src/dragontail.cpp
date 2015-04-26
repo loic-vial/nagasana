@@ -20,13 +20,20 @@ void DragonTail::init(Viewer&)
         springs.push_back(new Spring(particles[i],  particles[i-1], 30, 6, 1));
     }
     scale_id = loadTexture("res/scale.jpg");
+    black=false;
 }
 
 void DragonTail::draw()
 {
     glPushMatrix();
 
-    glColor3f(1,0,0);
+    if(black) {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glColor4ub(0,0,0,200);
+    }
+        else  glColor3ub(255,255,255);
+
     vector<Sphere*>::iterator itP;
     for (itP = particles.begin(); itP != particles.end(); ++itP)
     {
@@ -39,7 +46,7 @@ void DragonTail::draw()
     {
         glPushMatrix();
 
-        glColor3f(1, 1, 1); // uniform white -> to be changed to texture
+
         glEnable((GL_TEXTURE_2D));
         glBindTexture(GL_TEXTURE_2D, scale_id);
 
@@ -48,7 +55,8 @@ void DragonTail::draw()
         GLUquadric* params = gluNewQuadric();
         gluQuadricDrawStyle(params,GLU_FILL);
         gluQuadricNormals(params, GLU_SMOOTH);
-        gluQuadricTexture(params, GL_TRUE);
+        if(!black) { gluQuadricTexture(params,GL_TRUE); }
+        else gluQuadricTexture(params,GL_FALSE);
         renderCylinder(particles[i-1]->getPosition(), particles[i]->getPosition(),
                        particles[i-1]->radius, particles[i]->radius, 15, params);
         gluDeleteQuadric(params);

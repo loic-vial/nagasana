@@ -16,6 +16,7 @@ class DragonTail : public Renderable
 
         void animate();
 
+        bool black;
     private :
 
         std::vector<Sphere*> particles;

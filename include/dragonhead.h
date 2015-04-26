@@ -6,7 +6,7 @@
 
 class DragonHead : public Renderable
 {
-    public :
+public :
 
         DragonHead();
 
@@ -21,6 +21,8 @@ class DragonHead : public Renderable
         void draw();
 
         void display_mouth();
+
+        bool black;
 
     private:
 

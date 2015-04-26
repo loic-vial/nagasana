@@ -7,19 +7,16 @@
 void Foot::init(Viewer &)
 {
     foot_id = loadTexture("res/scale.jpg");
+    black = false;
 }
 
 void Foot::draw()
 {
-
-    glEnable(GL_TEXTURE_2D);
+    if(black) glDisable(GL_TEXTURE_2D);
+    else glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, foot_id);
-    // GLCHECK(glBindTexture(GL_TEXTURE_2D, foot_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
-
     glPushMatrix();
-
     glTranslatef(0, 13.5, 17);
     glRotatef(120, -1, 0, 0);
     glRotatef(90, 0, 0, 1);

@@ -33,6 +33,9 @@ void DragonBody::init(Viewer& v)
     rightlegfor.init(v);
     cone_id = loadTexture("res/corne.jpg");
     scale_id = loadTexture("res/scale.jpg");
+
+     black=false;
+
 }
 
 void DragonBody::display_mouth()
@@ -42,6 +45,25 @@ void DragonBody::display_mouth()
 
 void DragonBody::draw()
 {
+    head.black = black;
+    leftbottom.black = black;
+    lefttop.black = black;
+    rightbottom.black = black;
+    righttop.black = black;
+    neck.black = black;
+    leftlegback.black = black;
+    leftlegfor.black = black;
+    rightlegback.black = black;
+    rightlegfor.black = black;
+
+    if(black)
+    {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glColor4ub(0,0,0,200);
+    }
+    else  glColor3ub(255,255,255);
+
 
     glDisable(GL_LIGHT2);
     glPushMatrix();
@@ -74,8 +96,6 @@ void DragonBody::draw()
     rightbottom.draw();
     glPopMatrix();
 
-
-
     glEnable(GL_LIGHT2);
     body.setId(scale_id);
     glEnable(GL_TEXTURE_2D);
@@ -83,15 +103,14 @@ void DragonBody::draw()
     glTranslatef(0, 20.9, 26);
     glRotatef(120, 1, 0, 0);
     body.draw();
-    glColor3ub(255,255,255);
     glRotatef(240, -1, 0, 0);
     glBindTexture(GL_TEXTURE_2D, scale_id);
-    //   GLCHECK(glBindTexture(GL_TEXTURE_2D, scale_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBindTexture(GL_TEXTURE_2D,scale_id);
     GLUquadric* params = gluNewQuadric();
     gluQuadricDrawStyle(params,GLU_FILL);
-    gluQuadricTexture(params,GL_TRUE);
+    if(!black) { gluQuadricTexture(params,GL_TRUE); }
+    else gluQuadricTexture(params,GL_FALSE);
     glRotatef(95, -1, 0, 0);
     gluSphere(params,10,10,10);
     gluDeleteQuadric(params);
@@ -104,12 +123,12 @@ void DragonBody::draw()
     glEnable(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, scale_id);
-    //  GLCHECK(glBindTexture(GL_TEXTURE_2D, scale_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glBindTexture(GL_TEXTURE_2D,scale_id);
     GLUquadric* params2 = gluNewQuadric();
     gluQuadricDrawStyle(params2,GLU_FILL);
-    gluQuadricTexture(params2,GL_TRUE);
+    if(!black) { gluQuadricTexture(params2,GL_TRUE); }
+    else gluQuadricTexture(params2,GL_FALSE);
     gluSphere(params2,9,10,10);
     gluDeleteQuadric(params2);
     glDisable(GL_TEXTURE_2D);
@@ -127,17 +146,23 @@ void DragonBody::draw()
     glPushMatrix();
     glTranslatef(0, -2, 22);
     glRotatef(32, 1, 0, 0);
-    glColor3f(0.5,0.5,1);
+    if(black)
+    {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glColor4ub(0,0,0,200);
+    }
+    else    glColor3f(0.5,0.5,1);
     glEnable(GL_TEXTURE_2D);
 
     glBindTexture(GL_TEXTURE_2D, cone_id);
-    // GLCHECK(glBindTexture(GL_TEXTURE_2D, cone_id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
     glBindTexture(GL_TEXTURE_2D,cone_id);
     GLUquadric* crete = gluNewQuadric();
     gluQuadricDrawStyle(crete,GLU_FILL);
-    gluQuadricTexture(crete,GL_TRUE);
+    if(!black) { gluQuadricTexture(crete,GL_TRUE); }
+    else gluQuadricTexture(crete,GL_FALSE);
+
     gluCylinder(crete,2,0,8,10,1);
     glTranslatef(0, 5, 0);
     gluCylinder(crete,2,0,8,10,1);
@@ -155,11 +180,18 @@ void DragonBody::draw()
     glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
+    if(black)
+    {
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+        glColor4ub(0,0,0,200);
+    }
+    else  glColor3ub(255,255,255);
 
     glEnable(GL_LIGHT2);
 
     glPushMatrix();
-    glColor3ub(255,255,255);
+
     glTranslatef(-8, 20, 26);
     glRotatef(160,1,0,0);
     glRotatef(-28,0,1,0);

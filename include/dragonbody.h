@@ -22,6 +22,7 @@ public :
 
     void display_mouth();
 
+    bool black;
 private :
     Cylinder body;
     DragonLegForward leftlegfor;

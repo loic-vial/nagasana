@@ -11,6 +11,7 @@ class Foot
 
         void draw();
 
+        bool black;
     private:
 
         GLuint foot_id;
