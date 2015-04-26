@@ -22,8 +22,13 @@ public :
 
     void display_mouth();
 
+
+    void animate();
+
     bool black;
     bool is_fired;
+
+    bool debut_rotate;
 private :
     Cylinder body;
     DragonLegForward leftlegfor;
@@ -36,8 +41,7 @@ private :
     Foot rightbottom;
     DragonHead head;
     DragonNeck neck;
-
-
+    GLfloat rotate;
     GLuint cone_id;
 
     GLuint scale_id;

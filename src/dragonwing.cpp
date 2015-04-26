@@ -89,6 +89,5 @@ void DragonWing::draw()
 
 void DragonWing::animate()
 {
-    cout << "hey " << endl;
-    //rotation += 10;
+
 }
