@@ -19,7 +19,7 @@ Ground::Ground()
 void Ground::init(Viewer&)
 {
 
-    texture_id = loadTexture("res/ground_texture.png");
+    texture_id = loadTexture("res/ground_texture2.png");
 }
 
 void Ground::draw()
@@ -36,10 +36,12 @@ void Ground::draw()
     glEnable(GL_NORMALIZE);
     glBegin(GL_QUADS);
 
-    glTexCoord2d(0, 0); glVertex3f(-1000, -1000, 0);
-    glTexCoord2d(0, 10); glVertex3f(-1000, 1000, 0);
-    glTexCoord2d(10, 10); glVertex3f(1000, 1000, 0);
-    glTexCoord2d(10, 0); glVertex3f(1000, -1000, 0);
+    int size = 5000;
+
+    glTexCoord2d(0, 0); glVertex3f(-size, -size, 0);
+    glTexCoord2d(0, 10); glVertex3f(-size, size, 0);
+    glTexCoord2d(10, 10); glVertex3f(size, size, 0);
+    glTexCoord2d(10, 0); glVertex3f(size, -size, 0);
 
     glEnd();
 

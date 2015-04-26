@@ -41,7 +41,7 @@ void Viewer::init()
 
     glEnable(GL_LIGHT0);
     glEnable(GL_LIGHT1);
-    setSceneRadius(1000);
+    setSceneRadius(10000);
 
     list<Renderable *>::iterator it;
     for (it = renderableList.begin(); it != renderableList.end(); ++it)

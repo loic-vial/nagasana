@@ -63,11 +63,18 @@ private :
             ON_THE_GROUND,
             FLY_HOLD_POSITION,
             FLY_TOWARD_CASTLE,
-            FLY_AND_FIRE
+            FLY_AND_FIRE,
+            GET_AROUND_TOWN
         };
 
         State state;
     bool dark;
 
     BigCastle* castle_to_burn;
+
+    int delay_before_castle_burn;
+
+    int delay_before_circleing_around;
+
+    double angle_around_castle;
 };
