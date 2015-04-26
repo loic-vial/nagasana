@@ -38,6 +38,10 @@ void DragonBody::init(Viewer& v)
 
 }
 
+void DragonBody::display_mouth()
+{
+    head.display_mouth();
+}
 
 void DragonBody::draw()
 {

@@ -5,72 +5,60 @@
 #include <fireParticle.h>
 #include <renderable.h>
 
-/*
- * This class represents a dynamic system made of particles
- * linked together with damped springs, within a medium with
- * gravity and viscosity.
- * FireParticles a represented by small spheres, with a radius and a mass.
- * The initial scene is composed of a fixed plane, a static particle
- * that can be controlled by the mouse, and a dynamic particle.
- */
 class Fire : public Renderable
 {
+    public:
 
-private:
-	// particules (+ nombre)
-	std::vector<FireParticle *> particles;
-	int nbParticules;
+        virtual ~Fire();
 
-	//Sphère d'apparition (centre + rayon)
-	qglviewer::Vec initPos;
-	float r;
-	
-	// System parameters (common)
-	qglviewer::Vec defaultGravity;
-	qglviewer::Vec gravity;		// gravity used in simulation
-	double defaultMediumViscosity;
-	double mediumViscosity;		// viscosity used in simulation
-	double dt;			// time step
-	bool handleCollisions;
-	
-	// Parameters shared by all particles
-	double particleMass;
-	double particleRadius;
+        void init(Viewer &);
 
-	// viewer related states
-	bool toggleGravity;
-	bool toggleViscosity;
+        void draw();
 
+        void animate();
 
-public:
-	Fire();	// TODO add general parameters (viscosity...)
-	virtual ~Fire();
+        void start();
 
-	// Activate/desactivate gravity during the simulation
-	void setGravity(bool onOff);
-	// Activate/desactivate viscosity during the simulation
-	void setViscosity(bool onOff);
+        void stop();
 
-	// event response
-	void keyPressEvent(QKeyEvent*, Viewer&);
+    private:
 
-	//Utils
-	double myRand(double min, double max);
-	
-private:
-	// Reset the scene (remove all particles and springs)
-	void clear();
-	void createSystemScene();
+        bool started;
 
+        std::vector<FireParticle*> particles;
 
-// Renderable methods
-public:
-	// Init the particle-spring system
-	void init(Viewer &);
+        int nbParticules;
 
-	// Draw the particle-spring system
-	void draw();
+        qglviewer::Vec initPos;
 
-	// Update positions and velocities of dynamic objects
-	void animate();
+        float r;
+
+        qglviewer::Vec defaultGravity;
+
+        qglviewer::Vec gravity;
+
+        double defaultMediumViscosity;
+
+        double mediumViscosity;
+
+        double dt;
+
+        bool handleCollisions;
+
+        double particleMass;
+
+        double particleRadius;
+
+        bool toggleGravity;
+
+        bool toggleViscosity;
+
+    private:
+
+        void clear();
+
+        void createSystemScene();
+
+        double myRand(double min, double max);
+
 };

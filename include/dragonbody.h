@@ -13,10 +13,14 @@
 class DragonBody : public Renderable
 {
 public :
+
     DragonBody();
+
     void init(Viewer&);
 
     void draw();
+
+    void display_mouth();
 
     bool black;
 private :

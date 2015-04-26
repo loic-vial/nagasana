@@ -7,10 +7,16 @@ DragonHead::DragonHead():
     face(9,5.5,3.5)
 {}
 
+void DragonHead::display_mouth()
+{
+    mouth_displayed = true;
+}
+
 void DragonHead::init(Viewer&)
 {
     eye_id = loadTexture("res/oeil.jpg");
     scale_id = loadTexture("res/scale.jpg");
+    mouth_displayed = false;
     black=false;
 }
 
@@ -59,10 +65,12 @@ void DragonHead::draw()
     gluSphere(top,5.5,10,10);
     glPopMatrix();
 
-    glPushMatrix();
-    mouth();
-    glPopMatrix();
-
+    if (mouth_displayed)
+    {
+        glPushMatrix();
+        mouth();
+        glPopMatrix();
+    }
 
     //oreille
     glPushMatrix();
