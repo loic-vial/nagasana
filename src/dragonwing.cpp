@@ -89,5 +89,5 @@ void DragonWing::draw()
 
 void DragonWing::animate()
 {
-    //rotation += 10;
+
 }

@@ -220,6 +220,7 @@ void Dragon::animate()
     }
     else if (state == FLY_HOLD_POSITION)
     {
+        body.debut_rotate = true;
         if (rotate_backward)
         {
             velocity = Vec(0, 0, 15);

@@ -35,6 +35,7 @@ void DragonBody::init(Viewer& v)
     scale_id = loadTexture("res/scale.jpg");
     is_fired = false;
     black=false;
+    debut_rotate = false;
 
 }
 
@@ -64,6 +65,9 @@ void DragonBody::draw()
     }
     else  glColor3ub(255,255,255);
 
+    glPushMatrix();
+    glRotated(rotate/2,1,0,0);
+    glTranslatef(0,rotate/8,-rotate/12);
 
     glDisable(GL_LIGHT2);
     glPushMatrix();
@@ -94,6 +98,8 @@ void DragonBody::draw()
     glTranslatef(10, -10, -14.5);
     glRotatef(20,1,0,0);
     rightbottom.draw();
+    glPopMatrix();
+
     glPopMatrix();
 
     if(is_fired) glEnable(GL_LIGHT2);
@@ -193,7 +199,10 @@ void DragonBody::draw()
     else glDisable(GL_LIGHT2);
 
     glPushMatrix();
+    glRotated(rotate,1,0,0);
+    glTranslatef(0,rotate/4,-rotate/2);
 
+    glPushMatrix();
     glTranslatef(-8, 20, 26);
     glRotatef(160,1,0,0);
     glRotatef(-28,0,1,0);
@@ -221,11 +230,22 @@ void DragonBody::draw()
     lefttop.draw();
     glPopMatrix();
 
+    glPopMatrix();
+
     glPushMatrix();
     glTranslatef(0, 45, 49);
     glRotatef(40,1,0,0);
     head.draw();
     glPopMatrix();
-
 }
 
+
+void DragonBody::animate()
+{
+   // if(debut_rotate && rotate <=50)
+         if(rotate <=50)
+    {
+        rotate +=1;
+    }
+
+}
