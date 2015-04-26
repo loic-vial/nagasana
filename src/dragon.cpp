@@ -27,8 +27,11 @@ void Dragon::init(Viewer& v)
     rotation = Vec(0, 0, 0);
     velocity = Vec(0, 0, 0);
     viewer = &v;
-     state = ON_THE_GROUND;
-    //state = FLY_AND_FIRE;
+
+    state = ON_THE_GROUND;
+    delay_before_castle_burn = 30;
+    delay_before_circleing_around = 100;
+    angle_around_castle = 0;
 }
 
 void Dragon::set_castle_to_burn(BigCastle &castle)
@@ -286,7 +289,45 @@ void Dragon::animate()
         }
         fire.start();
         body.display_mouth();
-        castle_to_burn->burn();
+        if (delay_before_castle_burn < 0)
+        {
+            castle_to_burn->burn();
+        }
+        else
+        {
+            delay_before_castle_burn--;
+        }
+        if (delay_before_circleing_around-- < 0)
+        {
+            state = GET_AROUND_TOWN;
+        }
+    }
+    else if (state == GET_AROUND_TOWN)
+    {
+        if (rotate_backward)
+        {
+            velocity = Vec(0, 0, 5);
+            wings_rotation -= 5;
+        }
+        else
+        {
+            velocity = Vec(0, 0, -10);
+            wings_rotation += 10;
+        }
+        if (wings_rotation > max_rotation)
+        {
+            rotate_backward = true;
+        }
+        if (wings_rotation < min_rotation)
+        {
+            rotate_backward = false;
+        }
+        fire.stop();
+        angle_around_castle = angle_around_castle + 0.07;
+        if (angle_around_castle > 2 * 3.14) angle_around_castle = 0;
+        position.x = 400 + 100 * cos(angle_around_castle);
+        position.y = 400 + 100 * sin(angle_around_castle);
+        rotation.z += abs((float)(45 - rotation.z)) * 0.1;
     }
 
     position.x += velocity.x * 0.1;
