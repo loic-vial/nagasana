@@ -62,7 +62,7 @@ void Skybox::draw()
     GLint fogmode = GL_EXP ;
     glFogi (GL_FOG_MODE, fogmode) ;
     glFogfv(GL_FOG_COLOR, fogcolor) ;
-    glFogf(GL_FOG_DENSITY, 0.0002) ;
+    glFogf(GL_FOG_DENSITY, 0.0003) ;
     glFogf(GL_FOG_START, 1.0) ;
     glFogf(GL_FOG_END, 10.0) ;
 glFogf(GL_FOG_COORD_SRC,GL_FRAGMENT_DEPTH);

@@ -95,10 +95,10 @@ void Dragon::draw()
 
 void Dragon::draw_with_color(bool color)
 {
-    viewer->camera()->setUpVector(Vec(0, 0, 1));
+   /* viewer->camera()->setUpVector(Vec(0, 0, 1));
     viewer->camera()->setPosition(Vec(-700, 500, 500) - Vec(1100, 1100, 0));
     viewer->camera()->lookAt(position - Vec(1100, 1100, 0));
-
+*/
     glTranslatef(position.x, position.y, position.z);
     glRotatef(rotation.x, 1, 0, 0);
     glRotatef(rotation.y, 0, 1, 0);
@@ -167,8 +167,6 @@ void Dragon::draw_with_color(bool color)
         fire.draw();
         glPopMatrix();}
 
-    glDisable(GL_LIGHT2);
-    glDisable(GL_LIGHT3);
     glPushMatrix();
     glTranslatef(-18, 0, 4);
     tail.draw();
@@ -179,6 +177,7 @@ void Dragon::draw_with_color(bool color)
     if(state == FLY_AND_FIRE)
     {
         glEnable(GL_LIGHT2);
+        glEnable(GL_LIGHT3);
         body.is_fired = true;
     }
     else

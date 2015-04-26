@@ -23,6 +23,7 @@ void BigCastle::init(Viewer& v)
 
 void BigCastle::draw()
 {
+    glEnable(GL_LIGHT3);
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
