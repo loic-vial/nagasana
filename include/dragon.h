@@ -82,4 +82,6 @@ private :
     int delay_before_circleing_around;
 
     double angle_around_castle;
+
+    bool go_go_fire;
 };
