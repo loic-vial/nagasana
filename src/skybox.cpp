@@ -75,7 +75,7 @@ glFogf(GL_FOG_COORD_SRC,GL_FRAGMENT_DEPTH);
     glDisable(GL_LIGHTING);
     glDisable(GL_BLEND);
 
-    int size = 5000;
+    int size = 2000;
 
     // Just in case we set all vertices to white.
     glColor4f(1,1,1,1);

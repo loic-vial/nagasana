@@ -64,6 +64,7 @@ private :
             FLY_HOLD_POSITION,
             FLY_TOWARD_CASTLE,
             FLY_AND_FIRE,
+            PLACE_FOR_ROUND,
             GET_AROUND_TOWN
         };
 
@@ -73,6 +74,10 @@ private :
     BigCastle* castle_to_burn;
 
     int delay_before_castle_burn;
+
+    int delay_before_castle_burn2;
+
+    int delay_before_castle_burn3;
 
     int delay_before_circleing_around;
 

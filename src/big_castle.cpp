@@ -31,6 +31,7 @@ void BigCastle::draw()
     glPushMatrix();
     glTranslatef(0,0,0);
     glRotatef(45,0,0,-1);
+    glScalef(3, 3, 3);
     first.black = false;
     first.draw();
 
@@ -53,6 +54,7 @@ void BigCastle::draw()
     glPushMatrix();
     glTranslatef(0,0,0);
     glRotatef(45,0,0,-1);
+    glScalef(3, 3, 3);
     glColor4f(0,0,0,10);
     glDisable(GL_LIGHT0);
     first.black = true;
@@ -72,17 +74,25 @@ void BigCastle::draw()
 
 void BigCastle::animate()
 {
-    if(burned)
-    {
-        first.burned = burned;
-        second.burned = burned;
-        first.animate();
-        second.animate();
-    }
+    first.animate();
+    second.animate();
 }
 
-void BigCastle::burn()
+void BigCastle::burn1()
 {
-    burned = true;
+    first.burn1();
+    second.burn1();
+}
+
+void BigCastle::burn2()
+{
+    first.burn2();
+    second.burn2();
+}
+
+void BigCastle::burn3()
+{
+    first.burn3();
+    second.burn3();
 }
 
