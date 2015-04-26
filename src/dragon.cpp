@@ -239,7 +239,7 @@ void Dragon::animate()
         {
             rotate_backward = false;
         }
-        if (position.z > 150)
+        if (position.z > 120)
         {
             state = FLY_TOWARD_CASTLE;
         }
@@ -307,6 +307,33 @@ void Dragon::animate()
             castle_to_burn->burn3();
         }
         if (delay_before_circleing_around-- < 0)
+        {
+            state = PLACE_FOR_ROUND;
+        }
+    }
+    else if (state == PLACE_FOR_ROUND)
+    {
+        if (rotate_backward)
+        {
+            velocity = Vec(0, 0, 15);
+            wings_rotation -= 5;
+        }
+        else
+        {
+            velocity = Vec(0, 0, -10);
+            wings_rotation += 10;
+        }
+        if (wings_rotation > max_rotation)
+        {
+            rotate_backward = true;
+        }
+        if (wings_rotation < min_rotation)
+        {
+            rotate_backward = false;
+        }
+        fire.stop();
+        rotation.z -= abs(-135 - rotation.z) * 0.05;
+        if (position.z > 200)
         {
             state = GET_AROUND_TOWN;
         }

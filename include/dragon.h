@@ -64,6 +64,7 @@ private :
             FLY_HOLD_POSITION,
             FLY_TOWARD_CASTLE,
             FLY_AND_FIRE,
+            PLACE_FOR_ROUND,
             GET_AROUND_TOWN
         };
 
