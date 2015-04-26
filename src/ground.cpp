@@ -36,7 +36,7 @@ void Ground::draw()
     glEnable(GL_NORMALIZE);
     glBegin(GL_QUADS);
 
-    int size = 5000;
+    int size = 2000;
 
     glTexCoord2d(0, 0); glVertex3f(-size, -size, 0);
     glTexCoord2d(0, 10); glVertex3f(-size, size, 0);

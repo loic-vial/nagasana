@@ -4,6 +4,7 @@
 #include <dragon.h>
 #include <ground.h>
 #include <skybox.h>
+#include <forest.h>
 #include <big_castle.h>
 
 using namespace std;
@@ -19,10 +20,10 @@ int main(int argc, char** argv)
     BigCastle* castle = new BigCastle();
 
     viewer.addRenderable(new Skybox());
+    viewer.addRenderable(new Forest());
     viewer.addRenderable(new Ground());
     viewer.addRenderable(castle);
     viewer.addRenderable(dragon);
-
     dragon->set_castle_to_burn(*castle);
 
     viewer.setWindowTitle("Nagasana");
