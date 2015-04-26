@@ -28,7 +28,8 @@ void Dragon::init(Viewer& v)
     velocity = Vec(0, 0, 0);
     viewer = &v;
 
- state = ON_THE_GROUND;
+   // state = ON_THE_GROUND;
+    state = FLY_AND_FIRE;
     delay_before_castle_burn = 30;
     delay_before_castle_burn2 = 60;
     delay_before_castle_burn3 = 90;
@@ -149,10 +150,19 @@ void Dragon::draw_with_color(bool color)
         glLighti(GL_LIGHT3,GL_SPOT_EXPONENT,10);
         glLightf(GL_LIGHT3, GL_CONSTANT_ATTENUATION, 8.0);
 
-
     }
     glPopMatrix();
 
+
+    if(color)
+    { glPushMatrix();
+        glTranslatef(0, 45,34);
+        glRotatef(-55,1,0,0);
+
+        glRotatef(90,0,1,0);
+        glScalef(2, 4, 2);
+        fire.draw();
+        glPopMatrix();}
 
     glDisable(GL_LIGHT2);
     glDisable(GL_LIGHT3);
@@ -194,18 +204,6 @@ void Dragon::draw_with_color(bool color)
     glRotatef(-wings_rotation, 0, 0, 1);
     left_wing.draw();
     glPopMatrix();
-
-
-//glDisable(GL_LIGHT2);
-    if(color)
-    { glPushMatrix();
-        glTranslatef(0, 45,34);
-       glRotatef(-55,1,0,0);
-
-        glRotatef(90,0,1,0);
-        glScalef(2, 4, 2);
-        fire.draw();
-        glPopMatrix();}
 
     glPopMatrix();
 

@@ -22,8 +22,8 @@ int main(int argc, char** argv)
 
     viewer.addRenderable(new Skybox());
     viewer.addRenderable(new Forest());
-    //viewer.addRenderable(new Ground());
-    viewer.addRenderable(new Terrain());
+   viewer.addRenderable(new Ground());
+ // viewer.addRenderable(new Terrain());
     viewer.addRenderable(castle);
     viewer.addRenderable(dragon);
     dragon->set_castle_to_burn(*castle);
