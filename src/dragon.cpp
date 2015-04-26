@@ -34,6 +34,7 @@ void Dragon::init(Viewer& v)
     delay_before_castle_burn3 = 90;
     delay_before_circleing_around = 100;
     angle_around_castle = 4;
+    go_go_fire = false;
 }
 
 void Dragon::set_castle_to_burn(BigCastle &castle)
@@ -43,9 +44,18 @@ void Dragon::set_castle_to_burn(BigCastle &castle)
 
 void Dragon::draw()
 {
+
+    GLfloat    surf_diffuse[]={0.8,0.0,0.0,1.0};
+    GLfloat surf_speculaire[]={0.5,0.5,0.5,1.0};
+    GLfloat   surf_shininess[]={1.0};
+    glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,surf_diffuse);
+    glMaterialfv(GL_FRONT_AND_BACK ,GL_SPECULAR,surf_speculaire);
+    glMaterialfv(GL_FRONT_AND_BACK,GL_SHININESS,surf_shininess);
+
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
+
     GLfloat ombre[4][4];
     GLfloat light_pos[] =  {20.0f, 100.0f, 100.0f, 0.0f};
 
@@ -69,13 +79,13 @@ void Dragon::draw()
     glMultMatrixf((GLfloat *) ombre);
     //dessin de l'objet
 
-    //on dessine le cube en noir transparent
     glPushMatrix();
     glDisable(GL_LIGHT0);
     draw_with_color(false);
     glPopMatrix();
     glEnable(GL_LIGHT0);
     glPopMatrix();
+
 
     glDisable(GL_BLEND);
 
@@ -85,7 +95,10 @@ void Dragon::draw()
 
 void Dragon::draw_with_color(bool color)
 {
-
+   /* viewer->camera()->setUpVector(Vec(0, 0, 1));
+    viewer->camera()->setPosition(Vec(-700, 500, 500) - Vec(1100, 1100, 0));
+    viewer->camera()->lookAt(position - Vec(1100, 1100, 0));
+*/
     glTranslatef(position.x, position.y, position.z);
     glRotatef(rotation.x, 1, 0, 0);
     glRotatef(rotation.y, 0, 1, 0);
@@ -107,9 +120,9 @@ void Dragon::draw_with_color(bool color)
     else  glColor3ub(255,255,255);
 
 
-    if(color) { glEnable(GL_TEXTURE_2D);}
+ /* if(color) { glEnable(GL_TEXTURE_2D);}
     else glDisable(GL_TEXTURE_2D);
-
+*/
     glPushMatrix();
 
     glPushMatrix();
@@ -140,13 +153,20 @@ void Dragon::draw_with_color(bool color)
         glLighti(GL_LIGHT3,GL_SPOT_EXPONENT,10);
         glLightf(GL_LIGHT3, GL_CONSTANT_ATTENUATION, 8.0);
 
-
     }
     glPopMatrix();
 
 
-    glDisable(GL_LIGHT2);
-    glDisable(GL_LIGHT3);
+    if(color)
+    { glPushMatrix();
+        glTranslatef(0, 45,34);
+        glRotatef(-55,1,0,0);
+
+        glRotatef(90,0,1,0);
+        glScalef(2, 4, 2);
+        fire.draw();
+        glPopMatrix();}
+
     glPushMatrix();
     glTranslatef(-18, 0, 4);
     tail.draw();
@@ -157,6 +177,7 @@ void Dragon::draw_with_color(bool color)
     if(state == FLY_AND_FIRE)
     {
         glEnable(GL_LIGHT2);
+        glEnable(GL_LIGHT3);
         body.is_fired = true;
     }
     else
@@ -186,18 +207,6 @@ void Dragon::draw_with_color(bool color)
     left_wing.draw();
     glPopMatrix();
 
-
-//glDisable(GL_LIGHT2);
-    if(color)
-    { glPushMatrix();
-        glTranslatef(0, 45,34);
-       glRotatef(-55,1,0,0);
-
-        glRotatef(90,0,1,0);
-        glScalef(2, 4, 2);
-        fire.draw();
-        glPopMatrix();}
-
     glPopMatrix();
 
 
@@ -223,12 +232,12 @@ void Dragon::animate()
         body.debut_rotate = true;
         if (rotate_backward)
         {
-            velocity = Vec(0, 0, 15);
+            velocity = Vec(0, 0, 30);
             wings_rotation -= 5;
         }
         else
         {
-            velocity = Vec(0, 0, -10);
+            velocity = Vec(0, 0, -20);
             wings_rotation += 10;
         }
         if (wings_rotation > max_rotation)
@@ -248,12 +257,12 @@ void Dragon::animate()
     {
         if (rotate_backward)
         {
-            velocity = Vec(0, 0, 5);
+            velocity = Vec(0, 0, 10);
             wings_rotation -= 5;
         }
         else
         {
-            velocity = Vec(0, 0, -10);
+            velocity = Vec(0, 0, -20);
             wings_rotation += 10;
         }
         if (wings_rotation > max_rotation)
@@ -315,12 +324,12 @@ void Dragon::animate()
     {
         if (rotate_backward)
         {
-            velocity = Vec(0, 0, 15);
+            velocity = Vec(0, 0, 40);
             wings_rotation -= 5;
         }
         else
         {
-            velocity = Vec(0, 0, -10);
+            velocity = Vec(0, 0, -20);
             wings_rotation += 10;
         }
         if (wings_rotation > max_rotation)
@@ -332,7 +341,7 @@ void Dragon::animate()
             rotate_backward = false;
         }
         fire.stop();
-        rotation.z -= abs(-135 - rotation.z) * 0.05;
+        rotation.z -= abs(-135 - rotation.z) * 0.1;
         if (position.z > 200)
         {
             state = GET_AROUND_TOWN;
@@ -358,8 +367,10 @@ void Dragon::animate()
         {
             rotate_backward = false;
         }
-        fire.stop();
-        angle_around_castle = angle_around_castle + 0.07;
+        if (go_go_fire) fire.start();
+        else fire.stop();
+        go_go_fire = false;
+        angle_around_castle = angle_around_castle + 0.04;
         if (angle_around_castle > 2 * 3.14) angle_around_castle = 0;
         position.x = 700 + 300 * cos(angle_around_castle);
         position.y = 700 + 300 * sin(angle_around_castle);
@@ -381,12 +392,12 @@ void Dragon::animate()
 
 void Dragon::keyPressEvent(QKeyEvent* key, Viewer&)
 {
-    if (key->key() == Qt::Key_O)
+    if (key->key() == Qt::Key_O && state == ON_THE_GROUND)
     {
         state = FLY_HOLD_POSITION;
     }
     else if (key->key() == Qt::Key_P)
     {
-        camera_focus = !camera_focus;
+        go_go_fire = true;
     }
 }

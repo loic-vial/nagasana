@@ -17,5 +17,6 @@ class Sphere : public Particle
     public :
 
         GLfloat radius;
+        GLuint id;
 };
 

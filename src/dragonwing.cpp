@@ -17,7 +17,7 @@ DragonWing::DragonWing():
 
 void DragonWing::init(Viewer& viewer)
 {
-    scale_id = loadTexture("res/scale.jpg");
+    scale_id = loadTexture("res/corne.jpg");
     first_membrane.init(viewer);
     second_membrane.init(viewer);
     black=false;

@@ -55,6 +55,7 @@ void Fire::draw()
     {
         glPushMatrix();
         glColor3f(1,0,0);
+        glEnable(GL_LIGHT0);
         glRotatef(90,0,1,0);
         std::vector<FireParticle *>::iterator itP;
         for (itP = particles.begin(); itP != particles.end(); ++itP) {
@@ -69,6 +70,8 @@ void Fire::animate()
 {
     if (started)
     {
+         glColor3f(1,0,0);
+         glEnable(GL_LIGHT0);
         std::map<const FireParticle *, qglviewer::Vec> forces;
 
         std::vector<FireParticle *>::iterator itP;

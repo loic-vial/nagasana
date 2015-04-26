@@ -15,4 +15,5 @@ class Foot
     private:
 
         GLuint foot_id;
+
 };

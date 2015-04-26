@@ -63,6 +63,6 @@ void Terrain::draw()
 
        
     glPopMatrix();
-    glDisable(GL_FOG);
+  glDisable(GL_FOG);
     glDisable(GL_TEXTURE_2D);
 }

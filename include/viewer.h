@@ -26,6 +26,8 @@ class Viewer : public QGLViewer
 
     protected :
 
+        bool toggleRecord;
+
         bool toogleWireframe;
 
         bool toogleLight;
