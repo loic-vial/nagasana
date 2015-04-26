@@ -14,6 +14,9 @@ public:
     void draw();
 
     void animate();
+
+    void burn();
+
 private:
         Castle first;
         Castle second;

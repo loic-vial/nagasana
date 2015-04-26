@@ -136,6 +136,7 @@ void Castle::animate()
 {
     if(burned)
     {
+        fire.start();
         glPushMatrix();
         fire.animate();
         glPopMatrix();

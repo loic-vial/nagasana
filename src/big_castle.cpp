@@ -13,7 +13,7 @@ BigCastle::BigCastle():
 
 void BigCastle::init(Viewer& v)
 {
-
+    burned = false;
     first.init(v);
     second.init(v);
     first.black = false;
@@ -72,7 +72,6 @@ void BigCastle::draw()
 
 void BigCastle::animate()
 {
-    burned = false;
     if(burned)
     {
         first.burned = burned;
@@ -82,4 +81,8 @@ void BigCastle::animate()
     }
 }
 
+void BigCastle::burn()
+{
+    burned = true;
+}
 

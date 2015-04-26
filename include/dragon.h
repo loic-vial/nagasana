@@ -4,6 +4,7 @@
 #include <dragonwing.h>
 #include <dragontail.h>
 #include <fire.h>
+#include <big_castle.h>
 #include <qglviewer.h>
 
 class Dragon : public Renderable
@@ -15,6 +16,8 @@ class Dragon : public Renderable
         void draw();
 
         void draw1();
+
+        void set_castle_to_burn(BigCastle& castle);
 
     void draw_with_color(bool black);
 
@@ -65,4 +68,6 @@ private :
 
         State state;
     bool dark;
+
+    BigCastle* castle_to_burn;
 };
