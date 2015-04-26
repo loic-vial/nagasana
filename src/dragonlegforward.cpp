@@ -54,7 +54,6 @@ void DragonLegForward::draw()
 
     glPushMatrix();
     glRotatef(rotate,-1,0,0);
-    glTranslatef(0,-rotate/4,-rotate/18);
     glPushMatrix();
     glTranslatef(0,0,15);
     glRotatef(80,-1,0,0);
@@ -74,8 +73,5 @@ void DragonLegForward::draw()
 
 void DragonLegForward::animate()
 {
-    if(rotate<=25)
-    {
-        rotate+=1;
-    }
+
 }

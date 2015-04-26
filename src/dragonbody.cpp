@@ -227,14 +227,12 @@ void DragonBody::draw()
     glPushMatrix();
     glTranslatef(16, 19, -13);
     glRotatef(18,1,0,0);
-    glTranslatef(-rotate/14,rotate/8,rotate/14);
     righttop.draw();
     glPopMatrix();
 
-    glPushMatrix();
+  glPushMatrix();
     glTranslatef(-16, 19, -13);
     glRotatef(18,1,0,0);
-    glTranslatef(rotate/14,rotate/8,rotate/14);
     lefttop.draw();
     glPopMatrix();
 
@@ -250,16 +248,9 @@ void DragonBody::draw()
 
 void DragonBody::animate()
 {
-    leftlegfor.animate();
-    rightlegfor.animate();
-    // if(debut_rotate && rotate <=50)
-    if(rotate <=50)
+ if(debut_rotate && rotate <=50)
     {
         rotate +=1;
-        leftlegback.debut_rotate = true;
-        rightlegback.debut_rotate = true;
-        leftlegfor.debut_rotate =true;
-        rightlegfor.debut_rotate =true;
     }
 
 }

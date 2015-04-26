@@ -28,7 +28,7 @@ void Dragon::init(Viewer& v)
     velocity = Vec(0, 0, 0);
     viewer = &v;
 
-    state = ON_THE_GROUND;
+ state = ON_THE_GROUND;
     delay_before_castle_burn = 30;
     delay_before_castle_burn2 = 60;
     delay_before_castle_burn3 = 90;
@@ -43,7 +43,6 @@ void Dragon::set_castle_to_burn(BigCastle &castle)
 
 void Dragon::draw()
 {
-<<<<<<< HEAD
 
     GLfloat    surf_diffuse[]={0.8,0.0,0.0,1.0};
     GLfloat surf_speculaire[]={0.5,0.5,0.5,1.0};
@@ -52,13 +51,10 @@ void Dragon::draw()
     glMaterialfv(GL_FRONT_AND_BACK ,GL_SPECULAR,surf_speculaire);
     glMaterialfv(GL_FRONT_AND_BACK,GL_SHININESS,surf_shininess);
 
-
-
-=======
->>>>>>> ed886fa7547877f84bb7d544cd37457557ec0c2c
     GLfloat sol[3][3] = {{0.0f,0.0f,0.05f},
                          {4.0f,0.0f,0.05f},
                          {0.0f,4.0f,0.05f}};
+
     GLfloat ombre[4][4];
     GLfloat light_pos[] =  {20.0f, 100.0f, 100.0f, 0.0f};
 
@@ -82,13 +78,13 @@ void Dragon::draw()
     glMultMatrixf((GLfloat *) ombre);
     //dessin de l'objet
 
-    //on dessine le cube en noir transparent
     glPushMatrix();
     glDisable(GL_LIGHT0);
     draw_with_color(false);
     glPopMatrix();
     glEnable(GL_LIGHT0);
     glPopMatrix();
+
 
     glDisable(GL_BLEND);
 

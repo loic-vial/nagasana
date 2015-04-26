@@ -50,10 +50,6 @@ void DragonLegBackward::draw()
 
 
     glPushMatrix();
-
-    glRotatef(rotate,-1,0,0);
-
-    glPushMatrix();
     glTranslatef(0,0,12);
     glRotatef(120,-1,0,0);
     second_part.draw();
@@ -64,16 +60,11 @@ void DragonLegBackward::draw()
     gluSphere(joint,1,10,10);
     glPopMatrix();
 
-    glPopMatrix();
-
     gluDeleteQuadric(joint);
 
 }
 
 void DragonLegBackward::animate()
 {
-    if(debut_rotate && rotate<=50)
-    {
-        rotate+=0.1;
-    }
+
 }
