@@ -86,8 +86,9 @@ void Dragon::draw()
 
 void Dragon::draw_with_color(bool color)
 {
-    //viewer->camera()->setPosition(position + Vec(20, 20, 20) - Vec(1100, 1100, 0);
-    //viewer->camera()->lookAt(position);
+    viewer->camera()->setUpVector(Vec(0, 0, 1));
+    viewer->camera()->setPosition(Vec(-700, 500, 500) - Vec(1100, 1100, 0));
+    viewer->camera()->lookAt(position - Vec(1100, 1100, 0));
 
     glTranslatef(position.x, position.y, position.z);
     glRotatef(rotation.x, 1, 0, 0);
@@ -226,12 +227,12 @@ void Dragon::animate()
         body.debut_rotate = true;
         if (rotate_backward)
         {
-            velocity = Vec(0, 0, 15);
+            velocity = Vec(0, 0, 30);
             wings_rotation -= 5;
         }
         else
         {
-            velocity = Vec(0, 0, -10);
+            velocity = Vec(0, 0, -20);
             wings_rotation += 10;
         }
         if (wings_rotation > max_rotation)
@@ -251,12 +252,12 @@ void Dragon::animate()
     {
         if (rotate_backward)
         {
-            velocity = Vec(0, 0, 5);
+            velocity = Vec(0, 0, 10);
             wings_rotation -= 5;
         }
         else
         {
-            velocity = Vec(0, 0, -10);
+            velocity = Vec(0, 0, -20);
             wings_rotation += 10;
         }
         if (wings_rotation > max_rotation)
@@ -318,12 +319,12 @@ void Dragon::animate()
     {
         if (rotate_backward)
         {
-            velocity = Vec(0, 0, 15);
+            velocity = Vec(0, 0, 40);
             wings_rotation -= 5;
         }
         else
         {
-            velocity = Vec(0, 0, -10);
+            velocity = Vec(0, 0, -20);
             wings_rotation += 10;
         }
         if (wings_rotation > max_rotation)
@@ -364,7 +365,7 @@ void Dragon::animate()
         if (go_go_fire) fire.start();
         else fire.stop();
         go_go_fire = false;
-        angle_around_castle = angle_around_castle + 0.07;
+        angle_around_castle = angle_around_castle + 0.04;
         if (angle_around_castle > 2 * 3.14) angle_around_castle = 0;
         position.x = 700 + 300 * cos(angle_around_castle);
         position.y = 700 + 300 * sin(angle_around_castle);
