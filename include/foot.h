@@ -16,5 +16,4 @@ class Foot
 
         GLuint foot_id;
 
-        GLuint scale_id;
 };
