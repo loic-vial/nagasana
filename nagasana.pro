@@ -1,6 +1,6 @@
 TEMPLATE = app
 TARGET = nagasana
-CONFIG += qt opengl warn_on debug
+CONFIG += qt opengl warn_on
 QT *= xml opengl 
 
 macx:LIBS *= -framework Glut

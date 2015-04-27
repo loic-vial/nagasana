@@ -2,7 +2,7 @@ Equipe : Gianni Delannoye
          Jade Thiriat
          Loïc Vial
 
-Pour compiler le projet : faire 'qmake' pour générer le Makefile
+Pour compiler le projet : faire 'qmake-qt4' pour générer le Makefile
                           puis 'make' pour compiler le projet
                           enfin './nagasana' pour lancer le projet
 
