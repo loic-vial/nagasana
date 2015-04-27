@@ -34,7 +34,6 @@ HEADERS += \
     include/fire.h \
     include/fireParticle.h \
     include/glcheck.h \
-    include/shaderprogram.h \
     include/glew.h \
     include/qglviewer.h \
     include/dragonlegforward.h \
@@ -65,7 +64,6 @@ SOURCES += \
     src/membrane.cpp \
     src/fire.cpp \
     src/fireParticle.cpp \
-    src/shaderprogram.cpp \
     src/dragonlegforward.cpp \
     src/dragonlegbackward.cpp \
     src/foot.cpp \
