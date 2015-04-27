@@ -8,22 +8,28 @@
 
 class DragonLegForward : public Renderable
 {
-public :
+    public :
 
+        DragonLegForward();
 
-    DragonLegForward();
-    void init(Viewer&);
+        void init(Viewer&);
 
-    void draw();
+        void draw();
 
-    void animate();
-    bool debut_rotate;
-    bool black;
-private :
-    Cylinder first_part;
-    Cylinder second_part;
-      GLuint scale_id;
+        void animate();
 
-      GLfloat rotate;
+        bool debut_rotate;
+
+        bool black;
+
+    private :
+
+        Cylinder first_part;
+
+        Cylinder second_part;
+
+        GLuint scale_id;
+
+        GLfloat rotate;
 };
 

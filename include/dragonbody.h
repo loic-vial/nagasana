@@ -1,5 +1,6 @@
 #pragma once
-#include<glew.h>
+
+#include <glew.h>
 #include <renderable.h>
 #include <sphere.h>
 #include <cylinder.h>
@@ -12,38 +13,51 @@
 
 class DragonBody : public Renderable
 {
-public :
+    public :
 
-    DragonBody();
+        DragonBody();
 
-    void init(Viewer&);
+        void init(Viewer&);
 
-    void draw();
+        void draw();
 
-    void display_mouth();
+        void display_mouth();
 
+        void animate();
 
-    void animate();
+        bool black;
 
-    bool black;
-    bool is_fired;
+        bool is_fired;
 
-    bool debut_rotate;
-private :
-    Cylinder body;
-    DragonLegForward leftlegfor;
-    DragonLegForward rightlegfor;
-    DragonLegBackward leftlegback;
-    DragonLegBackward rightlegback;
-    Foot lefttop;
-    Foot leftbottom;
-    Foot righttop;
-    Foot rightbottom;
-    DragonHead head;
-    DragonNeck neck;
-    GLfloat rotate;
-    GLuint cone_id;
+        bool debut_rotate;
 
-    GLuint scale_id;
+    private :
 
+        Cylinder body;
+
+        DragonLegForward leftlegfor;
+
+        DragonLegForward rightlegfor;
+
+        DragonLegBackward leftlegback;
+
+        DragonLegBackward rightlegback;
+
+        Foot lefttop;
+
+        Foot leftbottom;
+
+        Foot righttop;
+
+        Foot rightbottom;
+
+        DragonHead head;
+
+        DragonNeck neck;
+
+        GLfloat rotate;
+
+        GLuint cone_id;
+
+        GLuint scale_id;
 };

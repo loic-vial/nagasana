@@ -6,7 +6,7 @@
 
 class DragonHead : public Renderable
 {
-public :
+    public :
 
         DragonHead();
 

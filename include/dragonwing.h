@@ -18,12 +18,19 @@ class DragonWing : public Renderable
         void animate();
 
         bool black;
-private :
-    Cylinder first_part;
-    Cylinder second_part;
-    Cylinder member;
-    Membrane first_membrane;
-    Membrane second_membrane;
-      GLuint scale_id;
+
+    private :
+
+        Cylinder first_part;
+
+        Cylinder second_part;
+
+        Cylinder member;
+
+        Membrane first_membrane;
+
+        Membrane second_membrane;
+
+        GLuint scale_id;
 };
 

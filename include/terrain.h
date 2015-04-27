@@ -16,10 +16,13 @@ class Terrain : public Renderable
 
         void draw();
 
-private :
-        float* h;
-        int height;
-        int size;
-        GLuint texture;
+    private :
 
+        float* h;
+
+        int height;
+
+        int size;
+
+        GLuint texture;
 };

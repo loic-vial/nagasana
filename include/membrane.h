@@ -5,16 +5,23 @@
 
 class Membrane
 {
-public:
-    Membrane(qglviewer::Vec pbegin,qglviewer::Vec pmid, qglviewer::Vec pend);
-    void init(Viewer&);
-    void draw();
+    public:
 
-    bool black;
-private :
-    qglviewer::Vec begin;
-    qglviewer::Vec mid;
-    qglviewer::Vec end;
+        Membrane(qglviewer::Vec pbegin,qglviewer::Vec pmid, qglviewer::Vec pend);
 
-    GLuint membrane_id;
+        void init(Viewer&);
+
+        void draw();
+
+        bool black;
+
+    private :
+
+        qglviewer::Vec begin;
+
+        qglviewer::Vec mid;
+
+        qglviewer::Vec end;
+
+        GLuint membrane_id;
 };

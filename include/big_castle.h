@@ -1,29 +1,34 @@
 #pragma once
+
 #include <renderable.h>
 #include <glut.h>
 #include <castle.h>
 
-
 class BigCastle : public Renderable
 {
-public:
+    public:
 
-    BigCastle();
-    void init(Viewer&);
+        BigCastle();
 
-    void draw();
+        void init(Viewer&);
 
-    void animate();
+        void draw();
 
-    void burn1();
+        void animate();
 
-    void burn2();
+        void burn1();
 
-    void burn3();
+        void burn2();
 
-private:
+        void burn3();
+
+    private:
+
         Castle first;
+
         Castle second;
+
         bool burned;
+
         bool black;
 };

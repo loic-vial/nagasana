@@ -12,6 +12,7 @@ class Cylinder : public Renderable
         void init(Viewer&);
 
         void draw();
+
         void setId(GLuint id);
 
     private:

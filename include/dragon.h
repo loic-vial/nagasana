@@ -19,15 +19,16 @@ class Dragon : public Renderable
 
         void set_castle_to_burn(BigCastle& castle);
 
-    void draw_with_color(bool black);
+        void draw_with_color(bool black);
 
-    void animate();
+        void animate();
 
-    void keyPressEvent(QKeyEvent*, Viewer&);
+        void keyPressEvent(QKeyEvent*, Viewer&);
 
-private :
+    private :
 
-    bool black;
+        bool black;
+
         DragonBody body;
 
         DragonWing left_wing;
@@ -36,25 +37,25 @@ private :
 
         DragonTail tail;
 
-    Fire fire;
+        Fire fire;
 
-    float max_rotation;
+        float max_rotation;
 
-    float min_rotation;
+        float min_rotation;
 
-    float wings_rotation;
+        float wings_rotation;
 
-    bool rotate_backward;
+        bool rotate_backward;
 
-    bool is_flying;
+        bool is_flying;
 
-    bool camera_focus;
+        bool camera_focus;
 
-    qglviewer::Vec position;
+        qglviewer::Vec position;
 
-    qglviewer::Vec rotation;
+        qglviewer::Vec rotation;
 
-    QGLViewer* viewer;
+        QGLViewer* viewer;
 
         qglviewer::Vec velocity;
 
@@ -69,19 +70,20 @@ private :
         };
 
         State state;
-    bool dark;
 
-    BigCastle* castle_to_burn;
+        bool dark;
 
-    int delay_before_castle_burn;
+        BigCastle* castle_to_burn;
 
-    int delay_before_castle_burn2;
+        int delay_before_castle_burn;
 
-    int delay_before_castle_burn3;
+        int delay_before_castle_burn2;
 
-    int delay_before_circleing_around;
+        int delay_before_castle_burn3;
 
-    double angle_around_castle;
+        int delay_before_circleing_around;
 
-    bool go_go_fire;
+        double angle_around_castle;
+
+        bool go_go_fire;
 };
