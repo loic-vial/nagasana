@@ -3,9 +3,12 @@
 #include <dragonhead.h>
 #include <glut.h>
 #include <glcheck.h>
+
 DragonHead::DragonHead():
     face(9,5.5,3.5)
-{}
+{
+
+}
 
 void DragonHead::display_mouth()
 {
@@ -22,13 +25,12 @@ void DragonHead::init(Viewer&)
 
 void DragonHead::draw()
 {
-
     if(black) {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(255,255,255);
+    else  glColor3ub(255,255,255);
 
     glEnable(GL_TEXTURE_2D);
 
@@ -86,14 +88,11 @@ void DragonHead::draw()
     glRotatef(30, 0, 0, 1);
     ear();
     glPopMatrix();
-
 }
 
 
 void DragonHead::ear()
 {
-
-
     glRotatef(90, -1, 0, 0);
     glRotatef(90, 0, 0, 1);
     glEnable(GL_NORMALIZE);
@@ -118,7 +117,7 @@ void DragonHead::ear()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(0,0,255);
+    else  glColor3ub(0,0,255);
     glTexCoord2d(0, 0); glVertex3f(1, -size, 0);
     glTexCoord2d(0, 1); glVertex3f(1, size, 0);
     glTexCoord2d(0.5, 0.7); glVertex3f(1, 0, height);
@@ -130,7 +129,7 @@ void DragonHead::ear()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(255,255,255);
+    else  glColor3ub(255,255,255);
 
     //face de la jointure
     glBegin(GL_POLYGON);
@@ -175,6 +174,7 @@ void DragonHead::eye()
     glDisable(GL_TEXTURE_2D);
     gluDeleteQuadric(params);
 }
+
 void DragonHead::mouth()
 {
     glEnable(GL_TEXTURE_2D);
@@ -183,7 +183,7 @@ void DragonHead::mouth()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(255,255,255);
+    else  glColor3ub(255,255,255);
 
     glBindTexture(GL_TEXTURE_2D, scale_id);
     // GLCHECK(glBindTexture(GL_TEXTURE_2D, eye_id));
@@ -210,7 +210,7 @@ void DragonHead::mouth()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else glColor3ub(100,0,0);
+    else glColor3ub(100,0,0);
     glBegin(GL_POLYGON);
     glNormal3f(1, 0, 0);
     glTexCoord2d(1, 0.3); glVertex3f(1, -1, 0);
@@ -224,7 +224,7 @@ void DragonHead::mouth()
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(255,255,255);
+    else  glColor3ub(255,255,255);
 
     //face de la jointure
     glBegin(GL_POLYGON);

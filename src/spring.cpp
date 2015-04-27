@@ -49,10 +49,10 @@ void Spring::draw() const
     // glEnable(GL_TEXTURE_2D);
     //   GLCHECK(glBindTexture(GL_TEXTURE_2D, cone_id));
     //  glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-  //  glColor3ub(255,255,255);
+    //  glColor3ub(255,255,255);
 
     //   glBindTexture(GL_TEXTURE_2D,cone_id);
-  /*  GLUquadric* params = gluNewQuadric();
+    /*  GLUquadric* params = gluNewQuadric();
     gluQuadricDrawStyle(params,GLU_FILL);
     gluQuadricTexture(params,GL_TRUE);
     gluCylinder(params,1.5,2,pos2.y-pos1.y,20,20);

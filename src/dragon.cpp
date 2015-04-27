@@ -44,7 +44,6 @@ void Dragon::set_castle_to_burn(BigCastle &castle)
 
 void Dragon::draw()
 {
-
     GLfloat    surf_diffuse[]={0.8,0.0,0.0,1.0};
     GLfloat surf_speculaire[]={0.5,0.5,0.5,1.0};
     GLfloat   surf_shininess[]={1.0};
@@ -88,14 +87,11 @@ void Dragon::draw()
 
 
     glDisable(GL_BLEND);
-
-
-
 }
 
 void Dragon::draw_with_color(bool color)
 {
-   /* viewer->camera()->setUpVector(Vec(0, 0, 1));
+    /* viewer->camera()->setUpVector(Vec(0, 0, 1));
     viewer->camera()->setPosition(Vec(-700, 500, 500) - Vec(1100, 1100, 0));
     viewer->camera()->lookAt(position - Vec(1100, 1100, 0));
 */
@@ -120,7 +116,7 @@ void Dragon::draw_with_color(bool color)
     else  glColor3ub(255,255,255);
 
 
- /* if(color) { glEnable(GL_TEXTURE_2D);}
+    /* if(color) { glEnable(GL_TEXTURE_2D);}
     else glDisable(GL_TEXTURE_2D);
 */
     glPushMatrix();

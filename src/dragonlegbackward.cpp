@@ -3,6 +3,7 @@
 #include <dragonlegbackward.h>
 #include <glut.h>
 #include <glcheck.h>
+
 using qglviewer::Vec;
 using namespace std;
 
@@ -10,13 +11,13 @@ DragonLegBackward::DragonLegBackward():
     first_part(12,1.5,2.5),
     second_part(9,1,1.5)
 {
+
 }
 
 void DragonLegBackward::init(Viewer&)
 {
     scale_id = loadTexture("res/scale.jpg");
     black = false;
-
     debut_rotate=false;
 }
 
@@ -25,7 +26,8 @@ void DragonLegBackward::draw()
     first_part.setId(scale_id);
     second_part.setId(scale_id);
     glPushMatrix();
-    if(black) {
+    if(black)
+    {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);

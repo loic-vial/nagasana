@@ -3,12 +3,14 @@
 #include <big_castle.h>
 #include <glut.h>
 #include <glcheck.h>
+
 using qglviewer::Vec;
 
 BigCastle::BigCastle():
     first(140,70,20),
     second(50,50,8)
 {
+
 }
 
 void BigCastle::init(Viewer& v)
@@ -19,7 +21,6 @@ void BigCastle::init(Viewer& v)
     first.black = false;
     second.black = false;
 }
-
 
 void BigCastle::draw()
 {
@@ -67,9 +68,6 @@ void BigCastle::draw()
     glPopMatrix();
 
     glDisable(GL_BLEND);
-
-
-
 }
 
 

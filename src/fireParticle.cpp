@@ -2,21 +2,21 @@
 #include <glut.h>
 
 FireParticle::FireParticle(qglviewer::Vec pos, qglviewer::Vec vel, double m, double r, double l, double rd, double gr, double bl)
-    : position(pos),
-      velocity(vel),
-      mass(m),
-      size(r),
-      life(l),
+    : life(l),
       red(rd),
       green(gr),
-      blue(bl)
-
+      blue(bl),
+      position(pos),
+      velocity(vel),
+      mass(m),
+      size(r)
 {
     invMass = (m > 0 ? 1 / m : 0.0);
 }
 
 FireParticle::~FireParticle()
 {
+
 }
 
 
@@ -75,8 +75,6 @@ void FireParticle::setLife(int cste)
     life = cste;
 }
 
-
-
 void FireParticle::draw() const
 {
     glPushMatrix();
@@ -94,11 +92,7 @@ void FireParticle::draw() const
     glVertex3d(position.x-size,position.y,position.z-size); // Sud-Est
     glEnd();
     glPopMatrix();
-
-
 }
-
-
 
 std::ostream& operator<<(std::ostream& os, const FireParticle& p)
 {

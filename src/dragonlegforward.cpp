@@ -3,6 +3,7 @@
 #include <dragonlegforward.h>
 #include <glut.h>
 #include <glcheck.h>
+
 using qglviewer::Vec;
 using namespace std;
 
@@ -10,6 +11,7 @@ DragonLegForward::DragonLegForward():
     first_part(15,2,3.5),
     second_part(13,1,2)
 {
+
 }
 
 void DragonLegForward::init(Viewer&)
@@ -27,7 +29,8 @@ void DragonLegForward::draw()
 
     glPushMatrix();
 
-    if(black) {
+    if(black)
+    {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);

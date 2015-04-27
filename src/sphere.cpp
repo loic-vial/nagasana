@@ -1,6 +1,7 @@
 #include <sphere.h>
 #include <glut.h>
 #include <utils.h>
+
 using qglviewer::Vec;
 
 Sphere::Sphere(GLfloat r, Vec position, Vec vel, GLfloat mass) :

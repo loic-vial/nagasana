@@ -93,7 +93,6 @@ void Foot::draw()
     glPopMatrix();
 
     glDisable(GL_TEXTURE_2D);
-
 }
 
 

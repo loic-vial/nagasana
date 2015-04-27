@@ -38,7 +38,7 @@ void Skybox::draw()
     //GLfloat diffuse[] = {0.9f,0.3f,0.3f,1.0f};
     GLfloat light0_position [] = {20.0f, 100.0f, 100.0f, 0.0f};
     glLightfv(GL_LIGHT0,GL_AMBIENT,ambient);
-   // glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuse);
+    // glLightfv(GL_LIGHT0,GL_DIFFUSE,diffuse);
     glLightfv(GL_LIGHT0,GL_POSITION,light0_position);
 
 
@@ -65,7 +65,7 @@ void Skybox::draw()
     glFogf(GL_FOG_DENSITY, 0.0003) ;
     glFogf(GL_FOG_START, 1.0) ;
     glFogf(GL_FOG_END, 10.0) ;
-glFogf(GL_FOG_COORD_SRC,GL_FRAGMENT_DEPTH);
+    glFogf(GL_FOG_COORD_SRC,GL_FRAGMENT_DEPTH);
 
     // Enable/Disable features
     glPushAttrib(GL_ENABLE_BIT);

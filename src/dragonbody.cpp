@@ -3,6 +3,7 @@
 #include <dragonbody.h>
 #include <glut.h>
 #include <glcheck.h>
+
 using qglviewer::Vec;
 
 DragonBody::DragonBody():
@@ -17,7 +18,9 @@ DragonBody::DragonBody():
     rightbottom(),
     head(),
     neck()
-{}
+{
+
+}
 
 void DragonBody::init(Viewer& v)
 {
@@ -230,7 +233,7 @@ void DragonBody::draw()
     righttop.draw();
     glPopMatrix();
 
-  glPushMatrix();
+    glPushMatrix();
     glTranslatef(-16, 19, -13);
     glRotatef(18,1,0,0);
     lefttop.draw();
@@ -248,7 +251,7 @@ void DragonBody::draw()
 
 void DragonBody::animate()
 {
- if(debut_rotate && rotate <=50)
+    if(debut_rotate && rotate <=50)
     {
         rotate +=1;
     }

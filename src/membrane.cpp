@@ -6,12 +6,14 @@
 #include <QGLViewer/qglviewer.h>
 
 #define PI 3.1416
+
 Membrane::Membrane(qglviewer::Vec pbegin,qglviewer::Vec pmid, qglviewer::Vec pend)
 {
     begin = pbegin;
     mid = pmid;
     end= pend;
 }
+
 void Membrane::init(Viewer&)
 {
     membrane_id=loadTexture("res/metal.jpg");
@@ -19,8 +21,6 @@ void Membrane::init(Viewer&)
 
 void Membrane::draw()
 {
-
-
     GLfloat    surf_diffuse[]={0.9,0.8,0.0,1.0};
     GLfloat surf_speculaire[]={1.0,1.0,0.0,1.0};
     GLfloat   surf_shininess[]={5.0};
@@ -38,7 +38,7 @@ void Membrane::draw()
     glBegin(GL_POLYGON);
     glNormal3f(-1, 0,0);
     if(black)   glColor4ub(0,0,0,200);
-        else  glColor4ub(255,255,255,150);
+    else  glColor4ub(255,255,255,150);
     glVertex3fv(mid);
 
     glVertex3fv(begin);

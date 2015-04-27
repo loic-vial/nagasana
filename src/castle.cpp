@@ -119,14 +119,14 @@ void Castle::draw()
     glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
-if(!black){
-    glPushMatrix();
-   glRotatef(90,1,0,0);
-    glRotatef(180,0,1,0);
-    glScaled(radius/2,5,radius/2);
-    fire.draw();
-    glPopMatrix();
-}
+    if(!black){
+        glPushMatrix();
+        glRotatef(90,1,0,0);
+        glRotatef(180,0,1,0);
+        glScaled(radius/2,5,radius/2);
+        fire.draw();
+        glPopMatrix();
+    }
 }
 
 

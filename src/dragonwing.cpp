@@ -1,8 +1,7 @@
 #include <dragonwing.h>
-
 #include <utils.h>
-
 #include <iostream>
+
 using qglviewer::Vec;
 using namespace std;
 
@@ -13,6 +12,7 @@ DragonWing::DragonWing():
     first_membrane(qglviewer::Vec(0,0,0), qglviewer::Vec(0,0,25),qglviewer::Vec(0,17,15)),
     second_membrane(qglviewer::Vec(0,17,15),qglviewer::Vec(0,0,25),qglviewer::Vec(0,17,39))
 {
+
 }
 
 void DragonWing::init(Viewer& viewer)
@@ -25,7 +25,6 @@ void DragonWing::init(Viewer& viewer)
 
 void DragonWing::draw()
 {
-
     first_part.setId(scale_id);
     second_part.setId(scale_id);
     member.setId(scale_id);

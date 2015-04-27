@@ -4,7 +4,6 @@
 #include <glut.h>
 #include <glcheck.h>
 
-
 #define PI 3.1416
 
 Cylinder::Cylinder(GLfloat length , GLfloat radiusR, GLfloat radiusL)
@@ -21,7 +20,7 @@ void Cylinder::init(Viewer&)
 
 void Cylinder::setId(GLuint id)
 {
-  this->id = id;
+    this->id = id;
 }
 
 void Cylinder::draw()
@@ -29,8 +28,8 @@ void Cylinder::draw()
     glPushMatrix();
 
     glEnable(GL_TEXTURE_2D);
-        glBindTexture(GL_TEXTURE_2D, id);
-   // GLCHECK(glBindTexture(GL_TEXTURE_2D, id));
+    glBindTexture(GL_TEXTURE_2D, id);
+    // GLCHECK(glBindTexture(GL_TEXTURE_2D, id));
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     GLUquadric* cylinder = gluNewQuadric();
     glBindTexture(GL_TEXTURE_2D,id);

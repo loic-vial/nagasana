@@ -1,14 +1,18 @@
 #include <dragonneck.h>
 #include <utils.h>
+
 using qglviewer::Vec;
 using namespace std;
+
 DragonNeck::DragonNeck():
     first_part(10,4,9),
     second_part(8,3,4),
     third_part(8,1.5,3),
     first_joint(4, Vec(0, 0, 0)),
     second_joint(3, Vec(0, 0, 15))
-{}
+{
+
+}
 
 void DragonNeck::init(Viewer&)
 {
@@ -18,16 +22,16 @@ void DragonNeck::init(Viewer&)
 
 void DragonNeck::draw()
 {
-
     first_part.setId(scale_id);
     second_part.setId(scale_id);
     third_part.setId(scale_id);
-    if(black) {
+    if(black)
+    {
         glEnable(GL_BLEND);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         glColor4ub(0,0,0,200);
     }
-        else  glColor3ub(255,255,255);
+    else glColor3ub(255,255,255);
 
     glPushMatrix();
     first_part.draw();
